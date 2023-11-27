@@ -24,9 +24,26 @@
       </form>
       <!-- Drop Down Menu -->
       <div class="dropdown-menu" style="display:none;">
-        <a th:href="@{/search(type='landmark')}">Landmarks</a>
-        <a th:href="@{/search(type='business')}">Businesses</a>
+
+          <select name="city" onchange="location = this.value;">
+            <option value="" selected disabled>Choose a City</option>
+            <option th:value="@{/search(city='Cardiff')}">Cardiff</option>
+            <option th:value="@{/search(city='Bristol')}">Bristol</option>
+            <option th:value="@{/search(city='Penarth')}">Penarth</option>
+            <option th:value="@{/search(city='London')}">London</option>
+          </select>
+
+
         <!-- Add more filter options as needed -->
+
+        <select name="sort" onchange="handleSortChange(this.value)">
+          <option value="" selected disabled>Sort by</option>
+          <option th:value="@{/search(sort='asc')}">Ascending</option>
+          <option th:value="@{/search(sort='desc')}">Descending</option>
+          <option th:value="@{/search(sort='lastModified')}">Last Modified</option>
+          <option th:value="@{/search(sort='distance')}">Distance</option>
+        </select>
+
       </div>
     </div>
 
