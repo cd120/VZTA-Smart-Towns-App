@@ -6,28 +6,23 @@ To view diagram, install PlantUML plugin for IntelliJ/VSCode
 @startuml
 
 package Database <<Database>>{
-    entity Landmark_Table {
-        landmark_ID
-        --
-        co-ordinates
-    }
 
     entity Checkpoint_Table {
         checkpoint_ID
         --
         trail_ID
         landmark_ID
+        name
     }
 
     entity User_Table {
-        user_ID
-        --
         username
+        --
         password
     }
 
     entity User_Checkpoints {
-        user_ID
+        username
         checkpoint_ID
     }
 
@@ -43,12 +38,25 @@ package Database <<Database>>{
         checkpoint_ID
     }
 
+    entity Roles {
+        role_ID
+        --
+        name
+    }
+
+    entity Users_Roles {
+        role_ID
+        username
+    }
+
     Trail_Table ||..|| Trail_Checkpoint
     Checkpoint_Table ||..|| Trail_Checkpoint
-    Checkpoint_Table ||..|| Landmark_Table
 
     Checkpoint_Table }o..|| User_Checkpoints
     User_Table }o..|| User_Checkpoints
+
+    Roles ||--o{ Users_Roles
+    User_Table ||--o{ Users_Roles
 }
 
 
@@ -57,15 +65,16 @@ package Models {
     ''''''''''''' Checkpoint Models
 
     class Checkpoint {
-        - String landmark(??)
+        - String name
         - Array[2] coordinates
+        - Trail trail
     }
 
     interface CheckpointRepository {
         + findCheckpointById(Long id) : Checkpoint
-        + findCheckpointsByUserId(Long user_id) : List<Checkpoint>
+        + findCheckpointsByUsername(String username) : List<Checkpoint>
         + saveCheckpoint(Checkpoint checkpoint) : Long id
-        + addCheckpointToUser(Long checkpoint_id, Long user_id)
+        + addCheckpointToUser(Long checkpoint_id, String username)
     }
 
     class CheckpointRepositoryImpl {
@@ -75,9 +84,9 @@ package Models {
         + CheckpointRepositoryImpl(JdbcTemplate aJdbc)
         - setCheckpointMapper()
         + findCheckpointById(Long id) : Checkpoint
-        + findCheckpointsByUserId(Long user_id) : List<Checkpoint>
+        + findCheckpointsByUsername(String username) : List<Checkpoint>
         + saveCheckpoint(Checkpoint checkpoint) : Long id
-        + addCheckpointToUser(Long checkpoint_id, Long user_id)
+        + addCheckpointToUser(Long checkpoint_id, String username)
         - insertCheckpoint(Checkpoint checkpoint) : Long id
         - updateCheckpoint(Checkpoint checkpoint) : Long id
     }
@@ -121,6 +130,32 @@ package Models {
 
     Trail *- Checkpoint
 
+    '''''''''''''' Profile Models
+
+    class Profile {
+        - String username
+        - List<Checkpoint> checkpoints
+    }
+
+    interface ProfileRepository {
+        + getProfile(String username) : Profile
+        + saveUser(String username, String password)
+    }
+
+    class ProfileRepositoryImpl {
+        - JdbcTemplate jdbc
+        - RowMapper<Profile> profileMapper
+        --
+        ProfileRepositoryImpl(JdbcTemplate aJdbc)
+        + getProfile(String username) : Profile
+        + saveUser(String username, String password)
+        - setProfileMapper()
+    }
+
+    ProfileRepositoryImpl --|> ProfileRepository
+    ProfileRepositoryImpl *- Profile
+    ProfileRepositoryImpl ..> User_Table
+    ProfileRepositoryImpl ..> CheckpointRepository
 
     ''''''''''''' Notes
     note "QR codes can be mapped to checkpoint IDs, so when one is scanned,\n it gets the checkpoint by ID, and adds it to the user_checkpoints table " as n2
@@ -167,6 +202,24 @@ package Services {
 
     CheckpointServiceImpl --|> CheckpointService
     CheckpointServiceImpl *-- CheckpointRepository
+
+    ''''''''''''' Profile
+
+    interface ProfileService {
+        + getUser(Long user_id) : User, User.medals, User.checkpoints
+        + addUser(String username, String password)
+    }
+
+    class ProfileServiceImpl {
+        - ProfileRepository profileRepository
+        --
+        + getUser(Long user_id) : User, User.checkpoints
+        + addUser(String username, String password)
+    }
+
+    ProfileServiceImpl --|> ProfileService
+    ProfileServiceImpl *- ProfileRepository
+
 }
 
 
@@ -202,10 +255,19 @@ package Controllers {
     TrailController ..> CheckpointService
     TrailManagementController ..> TrailService
 
+    '''''''''''' Profile
+    class ProfileController {
+        @GET /profile (get user profile)
+    }
+
+    ProfileController ..> ProfileService
+
     ''''''''''' Security
 
     class AuthController {
         @GET /login (get login page, post handled by security)
+        @GET /signup (signup form)
+        @POST /signup (post signup form)
         @GET /logout (end session)
     }
 
