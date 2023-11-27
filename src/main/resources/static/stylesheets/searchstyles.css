@@ -1,51 +1,61 @@
 * {
-    padding:0px;
-    margin:0px;
-
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box; /* This ensures padding is included in the total width and height */
 }
 
 .search-container {
     display: flex;
-    position: relative;
-    width: 900px; /* Adjust as needed */
+    align-items: center; /* Align children vertically */
+    justify-content: flex-start; /* Align children to the start of the container */
+    position: relative; /* For absolute positioning of dropdown */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
 }
 
 .search-input {
-    display:flex;
-    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 22px 0 0 22px; /* Rounded corners on the left side */
-    height: 35px;
-    width: 400px;
+    border-right: none; /* Remove the right border to merge with the button */
+    border-radius: 22px 0 0 22px;
+    height: 40px;
+    flex-grow: 1; /* Allows the input to grow and fill the space */
+    display: flex;
+    align-items: center; /* Align text vertically */
 }
 
 .filter-button {
-    padding: 0;
+    border: 1px solid #ccc; /* To match the search input's border */
+    border-radius: 0 22px 22px 0; /* Rounded corners on the right side */
     width: 40px;
     height: 40px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #fff; /* Match the input field's color */
+    padding: 0; /* Reset any padding */
 }
 
-.filterimage {
-    width: 35px !important;
-    height: 35px !important;
+.filter-button img {
+    width: 30px;
+    height: 30px;
     object-fit: contain;
 }
 
-
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Aligns the dropdown right below the filter button */
+    top: 40px; /* Position below the search bar */
     right: 0;
     border: 1px solid #ccc;
     background: white;
     border-radius: 4px;
-    width: auto; /* Adjust as needed */
-    z-index: 1000; /* Ensures the dropdown appears above other content */
+    z-index: 1000;
+    display: none; /* Start hidden */
 }
+
 
 .dropdown-menu a {
     display: block;

@@ -4,35 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Trails Search</title>
-  <link rel="stylesheet" th:href="@{/static.stylesheets/searchstyles.css}" />
+  <link th:replace="~{/fragments/header :: bootstrap-css}"/>
+  <link th:replace="~{/fragments/header :: mainstyles}"/>
+  <link rel="stylesheet" th:href="@{/stylesheets/searchstyles.css}" />
 </head>
 <body>
 
+<div class="main-container">
+  <header th:replace="~{/fragments/header :: navbar}"></header>
+  <div class="page-container">
 
-<div class="search-container">
-  <form th:action="@{/search}" method="get" class="search-form">
-    <input type="text" placeholder="Search" class="search-input" name="query" th:value="${searchQuery}" />
-    <div class="filter-container">
-      <button type="button" class="filter-button">
-        <img th:src="@{/images/226383.png}" alt="Filter" class="filterimage" style="width:40px; height:40px;">
-      </button>
-
+    <div class="search-container">
+      <form th:action="@{/search}" method="get" class="search-form">
+        <input type="text" placeholder="Search" class="search-input" name="query" th:value="${searchQuery}" />
+        <!-- Filter Button -->
+        <button type="button" class="filter-button" onclick="toggleDropdown()">
+          <img th:src="@{/images/226383.png}" alt="Filter" class="filterimage">
+        </button>
+      </form>
+      <!-- Drop Down Menu -->
       <div class="dropdown-menu" style="display:none;">
-        <!-- Your dropdown menu content -->
-        <!-- Example filter option -->
         <a th:href="@{/search(type='landmark')}">Landmarks</a>
         <a th:href="@{/search(type='business')}">Businesses</a>
         <!-- Add more filter options as needed -->
       </div>
     </div>
-  </form>
-</div>
 
-<script>
-  // JavaScript for handling the dropdown menu
-  document.querySelector('.filter-button').addEventListener('click', function() {
-    document.querySelector('.dropdown-menu').style.display = 'block';
-  });
-</script>
+
+    <script>
+      function toggleDropdown() {
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+      }
+    </script>
+
+
+
+  </div>
 </body>
 </html>
