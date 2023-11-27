@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
@@ -7,5 +8,31 @@
 </head>
 <body>
 
+
+<div class="search-container">
+  <form th:action="@{/search}" method="get" class="search-form">
+    <input type="text" placeholder="Search" class="search-input" name="query" th:value="${searchQuery}" />
+    <div class="filter-container">
+      <button type="button" class="filter-button">
+        <img th:src="@{/images/226383.png}" alt="Filter" class="filterimage" style="width:40px; height:40px;">
+      </button>
+
+      <div class="dropdown-menu" style="display:none;">
+        <!-- Your dropdown menu content -->
+        <!-- Example filter option -->
+        <a th:href="@{/search(type='landmark')}">Landmarks</a>
+        <a th:href="@{/search(type='business')}">Businesses</a>
+        <!-- Add more filter options as needed -->
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  // JavaScript for handling the dropdown menu
+  document.querySelector('.filter-button').addEventListener('click', function() {
+    document.querySelector('.dropdown-menu').style.display = 'block';
+  });
+</script>
 </body>
 </html>

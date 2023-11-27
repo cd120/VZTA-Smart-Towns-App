@@ -1,0 +1,60 @@
+* {
+    padding:0px;
+    margin:0px;
+
+}
+
+.search-container {
+    display: flex;
+    position: relative;
+    width: 900px; /* Adjust as needed */
+}
+
+.search-input {
+    display:flex;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 22px 0 0 22px; /* Rounded corners on the left side */
+    height: 35px;
+    width: 400px;
+}
+
+.filter-button {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterimage {
+    width: 35px !important;
+    height: 35px !important;
+    object-fit: contain;
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Aligns the dropdown right below the filter button */
+    right: 0;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+    width: auto; /* Adjust as needed */
+    z-index: 1000; /* Ensures the dropdown appears above other content */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f7f7f7;
+}
