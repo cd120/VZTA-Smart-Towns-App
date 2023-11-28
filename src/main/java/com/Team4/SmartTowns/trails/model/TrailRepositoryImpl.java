@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class TrailRepositoryImpl implements TrailRepository {
+public abstract class TrailRepositoryImpl implements TrailRepository {
     private JdbcTemplate jdbc;
     private RowMapper<Trail> trailMapper;
     private CheckpointRepository checkpointRepository;
@@ -69,5 +69,16 @@ public class TrailRepositoryImpl implements TrailRepository {
             String sql = "INSERT INTO trail_checkpoint (trail_id, checkpoint_id) VALUES (?, ?)";
             jdbc.update(sql, trail.getTrailId(), checkpoint.getId());
         }
+    }
+    public List<Trail> searchTrails(String query) {
+        // Example SQL query - adjust based on your actual database schema
+        String sql = "SELECT * FROM trail_table WHERE name LIKE ? OR location LIKE ?";
+        String searchQuery = "%" + query + "%";
+        return jdbc.query(sql, new Object[]{searchQuery, searchQuery}, (resultSet, i) -> {
+            // Mapping logic to convert ResultSet into Trail objects
+            Trail trail = new Trail();
+            // Set trail properties from resultSet
+            return trail;
+        });
     }
 }
