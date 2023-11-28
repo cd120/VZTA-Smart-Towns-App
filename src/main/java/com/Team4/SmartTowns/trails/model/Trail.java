@@ -34,7 +34,7 @@ public class Trail {
 
     //GETTERS
 
-    public Long getId() {
+    public Long getTrailId() {
         return id;
     }
 
@@ -42,15 +42,15 @@ public class Trail {
         return checkpoints;
     }
 
-    public Object getName() {
+    public Object getTrailName() {
         return name;
     }
 
-    public Object getLocation() {
+    public Object getTrailLocation() {
         return location;
     }
 
-    public Object getDescription() {
+    public Object getTrailDescription() {
         return description;
     }
 
@@ -60,19 +60,19 @@ public class Trail {
         this.checkpoints = checkpoints;
     }
 
-    public void setName(String name) {
+    public void setTrailName(String name) {
         this.name = name;
     }
 
-    public void setLocation(String location) {
+    public void setTrailLocation(String location) {
         this.location = location;
     }
 
-    public void setDescription(String description) {
+    public void setTrailDescription(String description) {
         this.description = description;
     }
 
-    public void setId(Long id) {
+    public void setTrailId(Long id) {
         this.id = id;
     }
 }

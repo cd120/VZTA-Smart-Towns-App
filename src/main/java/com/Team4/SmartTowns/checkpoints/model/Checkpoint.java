@@ -1,11 +1,7 @@
 package com.Team4.SmartTowns.checkpoints.model;
 
 import com.Team4.SmartTowns.trails.model.Trail;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
-@AllArgsConstructor
 public class Checkpoint {
 
     private Long id;
@@ -18,26 +14,49 @@ public class Checkpoint {
         this.id = null;
         this.name = "";
         this.coordinates = new double[2];
-        this.description = "";
         this.trail = null;
+        this.description = "";
     }
 
-    public void setTrail(Trail trail) {
-    }
-
-    public Object getId() {
+    // Getters
+    public Long getId() {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double[] getCoordinates() {
+        return coordinates;
+    }
+
+    public Trail getTrail() {
+        return trail;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCoordinates(double[] doubles) {
+    public void setCoordinates(double[] coordinates) {
+        this.coordinates = coordinates;
     }
 
-    public Checkpoint getTrail() {
+    public void setTrail(Trail trail) {
+        this.trail = trail;
     }
 
-    public void setId(Long checkpointId) {
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

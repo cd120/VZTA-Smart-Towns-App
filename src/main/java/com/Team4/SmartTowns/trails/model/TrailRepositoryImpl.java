@@ -22,9 +22,9 @@ public class TrailRepositoryImpl implements TrailRepository {
     private void setTrailMapper() {
         this.trailMapper = (resultSet, i) -> {
             Trail trail = new Trail();
-            trail.setName(resultSet.getString("name"));
-            trail.setLocation(resultSet.getString("location"));
-            trail.setDescription(resultSet.getString("description"));
+            trail.setTrailName(resultSet.getString("name"));
+            trail.setTrailLocation(resultSet.getString("location"));
+            trail.setTrailDescription(resultSet.getString("description"));
             trail.setCheckpoints(checkpointRepository.findCheckpointsByTrailId(resultSet.getLong("trail_id")));
             return trail;
         };
@@ -44,22 +44,22 @@ public class TrailRepositoryImpl implements TrailRepository {
 
     @Override
     public Long saveTrail(Trail trail) {
-        return (trail.getId() != null) ? updateTrail(trail) : insertTrail(trail);
+        return (trail.getTrailId() != null) ? updateTrail(trail) : insertTrail(trail);
     }
 
     private Long insertTrail(Trail trail) {
-        String sql = "INSERT INTO trail_table (name, location, description) VALUES (?, ?, ?) RETURNING trail_id";
-        Long trailId = jdbc.queryForObject(sql, Long.class, trail.getName(), trail.getLocation(), trail.getDescription());
-        trail.setId(trailId);
+        String sql = "INSERT INTO trail_table (name, location, description) VALUES (?, ?, ?) RETURNING id";
+        Long trailId = jdbc.queryForObject(sql, Long.class, trail.getTrailName(), trail.getTrailLocation(), trail.getTrailDescription());
+        trail.setTrailId(trailId);
         saveCheckpoints(trail);
         return trailId;
     }
 
     private Long updateTrail(Trail trail) {
-        String sql = "UPDATE trail_table SET name = ?, location = ?, description = ?, WHERE trail_id = ?";
-        jdbc.update(sql, trail.getName(), trail.getLocation(), trail.getDescription(), trail.getId());
+        String sql = "UPDATE trail_table SET name = ?, location = ?, description = ? WHERE id = ?";
+        jdbc.update(sql, trail.getTrailName(), trail.getTrailLocation(), trail.getTrailDescription(), trail.getTrailId());
         saveCheckpoints(trail);
-        return trail.getId();
+        return trail.getTrailId();
     }
 
     private void saveCheckpoints(Trail trail) {
@@ -67,7 +67,7 @@ public class TrailRepositoryImpl implements TrailRepository {
             checkpoint.setTrail(trail);
             checkpointRepository.saveCheckpoint(checkpoint);
             String sql = "INSERT INTO trail_checkpoint (trail_id, checkpoint_id) VALUES (?, ?)";
-            jdbc.update(sql, trail.getId(), checkpoint.getId());
+            jdbc.update(sql, trail.getTrailId(), checkpoint.getId());
         }
     }
 }
