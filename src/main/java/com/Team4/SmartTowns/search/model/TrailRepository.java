@@ -1,5 +1,4 @@
-package com.Team4.SmartTowns.trails.model;
-import com.Team4.SmartTowns.trails.model.Trail;
+package com.Team4.SmartTowns.search.model;
 
 import java.util.List;
 

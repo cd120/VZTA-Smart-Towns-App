@@ -1,6 +1,6 @@
-package com.Team4.SmartTowns.search;
+package com.Team4.SmartTowns.search.service;
 
-import com.Team4.SmartTowns.trails.model.Trail;
+import com.Team4.SmartTowns.search.model.Trail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

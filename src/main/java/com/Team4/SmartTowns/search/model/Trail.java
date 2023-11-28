@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns.trails.model;
+package com.Team4.SmartTowns.search.model;
 
 import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
 import lombok.AllArgsConstructor;
