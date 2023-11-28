@@ -56,19 +56,23 @@ public class Trail {
 
     //SETTERS
 
-    public void setCheckpoints(List<Checkpoint> trailId) {
+    public void setCheckpoints(List<Checkpoint> checkpoints) {
+        this.checkpoints = checkpoints;
     }
 
-
     public void setName(String name) {
+        this.name = name;
     }
 
     public void setLocation(String location) {
+        this.location = location;
     }
 
     public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setId(Long trailId) {
+    public void setId(Long id) {
+        this.id = id;
     }
 }
