@@ -189,14 +189,14 @@ package Services {
     ''''''''''''' Checkpoint
 
     interface CheckpointService {
-        + addCheckpointToUser(checkpoint_id, user_id)
+        + addCheckpointToUser(checkpoint_id, String username)
         + getCheckpointsForUser(user_id) : List<Checkpoint>
     }
 
     class CheckpointServiceImpl {
         - CheckpointRepository checkpointRepository
         --
-        + addCheckpointToUser(checkpoint_id, user_id)
+        + addCheckpointToUser(checkpoint_id, String username)
         + getCheckpointsForUser(user_id) : List<Checkpoint>
     }
 

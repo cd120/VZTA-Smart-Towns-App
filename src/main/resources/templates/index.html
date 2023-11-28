@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:replace="~{/fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{/fragments/header :: mainstyles}"/>
+    <title>VZTA Trails</title>
 </head>
 <body>
+<div class="main-container">
+    <header th:replace="~{/fragments/header :: navbar}"></header>
+    <div class="page-container">
+        <h1>HomePage</h1>
+        <!--    page content goes here-->
 
+
+    </div>
+</div>
 </body>
 </html>
