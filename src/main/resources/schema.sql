@@ -8,15 +8,12 @@ drop table if exists users_roles;
 
 create table if not exists user_table
 (
-    username varchar(50)  not null primary key,
-    password varchar(500) not null
+
 ) engine = InnoDB;
 
 create table if not exists user_checkpoints
 (
-    id            BIGINT      NOT NULL AUTO_INCREMENT primary key,
-    username      VARCHAR(50) not null,
-    checkpoint_id BIGINT      not null
+
 ) engine = InnoDB;
 
 create table if not exists checkpoint_table
@@ -47,15 +44,12 @@ create table if not exists trail_table
 
 create table if not exists roles_table
 (
-    role_id BIGINT      NOT NULL AUTO_INCREMENT primary key,
-    name    varchar(45) NOT NULL
+
 ) engine = InnoDB;
 
 create table if not exists users_roles
 (
-    id       BIGINT      NOT NULL AUTO_INCREMENT primary key,
-    username varchar(50) NOT NULL,
-    role_id  BIGINT      NOT NULL
+
 ) engine = InnoDB;
 
 # create view if not exists user_authorities as

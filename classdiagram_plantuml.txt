@@ -65,16 +65,21 @@ package Models {
     ''''''''''''' Checkpoint Models
 
     class Checkpoint {
-        - String name
-        - Array[2] coordinates
-        - Trail trail
+        + Checkpoint();
+        - Long id;
+        - String name;
+        - double[] coordinates;
+        - Trail trail;
+        - String description;
     }
 
     interface CheckpointRepository {
-        + findCheckpointById(Long id) : Checkpoint
-        + findCheckpointsByUsername(String username) : List<Checkpoint>
-        + saveCheckpoint(Checkpoint checkpoint) : Long id
-        + addCheckpointToUser(Long checkpoint_id, String username)
+        + Checkpoint findCheckpointById(Long checkpoint_id);
+        + List<Checkpoint> findCheckpointsByUsername(String username);
+        + List<Checkpoint> findCheckpointsByTrailId(Long trail_id);
+        + List<Checkpoint> findAllCheckpoints();
+        + Long saveCheckpoint(Checkpoint checkpoint);
+        + void addCheckpointToUser(Long checkpoint_id, String username);
     }
 
     class CheckpointRepositoryImpl {
@@ -83,12 +88,9 @@ package Models {
         --
         + CheckpointRepositoryImpl(JdbcTemplate aJdbc)
         - setCheckpointMapper()
-        + findCheckpointById(Long id) : Checkpoint
-        + findCheckpointsByUsername(String username) : List<Checkpoint>
-        + saveCheckpoint(Checkpoint checkpoint) : Long id
-        + addCheckpointToUser(Long checkpoint_id, String username)
         - insertCheckpoint(Checkpoint checkpoint) : Long id
         - updateCheckpoint(Checkpoint checkpoint) : Long id
+        ... and all methods from CheckpointRepository interface
     }
 
     CheckpointRepositoryImpl --|> CheckpointRepository
@@ -100,14 +102,18 @@ package Models {
     ''''''''''''' Trail Models
 
     class Trail {
-        - String name
-        - String location
-        - List<Checkpoint> checkpoints
+        + Trail()
+        - Long id;
+        - String name;
+        - String location;
+        - List<Checkpoint> checkpoints;
+        - String description;
     }
 
     interface TrailRepository {
-        + findTrailById(Long id) : Trail
-        + saveTrail(Trail trail)
+        + findTrailById(Long trail_id);
+        + Long saveTrail(Trail trail);
+        + List<Trail> findAllTrails();
     }
 
     class TrailRepositoryImpl {
@@ -115,11 +121,11 @@ package Models {
         - RowMapper<Trail> trailMapper
         --
         + TrailRepositoryImpl(JdbcTemplate aJdbc)
-        - setTrailMapper()
-        + findTrailById(Long id) : Trail
-        + saveTrail(Trail trail)
-        - updateTrail(Trail trail)
-        - insertTrail(Trail trail)
+        - Long setTrailMapper()
+        - Long updateTrail(Trail trail)
+        - Long insertTrail(Trail trail)
+        - void saveCheckpoints(Trail trail)
+        ... and all methods from TrailRepository interface
     }
 
     TrailRepositoryImpl --|> TrailRepository
@@ -167,37 +173,38 @@ package Services {
     ''''''''''''' Trail
 
     interface TrailService {
-        + createTrail(Trail trail)
-        + getTrails() : List<Trail>
-        + getTrailById(Long id) : Trail
+        + Long createTrail(Trail trail);
+        + List<Trail> getAllTrails();
+        + Trail getTrailById(Long id);
     }
 
     class TrailServiceImpl {
         - TrailRepository trailRepository
-        - CheckpointRepository checkpointRepository
         --
-        + createTrail(Trail trail)
-        + getTrails() : List<Trail>
-        + getTrailById(Long id) : Trail
+        + TrailServiceImpl(TrailRepository trailRepository)
+        ... and all methods from TrailService interface
     }
 
     TrailServiceImpl --|> TrailService
     TrailServiceImpl *-- TrailRepository
-    TrailServiceImpl *-- CheckpointRepository
 
 
     ''''''''''''' Checkpoint
 
     interface CheckpointService {
-        + addCheckpointToUser(checkpoint_id, String username)
-        + getCheckpointsForUser(user_id) : List<Checkpoint>
+        + Checkpoint getCheckpointById(Long checkpoint_id);
+        + List<Checkpoint> getCheckpointsByUsername(String username);
+        + List<Checkpoint> getCheckpointsByTrailId(Long trail_id);
+        + List<Checkpoint> getAllCheckpoints();
+        + Long createCheckpoint(Checkpoint checkpoint);
+        + void addCheckpointToUser(Long checkpoint_id, String use
     }
 
     class CheckpointServiceImpl {
         - CheckpointRepository checkpointRepository
         --
-        + addCheckpointToUser(checkpoint_id, String username)
-        + getCheckpointsForUser(user_id) : List<Checkpoint>
+        + CheckpointServiceImpl(CheckpointRepository checkpointRepository)
+        ... and all methods from CheckpointService interface
     }
 
     CheckpointServiceImpl --|> CheckpointService
@@ -231,7 +238,6 @@ package Security {
         + passwordEncoder() : PasswordEncoder
         + securityFilterChain(HttpSecurity http) : SecurityFilterChain
         - userDetailsService : UserDetailsService
-
     }
 }
 
@@ -247,6 +253,7 @@ package Controllers {
     }
 
     class TrailManagementController {
+        @GET /trails/add (add new trails form)
         @POST /trails/add (add new trail, admin only)
         @POST /trails/{id}/delete (delete a trail, admin only)
     }
