@@ -13,6 +13,6 @@ public class searchController {
         model.addAttribute("searchQuery", query);
         // Add search logic here
 
-        return "search_trails"; // name of the Thymeleaf template
+        return "search/search_trails"; // name of the Thymeleaf template
     }
 }

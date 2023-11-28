@@ -21,4 +21,7 @@ public class Checkpoint {
         this.description = "";
         this.trail = null;
     }
+
+    public void setTrail(Trail trail) {
+    }
 }
