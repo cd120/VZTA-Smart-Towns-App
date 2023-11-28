@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CheckpointRepositoryImpl implements CheckpointRepository {
+public abstract class CheckpointRepositoryImpl implements CheckpointRepository {
     private final JdbcTemplate jdbc;
     private final RowMapper<Checkpoint> checkpointMapper;
 
