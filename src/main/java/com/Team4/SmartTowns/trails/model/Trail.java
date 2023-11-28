@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Trail {
 
+
     private Long id;
     private String name;
     private String location;
@@ -31,4 +32,43 @@ public class Trail {
         }
     }
 
+    //GETTERS
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<Checkpoint> getCheckpoints() {
+        return checkpoints;
+    }
+
+    public Object getName() {
+        return name;
+    }
+
+    public Object getLocation() {
+        return location;
+    }
+
+    public Object getDescription() {
+        return description;
+    }
+
+    //SETTERS
+
+    public void setCheckpoints(List<Checkpoint> trailId) {
+    }
+
+
+    public void setName(String name) {
+    }
+
+    public void setLocation(String location) {
+    }
+
+    public void setDescription(String description) {
+    }
+
+    public void setId(Long trailId) {
+    }
 }

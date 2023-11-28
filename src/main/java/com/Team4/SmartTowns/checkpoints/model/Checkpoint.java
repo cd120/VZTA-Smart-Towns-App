@@ -24,4 +24,20 @@ public class Checkpoint {
 
     public void setTrail(Trail trail) {
     }
+
+    public Object getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+    }
+
+    public void setCoordinates(double[] doubles) {
+    }
+
+    public Checkpoint getTrail() {
+    }
+
+    public void setId(Long checkpointId) {
+    }
 }
