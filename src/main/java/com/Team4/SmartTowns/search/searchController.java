@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.search;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
