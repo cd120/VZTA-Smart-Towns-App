@@ -19,4 +19,11 @@ public class ProfileServiceImpl implements  ProfileService {
         return profileRepository.saveProfile(profile);
     }
 
+    @Override
+    public Profile getProfileByUsername(String username) {
+        return profileRepository.findProfileByUsername(username);
+    }
+
+
+
 }

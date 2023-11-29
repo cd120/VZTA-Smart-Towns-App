@@ -4,4 +4,6 @@ public interface ProfileRepository {
 
     //method saveUser
     String saveProfile(Profile profile);
+
+    Profile findProfileByUsername(String username);
 }
