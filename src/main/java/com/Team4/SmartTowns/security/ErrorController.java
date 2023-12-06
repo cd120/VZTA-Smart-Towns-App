@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ErrorController {
-    @GetMapping("/403")
+    @GetMapping("/error")
     public ModelAndView error403() {
         return new ModelAndView("/error/403");
     }

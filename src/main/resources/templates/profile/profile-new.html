@@ -29,7 +29,6 @@
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
                          th:style="'width: ' + ${percentages[trail.name]} + '%'">
-<!--                         th:style="'width: calc((' + ${#lists.size(checkpointsByTrail[trail.name])} + '/' + ${#lists.size(trail.checkpoints)} + ') * 100) %'"-->
 
                         <span th:text="'Progress: ' + ${#lists.size(checkpointsByTrail[trail.name])} + '/' + ${#lists.size(trail.checkpoints)}"></span>
                     </div>
