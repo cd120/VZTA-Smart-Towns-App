@@ -15,6 +15,8 @@ public class RegistrationFormController {
     public RegistrationFormController(ProfileService profileService){
         this.profileService = profileService;
     }
+
+    //not used
     @GetMapping(value = {"/registration"})
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView("/registration/registrationForm");
@@ -22,13 +24,14 @@ public class RegistrationFormController {
          return modelAndView;
     }
 
+    //not used
     @GetMapping("/registration/newregister")
     @ResponseBody
     public String postResponseController() {
         return ";";
     }
 
-
+//not used
     @PostMapping("/registration/newregister")
     public ModelAndView postAddTrail(@ModelAttribute("registrationForm") Profile registrationForm){
         System.out.println(registrationForm.getUserName());
