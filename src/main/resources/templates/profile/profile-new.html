@@ -16,7 +16,7 @@
 
         <!-- Page content goes here -->
         <h1 class="mt-4">Profile</h1>
-
+        <br>
         <div class="profile-info">
             <p class="mb-1" th:text="'Username: ' + ${profile.userName}"></p>
             <p class="mb-1" th:text="'Email: ' + ${profile.email}"></p>
@@ -27,14 +27,14 @@
         </div>
 
         <h2 class="mt-4">Started Trails</h2>
-
+        <br>
         <ul class="list-group trail-container" th:if="${not #lists.isEmpty(startedTrails)}">
             <li th:each="trail : ${startedTrails}" class="list-group-item">
 
                 <div class="trail-info">
                     <h5 th:text="'Trail Name: ' + ${trail.name}"></h5>
 
-                    <div class="progress mb-2">
+                    <div class="progress mb-2" style="height: 40px;">
                         <div class="progress-bar bg-success" role="progressbar" th:style="'width: ' + ${percentages[trail.name]} + '%'">
                             <span th:text="'Progress: ' + ${#lists.size(checkpointsByTrail[trail.name])} + '/' + ${#lists.size(trail.checkpoints)}"></span>
                         </div>
