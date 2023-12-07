@@ -1,46 +1,31 @@
-
-.trail-list ul li {
-    list-style-type: none;
-
-}
-
-.trail-container{
-    display:flex;
-    /*border: 10px solid red;*/
+/* Styling for trail containers */
+.trail-container {
+    display: flex;
     justify-content: space-between;
-}
-
-.trail-text{
-    display: flex;
-    border: 5px solid purple;
-    border-radius: 10px;
-    flex-direction: column;
-    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
     padding: 1rem;
-    align-items: flex-start;
-    flex:auto;
+    border: 1px solid #ddd; /* Add a subtle border */
+    border-radius: 0.5rem;
 }
 
-.trail-image-container{
-    display: flex;
-    border: 2px solid blue;
-    border-radius: 10px;
-    padding: 5px;
-    width: 100px;
-    min-height: 120px;
-    max-height: auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    flex:0.5;
+/* Trail text styles */
+.trail-text {
+    flex: 1;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+/* Trail image styles */
+.trail-image-container {
+    flex: 0.5;
+    max-width: 120px;
+    overflow: hidden;
 }
 
-.trail-image-container img:hover{
-    box-shadow: 0 0 10px 10px rgba(0, 140, 140, 0.5);
-    transform: scale(0.95);
+.trail-image-container img {
+    width: 100%;
+    border-radius: 0.25rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.trail-image-container img:hover {
+    transform: scale(1.1);
 }
