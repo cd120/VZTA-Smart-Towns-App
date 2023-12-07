@@ -18,12 +18,11 @@ function filterTable() {
     }
 }
 
-function sortTable() {
+
+function sortTable(sortOption) { // Updated function to accept sortOption directly
     const table = document.getElementById("leaderboardTable");
     const tbody = table.getElementsByTagName("tbody")[0];
     const rows = Array.from(tbody.getElementsByTagName("tr"));
-
-    const sortOption = document.getElementById("sort").value; // Updated this line
 
     const compareFunction = (a, b) => {
         if (sortOption === "username") {

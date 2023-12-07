@@ -13,16 +13,17 @@
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
 </head>
 <body>
-<div class="main-container">
-    <header th:replace="~{/fragments/header :: navbar}"></header>
-    <div class="page-container">
-        <!-- QR Code Scanner Interface -->
-        <h1>Scan a QR code to add a checkpoint</h1>
+<header th:replace="~{/fragments/header :: navbar}"></header>
+<div class="page-container text-center d-flex flex-column align-items-center justify-content-center h-100"> <!-- Centering the content and making it full height -->
+    <!-- QR Code Scanner Interface -->
+    <div class="jumbotron mt-4 p-4 rounded"> <!-- Added Bootstrap Jumbotron for better styling -->
+        <h3 class="mb-4">Scan a QR code to add a checkpoint</h3>
         <div class="qr-scanner">
-            <video id="qr-video" width="300" height="200"></video>
+            <video id="qr-video" width="400" height="300" class="rounded mb-3"></video> <!-- Adjusted width and added rounded class -->
             <canvas id="qr-canvas" style="display: none;"></canvas>
-            <button id="start-scan">Start Scan</button>
-            <p id="qr-result">QR Code Result: None</p>
+            <br>
+            <button id="start-scan" class="btn btn-primary mt-auto">Start Scan</button> <!-- Moved button to the bottom with mt-auto class -->
+            <p id="qr-result" class="mt-3 lead">QR Code Result: None</p>
         </div>
     </div>
 </div>

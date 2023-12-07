@@ -14,42 +14,49 @@
     <header th:replace="~{/fragments/header :: navbar}"></header>
     <div class="page-container">
 
-        <!--    page content goes here-->
-        <h1>Profile</h1>
-        <p th:text="'Username: ' + ${profile.userName}"></p>
-        <p th:text="'Email: ' + ${profile.email}"></p>
-        <p th:text="'Address: ' + ${profile.address}"></p>
-        <p th:text="'Address 2: ' + ${profile.address2}"></p>
-        <p th:text="'City: ' + ${profile.city}"></p>
-        <p th:text="'Zip Code: ' + ${profile.zipCode}"></p>
+        <!-- Page content goes here -->
+        <h1 class="mt-4">Profile</h1>
 
-        <h2>Started Trails</h2>
-        <ul class="trail-container" th:if="${not #lists.isEmpty(startedTrails)}">
-            <li th:each="trail : ${startedTrails}">
-                <p th:text="'Trail Name: ' + ${trail.name}"></p>
+        <div class="profile-info">
+            <p class="mb-1" th:text="'Username: ' + ${profile.userName}"></p>
+            <p class="mb-1" th:text="'Email: ' + ${profile.email}"></p>
+            <p class="mb-1" th:text="'Address: ' + ${profile.address}"></p>
+            <p class="mb-1" th:text="'Address 2: ' + ${profile.address2}"></p>
+            <p class="mb-1" th:text="'City: ' + ${profile.city}"></p>
+            <p class="mb-1" th:text="'Zip Code: ' + ${profile.zipCode}"></p>
+        </div>
 
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar"
-                         th:style="'width: ' + ${percentages[trail.name]} + '%'">
-<!--                         th:style="'width: calc((' + ${#lists.size(checkpointsByTrail[trail.name])} + '/' + ${#lists.size(trail.checkpoints)} + ') * 100) %'"-->
+        <h2 class="mt-4">Started Trails</h2>
 
-                        <span th:text="'Progress: ' + ${#lists.size(checkpointsByTrail[trail.name])} + '/' + ${#lists.size(trail.checkpoints)}"></span>
+        <ul class="list-group trail-container" th:if="${not #lists.isEmpty(startedTrails)}">
+            <li th:each="trail : ${startedTrails}" class="list-group-item">
+
+                <div class="trail-info">
+                    <h5 th:text="'Trail Name: ' + ${trail.name}"></h5>
+
+                    <div class="progress mb-2">
+                        <div class="progress-bar bg-success" role="progressbar" th:style="'width: ' + ${percentages[trail.name]} + '%'">
+                            <span th:text="'Progress: ' + ${#lists.size(checkpointsByTrail[trail.name])} + '/' + ${#lists.size(trail.checkpoints)}"></span>
+                        </div>
                     </div>
+
+                    <ul class="list-group checkpoints-container">
+                        <li th:each="checkpoint : ${trail.checkpoints}" class="list-group-item">
+                            <div th:class="${#lists.contains(checkpointsByTrail[trail.name], checkpoint)} ? 'checkpoint-card collected' : 'checkpoint-card not-collected'">
+                                <p th:text="'Checkpoint Name: ' + ${checkpoint.name}"></p>
+                                <p th:text="'Collected: ' + (${#lists.contains(checkpointsByTrail[trail.name], checkpoint)} ? 'Yes' : 'No')"></p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
-                <ul class="checkpoints-container">
-                    <li th:each="checkpoint : ${trail.checkpoints}">
-                        <div th:class="${#lists.contains(checkpointsByTrail[trail.name], checkpoint)} ? 'checkpoint-card collected' : 'checkpoint-card not-collected'">
-                            <p th:text="'Checkpoint Name: ' + ${checkpoint.name}"></p>
-                            <p th:text="'Collected: ' + (${#lists.contains(checkpointsByTrail[trail.name], checkpoint)} ? 'Yes' : 'No')"></p>
-                        </div>
-                    </li>
-                </ul>
             </li>
         </ul>
-        <p th:if="${#lists.isEmpty(startedTrails)}">No started trails</p>
+        <p class="mt-3" th:if="${#lists.isEmpty(startedTrails)}">No started trails</p>
 
     </div>
 </div>
+
+
 </body>
 </html>
