@@ -82,4 +82,5 @@ public class CheckpointRepositoryImpl implements CheckpointRepository {
         String sql = "UPDATE checkpoint_table SET name = ?, latitude = ?, longitude = ?, description = ? WHERE checkpoint_id = ? RETURNING checkpoint_id";
         return jdbc.queryForObject(sql, Long.class, checkpoint.getName(), checkpoint.getCoordinates()[0], checkpoint.getCoordinates()[1], checkpoint.getDescription(), checkpoint.getId());
     }
+
 }

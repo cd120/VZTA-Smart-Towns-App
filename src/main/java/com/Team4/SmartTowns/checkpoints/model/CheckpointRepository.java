@@ -10,6 +10,6 @@ public interface CheckpointRepository {
     List<Checkpoint> findAllCheckpoints();
     Long saveCheckpoint(Checkpoint checkpoint);
     void addCheckpointToUser(Long checkpoint_id, String username);
-
+    int sumCheckpointValuesByUsername(String username);
 }
 
