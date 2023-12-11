@@ -38,15 +38,18 @@ public class MedalServiceImpl implements MedalService {
     }
 
     private String determineMedal(int sumCheckpoints) {
-        if (sumCheckpoints >= 60) {
-            return "GOLD";
-        } else if (sumCheckpoints >= 40) {
-            return "SILVER";
-        } else if (sumCheckpoints >= 20) {
-            return "BRONZE";
-        } else {
-            return "none";
-        }
+        int maxLoops = 3;
+        for (int i = 0; i < maxLoops; i++) {
+            if (sumCheckpoints >= 60) {
+                return "GOLD";
+            } else if (sumCheckpoints >= 40) {
+                return "SILVER";
+            } else if (sumCheckpoints >= 20) {
+                return "BRONZE";
+            } else {
+                return "none";
+            }
+        } return ""; //to be changed.
     }
 
 
