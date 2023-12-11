@@ -20,38 +20,49 @@
             <h1>Trails</h1>
             <p> You can view all the available trails here.</p>
             <br>
-
+            <div class="filters">
+                <!--                Search bar that searches by trail name-->
+                <label for="search" id="search">Search:</label>
+                <input type="text" id="searchInput" oninput="search()" placeholder="Search trails...">
+                <!--                Filter by location-->
+                <label for="filter">Filter by Location:</label>
+                <select id="filter" onchange="filterByLocation()">
+                    <option value="all">All Locations</option>
+                    <th:block th:each="trail :${trails}">
+                        <option th:value="${trail.location}" th:text="${trail.location}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <br>
 
             <div class="trail-container">
 
                 <ul class="trail-list">
-                    <div class="trail-details" th:each="trail: ${trails}">
+                    <li class="trail-details" th:each="trail: ${trails}">
 
                         <div class="trail-picture">
-                            <a class="trail-image-container" href="../../static/images/trail1Placeholder.jpg">
-                                <img class="trail-image" src="/Images/trail1Placeholder.jpg"
-                                     alt="picture outlining the trail">
+                            <a class="trail-image-container" href="resources/Images/trail1Placeholder.jpg">
+                                <img class="trail-image" src="/Images/cardiff-castle-1.jpg" alt="Feature Picture">
                             </a>
                         </div>
-
-                        <li>
+                        <div>
                             <p><strong>Trail Name: </strong><span th:text="${trail.name}"></span></p>
-                            <!--                            <p><strong>ID: </strong><span th:text="${trail.id}"></span></p>-->
                             <p><strong>Location: </strong><span th:text="${trail.location}"></span></p>
                             <p><strong>Description: </strong><span th:text="${trail.description}"></span></p>
                             <p><strong>Starting Checkpoint: </strong><span
                                     th:text="${trail.checkpoints[0].name}"></span></p>
                             <p><a th:href="@{/trails/{id} (id=${trail.id})}" th:text="Details" class="details"></a></p>
                             <br>
-                        </li>
-                    </div>
+                        </div>
+                    </li>
                 </ul>
 
             </div>
-
-
         </main>
     </div>
 </div>
+<script src="/scripts/trailsScripts.js"></script>
+<!--<script src="/scripts/dark-mode.js"></script>-->
+
 </body>
 </html>

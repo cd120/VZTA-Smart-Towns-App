@@ -1,45 +1,21 @@
-/* Add your dark mode styles here */
-
-body.dark-mode {
+body.dark-mode,
+body.dark-mode .header,
+body.dark-mode .checkpoints-container,
+body.dark-mode .login-page,
+body.dark-mode .registration-page,
+body.dark-mode .leaderboard-page,
+body.dark-mode .page-container,
+body.dark-mode button {
     background-color: #1a1a1a;
     color: white;
 }
 
-/* Add styles for specific elements in dark mode */
-body.dark-mode .header {
-    background-color: #1a1a1a;
-    color: white;
-    /* Add dark mode styles for the header */
-}
-
-body.dark-mode .login-page {
-    background-color: #1a1a1a;
-    color: white;
-    /* Add dark mode styles for the login page */
-}
-
-body.dark-mode .registration-page {
-    background-color: #1a1a1a;
-    color: white;
-    /* Add dark mode styles for the registration page */
-}
-
-body.dark-mode .leaderboard-page {
-    background-color: #1a1a1a;
-    color: white;
-    /* Add dark mode styles for the leaderboard page */
-}
-
-/* Additional dark mode styles for the page container */
 body.dark-mode .page-container {
     background-color: #2d2d2d;
     color: #c0c0c0;
 }
 
-/* Additional dark mode styles for buttons */
 body.dark-mode button {
     background-color: #404040;
     color: #ffffff;
 }
-
-/* Add more styles for other elements as needed */

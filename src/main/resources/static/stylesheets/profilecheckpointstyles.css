@@ -22,7 +22,7 @@
 }
 
 .collected {
-    background-color: var(--accent-colour);
+    background-color: hsl(12, 100%, 50%);
 }
 
 .not-collected {

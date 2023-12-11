@@ -15,12 +15,12 @@
     <link th:fragment="mainstyles" rel="stylesheet" href="/stylesheets/mainstyles.css">
     <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
     <script th:src="@{/scripts/dark-mode.js}" defer></script>
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">-->
 </head>
 <body data-bs-theme="dark">
 
 <header th:fragment="navbar" class="nav">
     <ul>
+        <li><button id="darkModeToggle">theme</button></li>
         <li><a th:href="@{/}">Home</a></li>
         <li><a th:href="@{/trails}">Trails</a></li>
         <li><a th:href="@{/leaderboard}">Leaderboard</a></li>
@@ -58,11 +58,6 @@
 
 
     </ul>
-
-    <button id="darkModeToggle" class="nav-button">toggle-theme</button>
-
-
-
 
 
 </header>

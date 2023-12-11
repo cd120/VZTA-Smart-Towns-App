@@ -26,12 +26,11 @@
             <p class="mb-1" th:text="'Zip Code: ' + ${profile.zipCode}"></p>
         </div>
 
-<<<<<<< HEAD
+
         <h2 class="mt-4">Started Trails</h2>
         <br>
         <ul class="list-group trail-container" th:if="${not #lists.isEmpty(startedTrails)}">
             <li th:each="trail : ${startedTrails}" class="list-group-item">
-=======
 
         <h2>Medals</h2>
         <ul class="medal-container" th:if="${not #lists.isEmpty(userMedals)}">
@@ -42,11 +41,7 @@
         </ul>
         <p th:if="${#lists.isEmpty(userMedals)}">No medals</p>
 
-        <h2>Started Trails</h2>
-        <ul class="trail-container" th:if="${not #lists.isEmpty(startedTrails)}">
-            <li th:each="trail : ${startedTrails}">
-                <p th:text="'Trail Name: ' + ${trail.name}"></p>
->>>>>>> main
+
 
                 <div class="trail-info">
                     <h5 th:text="'Trail Name: ' + ${trail.name}"></h5>

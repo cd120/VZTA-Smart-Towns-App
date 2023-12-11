@@ -1,8 +1,38 @@
-/* Styling for trail containers */
-.trail-container {
+
+.trail-list {
+    list-style-type: none;
+
+}
+
+.trail-container{
     display: flex;
+    /*border: 10px solid red;*/
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+
+}
+.trail-details {
+    display: flex;
+    /*border: 1px solid blue;*/
+    border-radius: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    flex:0.5;
+    justify-content: space-between;
+    /*margin-outside: 10px;*/
+    padding: 1rem;
+    box-shadow: 0 0 5px 5px rgba(0, 140, 140, 0.5);
+    transform: scale(0.95);
+
+}
+
+.trail-text{
+    display: flex;
+    border: 5px solid purple;
+    border-radius: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+
     padding: 1rem;
     border: 1px solid #ddd; /* Add a subtle border */
     border-radius: 0.5rem;
