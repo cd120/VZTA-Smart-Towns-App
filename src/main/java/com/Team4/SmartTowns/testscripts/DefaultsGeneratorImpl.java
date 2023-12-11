@@ -2,6 +2,7 @@ package com.Team4.SmartTowns.testscripts;
 
 import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
 import com.Team4.SmartTowns.checkpoints.service.CheckpointService;
+import com.Team4.SmartTowns.medals.service.MedalService;
 import com.Team4.SmartTowns.profile.model.Profile;
 import com.Team4.SmartTowns.profile.service.ProfileService;
 import com.Team4.SmartTowns.trails.model.Trail;
@@ -17,11 +18,13 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
     private TrailService trailService;
     private CheckpointService checkpointService;
     private ProfileService profileService;
+    private MedalService medalService;
 
-    public DefaultsGeneratorImpl(TrailService trailService, CheckpointService checkpointService, ProfileService profileService) {
+    public DefaultsGeneratorImpl(TrailService trailService, CheckpointService checkpointService, ProfileService profileService, MedalService medalService) {
         this.trailService = trailService;
         this.checkpointService = checkpointService;
         this.profileService = profileService;
+        this.medalService = medalService;
     }
 
     @Override
@@ -79,6 +82,7 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
             Long checkpointId = random.nextLong(noOfCheckpoints) + 1;
             checkpointService.addCheckpointToUser(checkpointId, username);
         }
+        medalService.awardMedalToUser(username);
     }
 
     private Trail createTempTrail(String name, String location, String description) {

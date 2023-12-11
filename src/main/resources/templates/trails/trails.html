@@ -23,22 +23,26 @@
 
 
             <div class="trail-container">
-                <!--                        <div class="trail-picture">-->
-                <!--                            <a class="trail-image-container" href="../../static/images/trail1Placeholder.jpg">-->
-                <!--                                <img class="trail-image" src="/Images/trail1Placeholder.jpg"-->
-                <!--                                     alt="picture outlining the trail">-->
-                <!--                            </a>-->
-                <!--                        </div>-->
+
                 <ul class="trail-list">
                     <div class="trail-details" th:each="trail: ${trails}">
+
+                        <div class="trail-picture">
+                            <a class="trail-image-container" href="../../static/images/trail1Placeholder.jpg">
+                                <img class="trail-image" src="/Images/trail1Placeholder.jpg"
+                                     alt="picture outlining the trail">
+                            </a>
+                        </div>
+
                         <li>
                             <p><strong>Trail Name: </strong><span th:text="${trail.name}"></span></p>
-<!--                            <p><strong>ID: </strong><span th:text="${trail.id}"></span></p>-->
+                            <!--                            <p><strong>ID: </strong><span th:text="${trail.id}"></span></p>-->
                             <p><strong>Location: </strong><span th:text="${trail.location}"></span></p>
                             <p><strong>Description: </strong><span th:text="${trail.description}"></span></p>
                             <p><strong>Starting Checkpoint: </strong><span
                                     th:text="${trail.checkpoints[0].name}"></span></p>
-                            <p><a th:href="@{/trails/{id} (id=${trail.id})}" th:text="Details" class="details"></a></p><br>
+                            <p><a th:href="@{/trails/{id} (id=${trail.id})}" th:text="Details" class="details"></a></p>
+                            <br>
                         </li>
                     </div>
                 </ul>

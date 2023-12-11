@@ -2,6 +2,8 @@ package com.Team4.SmartTowns.profile.controllers;
 
 
 import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
+import com.Team4.SmartTowns.medals.model.Medal;
+import com.Team4.SmartTowns.medals.service.MedalService;
 import com.Team4.SmartTowns.profile.model.Profile;
 import com.Team4.SmartTowns.profile.service.ProfileService;
 import com.Team4.SmartTowns.trails.model.Trail;
@@ -21,12 +23,13 @@ public class ProfileController {
 
     private ProfileService profileService;
     private TrailService trailService;
+    private MedalService medalService;
 
-    public ProfileController(ProfileService profileService, TrailService trailService){
+    public ProfileController(ProfileService profileService, TrailService trailService, MedalService medalService){
         this.profileService = profileService;
         this.trailService = trailService;
+        this.medalService = medalService;
     }
-
     @GetMapping(value = {"/profile-demo"})
     public ModelAndView profile() {
         ModelAndView modelAndView = new ModelAndView("/profile/profilePage");
@@ -67,7 +70,9 @@ public class ProfileController {
             float percentage = (checkpointsByTrail.get(trail.getName()).size() * 100)/trail.getCheckpoints().size();
             percentages.put(trail.getName(), percentage);
         }
-
+// get the users medals
+        List<Medal> userMedals = medalService.getMedalsForUser(loggedInUser);
+        mav.addObject("userMedals", userMedals);
         mav.addObject("percentages", percentages);
         mav.addObject("profile", profile);
         mav.addObject("startedTrails", startedTrails);
