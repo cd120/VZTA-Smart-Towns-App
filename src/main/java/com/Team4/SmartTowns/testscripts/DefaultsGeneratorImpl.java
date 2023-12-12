@@ -123,7 +123,7 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
 
     }
 
-    private void addMultipleCheckpointsToTrail(Trail trail,int start) {
+    public void addMultipleCheckpointsToTrail(Trail trail,int start) {
         for (int i = start; i < 20; i++) {
             int j = i+1;
             createTempCheckpoint(trail,i,"Checkpoint " + j, "(Description of checkpoint " + j + ")", 0, 0);
@@ -163,7 +163,7 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
         medalService.awardMedalToUser(username);
     }
 
-    private Trail createTempTrail(String name, String location, String description) {
+    public Trail createTempTrail(String name, String location, String description) {
         // Method for helping create default trails
         Trail tempTrail = new Trail();
         tempTrail.setName(name);
@@ -172,7 +172,7 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
         return tempTrail;
     }
 
-    private void createTempCheckpoint(Trail trail, int pos, String name, String description, double latitude, double longitude) {
+    public void createTempCheckpoint(Trail trail, int pos, String name, String description, double latitude, double longitude) {
         Checkpoint temp = new Checkpoint();
         temp.setName(name);
         temp.setDescription(description);
