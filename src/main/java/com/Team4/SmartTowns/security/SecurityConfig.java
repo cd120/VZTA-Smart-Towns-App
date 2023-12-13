@@ -52,16 +52,15 @@ public class SecurityConfig {
             "/registration/newregister",
             "/403",
             "/login",
-            "/login/error",
-            "/test"
+            "/login/**",
+            "/test",
+            "/api/**"
     };
 
     public static final String[] USER_WHITELIST = {
             "/profile",
             "/scan",
-            "/login/success",
             "/logout",
-            "/api/**"
     };
 
     @Bean

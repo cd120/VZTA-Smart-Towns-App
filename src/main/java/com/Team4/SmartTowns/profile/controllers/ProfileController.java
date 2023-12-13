@@ -30,19 +30,6 @@ public class ProfileController {
         this.trailService = trailService;
         this.medalService = medalService;
     }
-    @GetMapping(value = {"/profile-demo"})
-    public ModelAndView profile() {
-        ModelAndView modelAndView = new ModelAndView("/profile/profilePage");
-        //dummy data for the profile page fields.
-        modelAndView.addObject("name", "John");
-        modelAndView.addObject("town", "Cardiff Town");
-        modelAndView.addObject("unlockedTrails", 2);
-        modelAndView.addObject("completedTrails", 4);
-        modelAndView.addObject("lockedTrails", 2);
-        modelAndView.addObject("about", "Loving the new Trail application!");
-        return modelAndView;
-    }
-
 
     @GetMapping("/profile")
     public ModelAndView getProfile(Principal principal) {

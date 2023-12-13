@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 
 
-
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
@@ -25,13 +24,16 @@
         <li><a th:href="@{/trails}">Trails</a></li>
         <li><a th:href="@{/leaderboard}">Leaderboard</a></li>
 
-
-        <li th:if="${#authorization.expression('isAuthenticated()')}">
-            <a th:href="@{/profile}">Profile</a>
-        </li>
-        <li th:if="${#authorization.expression('isAuthenticated()')}">
-            <a th:href="@{/scan}">Scan QR</a>
-        </li>
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <li th:if="${#authorization.expression('hasRole(''USER'')')}">
+                <a th:href="@{/profile}">Profile</a>
+            </li>
+        </div>
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <li th:if="${#authorization.expression('hasRole(''USER'')')}">
+                <a th:href="@{/scan}">Scan QR</a>
+            </li>
+        </div>
 
         <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
             <a th:href="@{/admin/trails/add}">Add Trail</a>
@@ -54,7 +56,9 @@
                 <button class="nav-button" type="submit">Login</button>
             </form>
         </li>
-        <li><button class="nav-button" id="darkModeToggle">theme</button></li>
+        <li>
+            <button class="nav-button" id="darkModeToggle">theme</button>
+        </li>
     </ul>
 
 </header>
