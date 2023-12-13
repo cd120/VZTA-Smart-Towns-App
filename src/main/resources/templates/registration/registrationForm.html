@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link th:replace="~{/fragments/header :: bootstrap-css}"/>
   <link th:replace="~{/fragments/header :: mainstyles}"/>
   <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
+  <link rel="stylesheet" th:href="@{/stylesheets/registrationformstyles.css}"/>
   <script th:src="@{/scripts/dark-mode.js}" defer></script>
 
   <title>VZTA Trails</title>
@@ -16,42 +17,51 @@
 
     <!--    page content goes here-->
 
-    <form th:object="${registrationForm}"  th:action="@{/registration/newregister}" th:method="post">
+    <form th:object="${registrationForm}"  th:action="@{/registration/newregister}" th:method="post" id="registrationForm">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputEmail4">UserName</label>
-          <input  th:field="*{userName}" type="text" class="form-control" id="inputUserName4" placeholder="UserName">
+          <label for="inputEmail4">Username</label>
+          <input  th:field="*{userName}" type="text" class="form-control" id="inputUserName4" placeholder="Username" autocomplete="off">
+          <small id="userNameError" class="error"></small>
         </div>
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email</label>
-          <input  th:field="*{email}" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+          <input  th:field="*{email}" type="text" class="form-control" id="inputEmail4" placeholder="Email" autocomplete="off">
+          <small id="emailError" class="error"></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-14">
           <label for="inputPassword4">Password</label>
-          <input th:field="*{password}" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+          <input th:field="*{password}" type="password" class="form-control" id="inputPassword4" placeholder="Password" autocomplete="off">
+          <small id="passwordError" class="error"></small>
         </div>
       </div>
       <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input th:field="*{address}" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input th:field="*{address}" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" autocomplete="off">
+        <small id="addressError" class="error"></small>
       </div>
       <div class="form-group">
         <label for="inputAddress2">Address 2</label>
-        <input th:field="*{address2}" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        <input th:field="*{address2}" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" autocomplete="off">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputCity">City</label>
-          <input th:field="*{city}" type="text" class="form-control" id="inputCity">
+          <input th:field="*{city}" type="text" class="form-control" id="inputCity" placeholder="City" autocomplete="off">
+          <small id="cityError" class="error"></small>
         </div>
-        <div class="form-group col-md-2">
-          <label for="inputZip">Zip</label>
-          <input th:field="*{zipCode}" type="text" class="form-control" id="inputZip">
+        <div class="form-group col-md-4">
+          <label for="inputZip">Postcode</label>
+          <input th:field="*{zipCode}" type="text" class="form-control" id="inputZip" placeholder="Postcode" autocomplete="off">
+          <small id="zipCodeError" class="error"></small>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
 </div>
+
+<script src="/scripts/registrationformScripts.js"></script>
+
 </body>
 </html>
