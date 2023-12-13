@@ -44,12 +44,12 @@
 
 .trail-image-container{
     display: flex;
-    border: 2px solid blue;
+    border: 3px solid var(--border-colour);
     border-radius: 10px;
     padding: 5px;
     width: 100px;
     min-height: 120px;
-    max-height: auto;
+    /*max-height: auto;*/
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;

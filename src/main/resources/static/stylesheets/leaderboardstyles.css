@@ -1,13 +1,13 @@
 table {
     width: 60%;
-    justify-content: center;
+    justify-self: center;
     margin-inline: auto;
-    border: 0.3rem solid var(--background-colour);
-    border-radius: 0.2rem;
+    border: 0.3rem solid var(--border-colour);
+    border-radius: 1rem;
 }
 
 th, td {
-    border: 1px solid black;
+    border: 1px solid var(--border-colour);
     padding: 8px;
     text-align: left;
 }

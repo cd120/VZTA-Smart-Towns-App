@@ -7,6 +7,19 @@ body.dark-mode .page-container {
     color: #c0c0c0;
 }
 
+body.dark-mode th,
+body.dark-mode td {
+    border: solid hsl(293, 6%, 30%);
+}
+
+body.dark-mode table {
+    border: 0.3rem solid hsl(293, 6%, 30%);
+}
+
+body.dark-mode .trail-image-container {
+    border: 3px solid hsl(293, 6%, 30%);
+}
+
 body.dark-mode .page-container {
     border: 0.9rem solid hsl(293, 6%, 30%);
 }
