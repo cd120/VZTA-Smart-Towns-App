@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS team4-smart-towns-database;
-USE team4-smart-towns-datase;
+USE team4-smart-towns-datbase;
 
 drop table if exists user_table;
 drop table if exists user_checkpoints;
