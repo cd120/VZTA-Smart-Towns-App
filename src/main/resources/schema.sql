@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS team4_smart_towns_database;
-USE team4_smart_towns_database;
+CREATE DATABASE IF NOT EXISTS trailsdb;
+USE trailsdb;
 
 drop table if exists user_table;
 drop table if exists user_checkpoints;
