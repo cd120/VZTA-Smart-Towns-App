@@ -1,11 +1,12 @@
 variable "flavor" { default = "m1.large" }
 variable "image" { default = "Debian Buster 10.11.1 20211029" }
-variable "name1" { default = "DebianSmartTowns" }
 
-variable "keypair" { default = "username_keypair" } # you may need to change this
+variable "name" { default = "DebianJenkinsServer" }
+
 variable "network" { default = "c23077813_network" }   # you need to change this
 
+variable "keypair" { default = "username_keypair" } # you need to change this
 variable "pool" { default = "cscloud_private_floating" }
-variable "server1_script" { default = "./server1.sh" }
+variable "server_script" { default = "./serverJenkins.sh" }
 variable "security_description" { default = "Terraform security group" }
-variable "security_name" { default = "tf_securityMat" }
+variable "security_name" { default = "tf_security" }
