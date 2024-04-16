@@ -10,9 +10,6 @@ echo in directory $PWD
 cd /home/debian
 echo in directory $PWD
 
-sudo apt-get update && sudo apt-get upgrade
-sudo apt update && sudo apt upgrade
-
 echo "--------Installing wget--------"
 sudo apt install wget -y
 echo "--------Installing curl--------"
@@ -31,9 +28,10 @@ sudo systemctl enable mariadb
 
 #changing root privileges of plugin 'unix_socket' to 'mysql_native_password'
 echo "--------Changing Mysql Root Access Privileges--------"
-# sudo mysql -u root -e "USE mysql; SELECT User, Host, Plugin FROM mysql.user;"
 sudo mysql -u root -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE User='root'";
-sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE USER='root' AND HOST = 'localhost'; FLUSH PRIVILEGES;"
+sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE User='root' AND Host = 'localhost'; FLUSH PRIVILEGES;"
+sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED BY 'comsc' WITH GRANT OPTION;"
+
 
 
 # echo "upgrading sudo..."
@@ -51,44 +49,44 @@ sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHE
 # sudo ssh-keyscan git.cardiff.ac.uk >> /var/lib/jenkins/.ssh/known_hosts
 # sudo chmod 644 /var/lib/jenkins/.ssh/known_hosts
 
-cat << `EOF` >> gitlab_project_keypair.key
+cat << `EOF` >> gitlab_project_keypair2.key
 -----BEGIN OPENSSH PRIVATE KEY-----
 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
-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
+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
 -----END OPENSSH PRIVATE KEY-----
 `EOF`
 
@@ -105,13 +103,14 @@ chmod 644 .ssh/known_hosts
 echo "--------Installing Git--------"
 sudo apt install git -y
 
-#Cloning the repository from Gitlab.
+echo "-----Cloning the repository from Gitlab-----"
 ssh-agent bash -c 'ssh-add gitlab_project_keypair.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
+echo "-------sql-------"
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
 
-sudo apt update
+sudo apt-get update
 
 # echo "-------Downloading Java 17--------"
 # wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
