@@ -111,6 +111,7 @@ ssh-agent bash -c 'ssh-add gitlab_project_keypair.key && git clone git@git.cardi
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
 
+sudo apt update
 
 echo "-------Downloading Java 17--------"
 wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
