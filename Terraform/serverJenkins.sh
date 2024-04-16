@@ -1,77 +1,26 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+#!/usr/bin/bash
 
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
-Vagrant.configure("2") do |config|
-  # The most common configuration options are documented and commented below.
-  # For a complete reference, please see the online documentation at
-  # https://docs.vagrantup.com.
+echo "update logging configuration..."
+sudo sh -c "echo '*.info;mail.none;authpriv.none;cron.none /dev/ttyS0' >> /etc/rsyslog.conf"
+sudo systemctl restart rsyslog
 
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "debian/buster64"
+echo logged in as $USER.
+echo in directory $PWD
 
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
+cd /home/debian
+echo in directory $PWD
 
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # NOTE: This will enable public access to the opened port
-  config.vm.network "forwarded_port", guest: 8080, host: 8084
+echo "--------Installing wget--------"
+sudo apt install wget -y
+echo "--------Installing curl--------"
+sudo apt install curl -y
+echo "--------Installing Unzip--------"
+sudo apt install unzip -y
+echo "--------Installing Git--------"
+sudo apt install git -y
 
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine and only allow access
-  # via 127.0.0.1 to disable public access
-  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network "public_network"
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    # vb.gui = true
-  
-    # Customize the amount of memory on the VM:
-    vb.memory = "2048"
-  end
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
-
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
-config.vm.synced_folder ".", "/vagrant", type: "rsync", disabled: true
-config.vm.provision "shell", privileged: false, inline: <<-SHELL
-#whoami
-
-echo "--------Installing MariaDB--------"
+echo "--------Installing MariaDB 10.11.2--------"
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.11.2"
 sudo apt update
 sudo apt install mariadb-server -y
 sudo systemctl start mariadb
@@ -79,34 +28,41 @@ sudo systemctl status mariadb
 sudo systemctl enable mariadb
 
 #changing root privileges of plugin 'unix_socket' to 'mysql_native_password'
-echo "--------Changing mysql root access privileges--------"
+echo "--------Changing Mysql Root Access Privileges--------"
 # sudo mysql -u root -e "USE mysql; SELECT User, Host, Plugin FROM mysql.user;"
 sudo mysql -u root -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE User='root'";
 sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE USER='root' AND HOST = 'localhost'; FLUSH PRIVILEGES;"
-echo "--------Privileges changed--------"
 
 
-## mysql_secure_installation not needed ???
-# Creating mysql_secure_installation.txt, and running it.
-# echo "creating mysql_secure_installation.txt..."
-# touch mysql_secure_installation.txt
-# cat << `EOF` >> mysql_secure_installation.txt
 
-# n
-# Y
-# comsc
-# comsc
-# Y
-# Y
-# Y
-# Y
-# Y
-# `EOF`
+echo "upgrading sudo..."
+sudo apt-get install sudo -y
+sudo apt install ca-certificates 
+sudo apt install gnupg2 -y
+echo whoami
 
-# echo "running mysql_secure_installation..."
-# sudo mysql_secure_installation < mysql_secure_installation.txt
+echo "--------Installing Gitlab...--------"
+sudo apt install git -y
 
+#Obtaining Gitlab's public key and storing it in the known hosts file.
+echo "--------Communicating with Gitlab...--------"
+touch .ssh/known_hosts
+ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
+#Giving access to read and write of the file
+chmod 644 .ssh/known_hosts
 
+# sudo apt install git -y
+
+# echo "Moving to root account..."
+# cd root
+
+# sudo touch /var/lib/jenkins/.ssh/known_hosts
+# sudo ssh-keyscan git.cardiff.ac.uk >> /var/lib/jenkins/.ssh/known_hosts
+# sudo chmod 644 /var/lib/jenkins/.ssh/known_hosts
+
+echo "Moving to user directory..."
+
+cd /home/debian
 cat << `EOF` >> gitlab_project_keypair.key
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
@@ -151,40 +107,21 @@ cBUsOLaqjbpM8AAAAcSUQrYzIzMDc3ODEzQERTQTEwRjYwQThGNTQ2MgECAwQFBgc=
 #Restricts access rights for the .key file.
 chmod 400 gitlab_project_keypair.key
 
-#Obtaining Gitlab's public key and storing it in the known hosts file.
-echo "--------Communicating with Gitlab...--------"
-touch .ssh/known_hosts
-ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
-#Giving access to read and write of the file
-chmod 644 .ssh/known_hosts
-echo "--------Installing Gitlab...--------"
-sudo apt install git -y
-
 #Cloning the repository from Gitlab.
 ssh-agent bash -c 'ssh-add gitlab_project_keypair.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
 # cd team-4-smart-towns
 mysql -u root -pcomsc < team-4-smart-towns/src/main/resources/schema.sql
 
-sudo apt update
-sudo apt -y install wget curl
 
-#installing java
-echo "-------Downloading Java 17...--------"
+echo "-------Downloading Java 17--------"
 wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
 
-echo "--------Installing Java 17...--------"
+echo "--------Installing Java 17...-------"
 sudo apt install ./jdk-17_linux-x64_bin.deb -y
+echo "--------Installing Java Runtime Environment--------"
+sudo apt install default-jre -y
 
-# echo "--------Setting up Java environment variables...--------"
-# export JAVA_HOME=/usr/lib/jvm/jdk-17/
-# export PATH=\$PATH:\$JAVA_HOME/bin
-
-java -version
-
-#installing unzip
-echo "--------Installing Unzip--------"
-sudo apt install unzip
 
 #installing gradle
 echo "--------Downloading Gradle--------"
@@ -194,12 +131,11 @@ echo "--------Unzipping Gradle...--------"
 sudo mkdir /opt/gradle
 sudo unzip -d /opt/gradle gradle-8.0.2-bin.zip
 
-
 echo "--------Setting up Gradle environment variables...--------"
 export PATH=$PATH:/opt/gradle/gradle-8.0.2/bin
 
-echo "--------Gradle Bootrun...--------"
-gradle -v
+echo "--------Gradle Version Check--------"
+echo gradle -v
 
 gradle build
 gradle test
