@@ -69,16 +69,16 @@ wget https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_linux_amd64.
 sudo unzip terraform_1.3.5_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
 
-echo "--------Installing Jenkins--------"
+#echo "--------Installing Jenkins--------"
 ## https://pkg.jenkins.io/debian/
 # Import the Jenkins GPG key
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+#sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 # Add the Jenkins repository to the apt sources list
-sudo echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null    
+#sudo echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /#etc/apt/sources.list.d/jenkins.list > /dev/null    
 # Update the apt package index
-sudo apt-get update
+#sudo apt-get update
 # Install Jenkins
-sudo apt-get install jenkins -y
+#sudo apt-get install jenkins -y
 
 echo "--------Installing gitlab server key... has to be added to the jenkins user home (~) dir --------"
 mkdir /var/lib/jenkins/.ssh
@@ -87,19 +87,20 @@ sudo ssh-keyscan git.cardiff.ac.uk >> /var/lib/jenkins/.ssh/known_hosts
 sudo chmod 644 /var/lib/jenkins/.ssh/known_hosts
 sudo systemctl status jenkins
 
-echo "--------Changing Jenkins Port to 8081--------"
-sudo systemctl stop jenkins
-sudo sed --i 's/"JENKINS_PORT=8080"/"JENKINS_PORT=8081"/g' /usr/lib/systemd/system/jenkins.service
-sudo systemctl daemon-reload
-sudo systemctl restart jenkins
-sudo systemctl enable jenkins
-sudo systemctl status jenkins
+#echo "--------Changing Jenkins Port to 8081--------"
+#sudo systemctl stop jenkins
+#sudo sed --i 's/"JENKINS_PORT=8080"/"JENKINS_PORT=8081"/g' /usr/lib/systemd/system/jenkins.service
+#sudo systemctl daemon-reload
+#sudo systemctl restart jenkins
+#sudo systemctl enable jenkins
+#sudo systemctl status jenkins
 #/user/lib/system/jenkins.service --nothing here
 # sudo nano /usr/lib/systemd/system/jenkins.service -- this works.
 # /etc/default/jenkins --exists but does not change anything
 
 
-
+gradle build
+gradle bootrun
 
 
 # #Restricts access rights for the .key file.
