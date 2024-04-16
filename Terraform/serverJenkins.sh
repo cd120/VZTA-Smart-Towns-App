@@ -1,15 +1,17 @@
 #!/usr/bin/bash
 
-# echo "update logging configuration..."
-# sudo sh -c "echo '*.info;mail.none;authpriv.none;cron.none /dev/ttyS0' >> /etc/rsyslog.conf"
-# sudo systemctl restart rsyslog
-
 whoami
+
+mkdir -p /home/debian
+cd /home/debian
 echo logged in as $USER.
 echo in directory $PWD
 
 cd /home/debian
 echo in directory $PWD
+
+sudo apt-get update && sudo apt-get upgrade
+sudo apt update && sudo apt upgrade
 
 echo "--------Installing wget--------"
 sudo apt install wget -y
@@ -17,8 +19,7 @@ echo "--------Installing curl--------"
 sudo apt install curl -y
 echo "--------Installing Unzip--------"
 sudo apt install unzip -y
-echo "--------Installing Git--------"
-sudo apt install git -y
+
 
 echo "--------Installing MariaDB 10.11.2--------"
 curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.11.2"
@@ -35,18 +36,13 @@ sudo mysql -u root -e "UPDATE mysql.user SET plugin='mysql_native_password' WHER
 sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE USER='root' AND HOST = 'localhost'; FLUSH PRIVILEGES;"
 
 
-echo "upgrading sudo..."
-sudo apt-get install sudo -y
-sudo apt install ca-certificates 
-sudo apt install gnupg2 -y
-echo whoami
+# echo "upgrading sudo..."
+# sudo apt-get install sudo -y
+# sudo apt install ca-certificates 
+# sudo apt install gnupg2 -y
+# echo whoami
 
-#Obtaining Gitlab's public key and storing it in the known hosts file.
-echo "--------Communicating with Gitlab...--------"
-touch .ssh/known_hosts
-ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
-#Giving access to read and write of the file
-chmod 644 .ssh/known_hosts
+
 
 # echo "Moving to root account..."
 # cd root
@@ -55,9 +51,6 @@ chmod 644 .ssh/known_hosts
 # sudo ssh-keyscan git.cardiff.ac.uk >> /var/lib/jenkins/.ssh/known_hosts
 # sudo chmod 644 /var/lib/jenkins/.ssh/known_hosts
 
-echo "Moving to user directory..."
-
-cd /home/debian
 cat << `EOF` >> gitlab_project_keypair.key
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
@@ -102,11 +95,21 @@ cBUsOLaqjbpM8AAAAcSUQrYzIzMDc3ODEzQERTQTEwRjYwQThGNTQ2MgECAwQFBgc=
 #Restricts access rights for the .key file.
 chmod 400 gitlab_project_keypair.key
 
+#Obtaining Gitlab's public key and storing it in the known hosts file.
+echo "--------Communicating with Gitlab...--------"
+touch .ssh/known_hosts
+ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
+#Giving access to read and write of the file
+chmod 644 .ssh/known_hosts
+
+echo "--------Installing Git--------"
+sudo apt install git -y
+
 #Cloning the repository from Gitlab.
 ssh-agent bash -c 'ssh-add gitlab_project_keypair.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
-# cd team-4-smart-towns
-mysql -u root -pcomsc < team-4-smart-towns/src/main/resources/schema.sql
+sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
+sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
 
 
 echo "-------Downloading Java 17--------"
@@ -131,6 +134,8 @@ export PATH=$PATH:/opt/gradle/gradle-8.0.2/bin
 
 echo "--------Gradle Version Check--------"
 echo gradle -v
+
+cd /home/debian/team-4-smart-towns
 
 gradle build
 gradle test
