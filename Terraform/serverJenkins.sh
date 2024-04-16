@@ -96,7 +96,7 @@ echo "--------Installing Git--------"
 sudo apt install git -y
 
 echo "-----Cloning the repository from Gitlab-----"
-ssh-agent bash -c 'ssh-add gitlab_project_keypair.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
+ssh-agent bash -c 'ssh-add gitlab_project_keypair2.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
 echo "-------sql-------"
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
