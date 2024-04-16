@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
-echo "update logging configuration..."
-sudo sh -c "echo '*.info;mail.none;authpriv.none;cron.none /dev/ttyS0' >> /etc/rsyslog.conf"
-sudo systemctl restart rsyslog
+# echo "update logging configuration..."
+# sudo sh -c "echo '*.info;mail.none;authpriv.none;cron.none /dev/ttyS0' >> /etc/rsyslog.conf"
+# sudo systemctl restart rsyslog
 
+whoami
 echo logged in as $USER.
 echo in directory $PWD
 
@@ -34,15 +35,11 @@ sudo mysql -u root -e "UPDATE mysql.user SET plugin='mysql_native_password' WHER
 sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE USER='root' AND HOST = 'localhost'; FLUSH PRIVILEGES;"
 
 
-
 echo "upgrading sudo..."
 sudo apt-get install sudo -y
 sudo apt install ca-certificates 
 sudo apt install gnupg2 -y
 echo whoami
-
-echo "--------Installing Gitlab...--------"
-sudo apt install git -y
 
 #Obtaining Gitlab's public key and storing it in the known hosts file.
 echo "--------Communicating with Gitlab...--------"
@@ -50,8 +47,6 @@ touch .ssh/known_hosts
 ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
 #Giving access to read and write of the file
 chmod 644 .ssh/known_hosts
-
-# sudo apt install git -y
 
 # echo "Moving to root account..."
 # cd root
