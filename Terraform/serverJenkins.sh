@@ -113,34 +113,34 @@ sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/
 
 sudo apt update
 
-echo "-------Downloading Java 17--------"
-wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
+# echo "-------Downloading Java 17--------"
+# wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
 
-echo "--------Installing Java 17...-------"
-sudo apt install ./jdk-17_linux-x64_bin.deb -y
-echo "--------Installing Java Runtime Environment--------"
-sudo apt install default-jre -y
+# echo "--------Installing Java 17...-------"
+# sudo apt install ./jdk-17_linux-x64_bin.deb -y
+# echo "--------Installing Java Runtime Environment--------"
+# sudo apt install default-jre -y
 
 
-#installing gradle
-echo "--------Downloading Gradle--------"
-wget https://services.gradle.org/distributions/gradle-8.0.2-bin.zip
+# #installing gradle
+# echo "--------Downloading Gradle--------"
+# wget https://services.gradle.org/distributions/gradle-8.0.2-bin.zip
 
-echo "--------Unzipping Gradle...--------"
-sudo mkdir /opt/gradle
-sudo unzip -d /opt/gradle gradle-8.0.2-bin.zip
+# echo "--------Unzipping Gradle...--------"
+# sudo mkdir /opt/gradle
+# sudo unzip -d /opt/gradle gradle-8.0.2-bin.zip
 
-echo "--------Setting up Gradle environment variables...--------"
-export PATH=$PATH:/opt/gradle/gradle-8.0.2/bin
+# echo "--------Setting up Gradle environment variables...--------"
+# export PATH=$PATH:/opt/gradle/gradle-8.0.2/bin
 
-echo "--------Gradle Version Check--------"
-echo gradle -v
+# echo "--------Gradle Version Check--------"
+# echo gradle -v
 
-cd /home/debian/team-4-smart-towns
+# cd /home/debian/team-4-smart-towns
 
-gradle build
-gradle test
-gradule bootrun
+# gradle build
+# gradle test
+# gradule bootrun
 
 # ls /opt/gradle/
 
