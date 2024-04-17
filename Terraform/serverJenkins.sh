@@ -81,8 +81,8 @@ mxA5hAjicrpzEAAAAcSUQrYzIzMDc3ODEzQERTQTEwRjYwQThGNTQ2MgECAwQFBgc=
 -----END OPENSSH PRIVATE KEY-----
 `EOF`
 
-#Restricts access rights for the .key file.
-#sudo chmod 400 gitlab_project_keypair2.key
+echo "-----Restricts access rights for the .key file.-----"
+sudo chmod 400 gitlab_project_keypair2.key
 
 #Obtaining Gitlab's public key and storing it in the known hosts file.
 # echo "--------Communicating with Gitlab...--------"
