@@ -6,8 +6,8 @@ mkdir -p /home/debian
 cd /home/debian
 echo in directory $PWD
 
-sudo apt-get update && sudo apt-get upgrade
-sudo apt update && sudo apt upgrade
+# sudo apt-get update && sudo apt-get upgrade
+# sudo apt update && sudo apt upgrade
 
 echo "--------Installing curl--------"
 sudo apt-get install curl -y
