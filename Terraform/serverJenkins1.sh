@@ -110,7 +110,7 @@ sudo apt-get install curl -y
 echo "--------Installing Unzip--------"
 sudo apt-get install unzip -y
 
-cd team-4-smart-towns/
+#cd team-4-smart-towns/
 echo "-------Downloading Java 17--------"
 wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
 echo "--------Installing Java 17...-------"
