@@ -90,7 +90,7 @@ chmod 644 ~/.ssh/known_hosts
 
 sudo apt-get install git -y
 
-ssh-agent bash -c 'ssh-add gitlab_project_keypair.key; git clone -b ore-testing git@git.cardiff.ac.uk:c23097744/team-4-smart-towns.git' -y
+sudo ssh-agent bash -c 'ssh-add gitlab_project_keypair2.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
