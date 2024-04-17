@@ -2,21 +2,13 @@
 
 whoami
 
-mkdir -p /home/debian
-cd /home/debian
+# mkdir -p /home/debian
+
 echo logged in as $USER.
 echo in directory $PWD
 
 
-echo "--------Installing wget--------"
-sudo apt install wget -y
-echo "--------Installing curl--------"
-sudo apt install curl -y
-echo "--------Installing Unzip--------"
-sudo apt install unzip -y
-
-
-echo "--------Installing MariaDB 10.11.2--------"
+echo "----------------Installing MariaDB 10.11.2----------------"
 curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.11.2"
 sudo apt update
 sudo apt install mariadb-server -y
@@ -31,14 +23,22 @@ echo "--------Changing Mysql Root Access Privileges--------"
 # sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED BY 'comsc' WITH GRANT OPTION;"
 sudo mysql -u root -pcomsc -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'comsc';"
 
+echo "--------Installing Git--------"
+sudo apt install git -y
 
-# echo "upgrading sudo..."
-# sudo apt-get install sudo -y
-# sudo apt install ca-certificates 
-# sudo apt install gnupg2 -y
-# echo whoami
+echo "upgrading sudo..."
+sudo apt-get install sudo -y
+sudo apt install ca-certificates 
+sudo apt install gnupg2 -y
+echo whoami
 
+echo "--------------adding git to known hosts--------------"
+cd root
+touch .ssh/known_hosts
+ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
+chmod 644 .ssh/known_hosts
 
+cd /home/debian
 
 cat << `EOF` >> gitlab_project_keypair2.key
 -----BEGIN OPENSSH PRIVATE KEY-----
@@ -82,24 +82,33 @@ mxA5hAjicrpzEAAAAcSUQrYzIzMDc3ODEzQERTQTEwRjYwQThGNTQ2MgECAwQFBgc=
 `EOF`
 
 #Restricts access rights for the .key file.
-sudo chmod 400 gitlab_project_keypair2.key
+#sudo chmod 400 gitlab_project_keypair2.key
 
 #Obtaining Gitlab's public key and storing it in the known hosts file.
-echo "--------Communicating with Gitlab...--------"
-sudo touch .ssh/known_hosts
-sudo ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
-#Giving access to read and write of the file
-sudo chmod 644 .ssh/known_hosts
+# echo "--------Communicating with Gitlab...--------"
+# sudo touch .ssh/known_hosts
+# sudo ssh-keyscan git.cardiff.ac.uk >> .ssh/known_hosts
+# #Giving access to read and write of the file
+# sudo chmod 644 .ssh/known_hosts
 
-echo "--------Installing Git--------"
-sudo apt install git -y
+
 
 echo "-----Cloning the repository from Gitlab-----"
 sudo ssh-agent bash -c 'ssh-add gitlab_project_keypair2.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
+cd team-4-smart-towns/
 echo "-------Run SQL-------"
-sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
-sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
+sudo mysql -uroot -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
+sudo mysql -uroot -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
+
+echo "--------Installing wget--------"
+sudo apt install wget -y
+echo "--------Installing curl--------"
+sudo apt install curl -y
+echo "--------Installing Unzip--------"
+sudo apt install unzip -y
+
+
 
 # sudo apt update && sudo apt upgrade -y
 
