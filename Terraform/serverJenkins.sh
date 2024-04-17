@@ -9,9 +9,10 @@ echo in directory $PWD
 sudo apt-get update && sudo apt-get upgrade
 sudo apt update && sudo apt upgrade
 
-echo "######################## Installing MariaDB ########################"
-# sudo yum install mysql -y
-sudo apt install curl -y
+echo "--------Installing curl--------"
+sudo apt-get install curl -y
+
+echo "----------------Installing MariaDB 10.11.2----------------"
 curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.11.2"
 sudo apt update
 sudo apt install mariadb-server -y
@@ -84,8 +85,7 @@ sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/
 
 echo "--------Installing wget--------"
 sudo apt-get install wget -y
-echo "--------Installing curl--------"
-sudo apt-get install curl -y
+
 echo "--------Installing Unzip--------"
 sudo apt-get install unzip -y
 
