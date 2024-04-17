@@ -96,7 +96,6 @@ sudo chmod 400 gitlab_project_keypair2.key
 echo "-----Cloning the repository from Gitlab-----"
 sudo ssh-agent bash -c 'ssh-add gitlab_project_keypair2.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
-cd team-4-smart-towns/
 echo "-------Run SQL-------"
 sudo mysql -uroot -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
 sudo mysql -uroot -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
