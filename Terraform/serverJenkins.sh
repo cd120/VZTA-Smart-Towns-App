@@ -40,7 +40,7 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED 
 #echo "running mysql_secure_installation..."
 #sudo mysql_secure_installation < mysql_secure_installation.txt
 
-cat <<EOF > gitlab_project_keypair.key
+cat <<EOF > gitlab_project_keypair2.key
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
 NhAAAAAwEAAQAAAYEA02aAQWa4aVxW4tXTmajS1JdRPIRYeqYxlAXu4HkTuTwetBHy7kwS
@@ -81,7 +81,7 @@ mxA5hAjicrpzEAAAAcSUQrYzIzMDc3ODEzQERTQTEwRjYwQThGNTQ2MgECAwQFBgc=
 -----END OPENSSH PRIVATE KEY-----
 EOF
 
-chmod 400 gitlab_project_keypair.key
+chmod 400 gitlab_project_keypair2.key
 ssh-agent bash -c 'ssh-add gitlab_project_keypair.key'
 
 touch ~/.ssh/known_hosts
