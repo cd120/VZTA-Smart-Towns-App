@@ -19,26 +19,10 @@ sudo systemctl start mariadb
 sudo systemctl status mariadb
 sudo systemctl enable mariadb
 
+echo "--------Changing Mysql Root Access Privileges--------"
 sudo mysql -u root -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE User='root'";
 sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE User='root' AND Host = 'localhost'; FLUSH PRIVILEGES;"
 sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED BY 'comsc' WITH GRANT OPTION;"
-#echo "creating mysql_secure_installation.txt..."
-#touch mysql_secure_installation.txt
-#cat <<EOF > mysql_secure_installation.txt
-#
-#n
-#Y
-#comsc
-#comsc
-#Y
-#Y
-#Y
-#Y
-#Y
-#EOF
-#
-#echo "running mysql_secure_installation..."
-#sudo mysql_secure_installation < mysql_secure_installation.txt
 
 cat <<EOF > gitlab_project_keypair2.key
 -----BEGIN OPENSSH PRIVATE KEY-----
@@ -88,44 +72,40 @@ touch ~/.ssh/known_hosts
 ssh-keyscan git.cardiff.ac.uk >> ~/.ssh/known_hosts
 chmod 644 ~/.ssh/known_hosts
 
+echo "--------Installing git--------"
 sudo apt-get install git -y
 
+echo "-----Cloning the repository from Gitlab-----"
 sudo ssh-agent bash -c 'ssh-add gitlab_project_keypair2.key && git clone git@git.cardiff.ac.uk:c23077813/team-4-smart-towns.git'
 
+echo "-------Run SQL-------"
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
 
-# sudo mysql -u root -e "USE mysql; UPDATE user SET Password=PASSWORD('comsc') WHERE User='root' AND Host = 'localhost'; FLUSH PRIVILEGES;"
-# sudo mysql -u root -e "USE mysql; UPDATE user SET authentication_string=PASSWORD('comsc') WHERE User='root' AND Host='localhost'; FLUSH PRIVILEGES;"
-#sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED BY 'comsc' WITH GRANT OPTION;"
-
-
-sudo apt-get install unzip -y
+echo "--------Installing wget--------"
 sudo apt-get install wget -y
+echo "--------Installing curl--------"
+sudo apt-get install curl -y
+echo "--------Installing Unzip--------"
+sudo apt-get install unzip -y
 
-echo "######################## Installing Java 17 ########################"
-# Install using .deb
+echo "-------Downloading Java 17--------"
 wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb
+echo "--------Installing Java 17...-------"
 sudo apt install ./jdk-17_linux-x64_bin.deb -y
+echo "--------Installing Java Runtime Environment--------"
 sudo apt install default-jre -y
-
-#wget https://download.java.net/java/GA/jdk17/0d483333a00540d886896bac774ff48b/35/GPL/openjdk-17_linux-x64_bin.tar.gz
-#
-#tar zxvf openjdk-17_linux-x64_bin.tar.gz
-#sudo mv jdk-17 /usr/local/
-#
-#export JAVA_HOME=/usr/local/jdk-17
-#export PATH=$PATH:$JAVA_HOME/bin
 
 echo "######################## Installing gradle ########################"
 wget https://services.gradle.org/distributions/gradle-8.0.2-bin.zip
 sudo mkdir /opt/gradle
+echo "--------Unzipping Gradle...--------"
 sudo unzip -d /opt/gradle gradle-8.0.2-bin.zip
+echo "--------Setting up Gradle environment variables...--------"
 export PATH=$PATH:/opt/gradle/gradle-8.0.2/bin
 
 cd /home/debian/team-4-smart-towns
 
-# gradle build
-gradle build -x test
+gradle build
 # # gradle test
 gradle bootrun
