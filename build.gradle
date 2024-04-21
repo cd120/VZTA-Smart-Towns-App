@@ -58,3 +58,42 @@ tasks.named('bootBuildImage') {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+//jib.to.image = 'jp0123/smarttownsbuild'
+//jib {
+//	to {
+//		image = 'jp0123/smarttownsbuild'
+//		auth {
+//			username = 'jp0123'
+//			password = 'testing123'
+//		}
+//	}
+//}
+
+jib {
+	from {
+		image = 'azul/zulu-openjdk:17-jre'
+	}
+
+	to {
+		image = 'spring-boot-project-smarttowns-jib'
+	}
+
+
+//	to {
+//		image = 'jp0123/smarttownsbuild'
+//				auth {
+//			username = 'jp0123'
+//			password = 'testing123'
+//		}
+//		//credHelper = 'secretservice'
+//		tags = ['latest', project.version]
+//	}
+//	container {
+//		appRoot = '/simpleApp'
+//		jvmFlags = ['-Xms360m', '-Xmx360m']
+//		ports = ['8080']
+//		workingDirectory = '/simpleApp'
+//	}
+//	allowInsecureRegistries = true
+}
