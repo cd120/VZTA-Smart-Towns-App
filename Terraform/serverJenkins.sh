@@ -81,7 +81,7 @@ sudo ssh-agent bash -c 'ssh-add gitlab_project_keypair2.key && git clone git@git
 
 echo "-------Run SQL-------"
 sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/schema.sql
-sudo mysql -u root -pcomsc < /home/debian/team-4-smart-towns/src/main/resources/data.sql
+sudo mysql -u root -pcomsc trailsdb < /home/debian/team-4-smart-towns/src/main/resources/data.sql
 
 echo "--------Installing wget--------"
 sudo apt-get install wget -y
