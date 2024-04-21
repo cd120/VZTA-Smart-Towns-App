@@ -96,13 +96,22 @@ sudo apt install ./jdk-17_linux-x64_bin.deb -y
 echo "--------Installing Java Runtime Environment--------"
 sudo apt install default-jre -y
 
-echo "######################## Installing gradle ########################"
+echo "----------------- Installing gradle ----------------"
 wget https://services.gradle.org/distributions/gradle-8.0.2-bin.zip
 sudo mkdir /opt/gradle
 echo "--------Unzipping Gradle...--------"
 sudo unzip -d /opt/gradle gradle-8.0.2-bin.zip
 echo "--------Setting up Gradle environment variables...--------"
 export PATH=$PATH:/opt/gradle/gradle-8.0.2/bin
+
+echo "-----------------Installing Docker-----------------"
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
 
 cd /home/debian/team-4-smart-towns
 
