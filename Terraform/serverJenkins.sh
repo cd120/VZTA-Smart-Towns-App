@@ -21,10 +21,32 @@ sudo systemctl start mariadb
 sudo systemctl status mariadb
 sudo systemctl enable mariadb
 
+echo "creating mysql_secure_installation.txt..."
+touch mysql_secure_installation.txt
+cat << `EOF` >> mysql_secure_installation.txt
+
+n
+Y
+comsc
+comsc
+Y
+Y
+Y
+Y
+Y
+`EOF`
+
+echo "running mysql_secure_installation..."
+sudo mysql_secure_installation < mysql_secure_installation.txt
+
+
 echo "--------Changing Mysql Root Access Privileges--------"
 sudo mysql -u root -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE User='root'";
 sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('comsc') WHERE User='root' AND Host = 'localhost'; FLUSH PRIVILEGES;"
 sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED BY 'comsc' WITH GRANT OPTION;"
+
+
+
 
 cat <<EOF > gitlab_project_keypair2.key
 -----BEGIN OPENSSH PRIVATE KEY-----
