@@ -8,6 +8,7 @@ echo in directory $PWD
 
 # sudo apt-get update && sudo apt-get upgrade
 # sudo apt update && sudo apt upgrade
+sudo apt update
 
 echo "--------Installing curl--------"
 sudo apt-get install curl -y
