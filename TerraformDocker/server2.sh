@@ -136,8 +136,21 @@ sudo apt update
 apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
-cd /home/debian/team-4-smart-towns
+echo "-----------------Pulling Docker from Dockerhub-----------------"
+sudo docker pull jp0123/smarttownsbuild
+echo "-----------------Adding Docker Permissions-----------------"
+sudo chmod 666 /var/run/docker.sock
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
+sudo systemctl restart docker
+docker images
+docker run -p 8083:8083 jp0123/smarttownsbuild
 
-gradle build
-# # gradle test
-gradle bootrun
+
+# cd /home/debian/team-4-smart-towns
+# gradle build
+# # # gradle test
+# gradle bootrun
+

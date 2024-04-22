@@ -7,6 +7,6 @@ variable "network" { default = "c23077813_network" }   # you need to change this
 
 variable "keypair" { default = "username_keypair" } # you need to change this
 variable "pool" { default = "cscloud_private_floating" }
-variable "server_script" { default = "./serverJenkins.sh" }
+variable "server_script" { default = "./server2.sh" }
 variable "security_description" { default = "Terraform security group" }
 variable "security_name" { default = "tf_security_terraform" }
