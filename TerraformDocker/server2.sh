@@ -143,10 +143,10 @@ sudo chmod 666 /var/run/docker.sock
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
-docker run hello-world
+#docker run hello-world
 sudo systemctl restart docker
 docker images
-docker run -p 8083:8083 jp0123/smarttownsbuild
+#docker run -p 8083:8083 jp0123/smarttownsbuild
 
 
 # cd /home/debian/team-4-smart-towns
