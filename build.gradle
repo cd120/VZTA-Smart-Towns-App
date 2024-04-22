@@ -79,6 +79,7 @@ jib {
 //		image = 'spring-boot-project-smarttowns-jib'
 //	}
 
+
 	to {
 		image = 'jp0123/smarttownsbuild'
 		auth {
