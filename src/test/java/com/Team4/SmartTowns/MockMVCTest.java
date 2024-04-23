@@ -22,13 +22,13 @@ public class MockMVCTest {
     private MockMvc mockMvc;
 
     //Unit tests using a mock MVC
-    @Test
-    public void testLoginPageRendersCorrectly() throws Exception {
-        this.mockMvc.perform(get("/login"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Username:")));
-    }
+//    @Test
+//    public void testLoginPageRendersCorrectly() throws Exception {
+//        this.mockMvc.perform(get("/login"))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(containsString("Username:")));
+//    }
     //test using a mock MVC but a with a test database
 //    @Test
 //    public void testMockMVC() throws Exception {

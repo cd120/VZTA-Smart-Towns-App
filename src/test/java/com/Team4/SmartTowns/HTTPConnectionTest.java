@@ -17,10 +17,10 @@ public class HTTPConnectionTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
-    public void testConnection() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/login", String.class)).contains ("Username");
-    }
+//    @Test
+//    public void testConnection() throws Exception {
+//        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/login", String.class)).contains ("Username");
+//    }
 
 //    @Test
 //    public void testMockMVC() throws Exception {

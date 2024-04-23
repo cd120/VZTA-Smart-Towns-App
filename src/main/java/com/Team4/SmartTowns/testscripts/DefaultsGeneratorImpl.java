@@ -1,5 +1,6 @@
 package com.Team4.SmartTowns.testscripts;
 
+import org.springframework.boot.CommandLineRunner;
 import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
 import com.Team4.SmartTowns.checkpoints.service.CheckpointService;
 import com.Team4.SmartTowns.medals.service.MedalService;
@@ -7,6 +8,9 @@ import com.Team4.SmartTowns.profile.model.Profile;
 import com.Team4.SmartTowns.profile.service.ProfileService;
 import com.Team4.SmartTowns.trails.model.Trail;
 import com.Team4.SmartTowns.trails.service.TrailService;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -18,18 +22,20 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
     private ProfileService profileService;
     private MedalService medalService;
 
-    public DefaultsGeneratorImpl(TrailService trailService, CheckpointService checkpointService, ProfileService profileService, MedalService medalService) {
+    public DefaultsGeneratorImpl(TrailService trailService, CheckpointService checkpointService, MedalService medalService) {
         this.trailService = trailService;
         this.checkpointService = checkpointService;
-        this.profileService = profileService;
+//        this.profileService = profileService;
         this.medalService = medalService;
     }
+
 
     @Override
     public void generateTrailsAndUsers(){
         generateTrails();
-        generateUsers();
+//        generateUsers();
     }
+
 
     public void generateTrails() {
 
@@ -130,38 +136,38 @@ public class DefaultsGeneratorImpl implements DefaultsGenerator {
         }
     }
 
-    public void generateUsers() {
-        int noOfCheckpoints = checkpointService.getAllCheckpoints().size();
-        createUserWithCheckpoints(noOfCheckpoints, "john", "john", "john@example.com", "1 High Street", "Flat 4B", "London", "SW1A 1AA");
-        createUserWithCheckpoints(noOfCheckpoints, "alice", "alice", "alice@example.com", "15 Elm Avenue", "Apt 7C", "Manchester", "M1 2NE");
-        createUserWithCheckpoints(noOfCheckpoints, "bob", "bob", "bob@example.com", "28 Oak Crescent", "Unit 12", "Birmingham", "B1 1AA");
-        createUserWithCheckpoints(noOfCheckpoints, "susan", "susan", "susan@example.com", "42 Pine Terrace", "Flat 15D", "Glasgow", "G1 2AA");
-        createUserWithCheckpoints(noOfCheckpoints, "david", "david", "david@example.com", "57 Birch Close", "Suite 22A", "Edinburgh", "EH1 1AA");
-        createUserWithCheckpoints(noOfCheckpoints, "emily", "emily", "emily@example.com", "69 Maple Court", "Unit 31B", "Belfast", "BT1 1AA");
-        createUserWithCheckpoints(noOfCheckpoints, "ryan", "ryan", "ryan@example.com", "83 Willow Lane", "Apt 40C", "Cardiff", "CF1 1AA");
-        createUserWithCheckpoints(noOfCheckpoints, "olivia", "olivia", "olivia@example.com", "99 Cedar Road", "Suite 51D", "Edinburgh", "EH2 2AA");
-        createUserWithCheckpoints(noOfCheckpoints, "michael", "michael", "michael@example.com", "114 Birch Avenue", "Unit 60A", "Glasgow", "G2 2AA");
-        createUserWithCheckpoints(noOfCheckpoints, "emma", "emma", "emma@example.com", "130 Oak Street", "Apt 75B", "Manchester", "M2 2AA");
-    }
+//    public void generateUsers() {
+//        int noOfCheckpoints = checkpointService.getAllCheckpoints().size();
+//        createUserWithCheckpoints(noOfCheckpoints, "john", "john", "john@example.com", "1 High Street", "Flat 4B", "London", "SW1A 1AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "alice", "alice", "alice@example.com", "15 Elm Avenue", "Apt 7C", "Manchester", "M1 2NE");
+//        createUserWithCheckpoints(noOfCheckpoints, "bob", "bob", "bob@example.com", "28 Oak Crescent", "Unit 12", "Birmingham", "B1 1AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "susan", "susan", "susan@example.com", "42 Pine Terrace", "Flat 15D", "Glasgow", "G1 2AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "david", "david", "david@example.com", "57 Birch Close", "Suite 22A", "Edinburgh", "EH1 1AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "emily", "emily", "emily@example.com", "69 Maple Court", "Unit 31B", "Belfast", "BT1 1AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "ryan", "ryan", "ryan@example.com", "83 Willow Lane", "Apt 40C", "Cardiff", "CF1 1AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "olivia", "olivia", "olivia@example.com", "99 Cedar Road", "Suite 51D", "Edinburgh", "EH2 2AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "michael", "michael", "michael@example.com", "114 Birch Avenue", "Unit 60A", "Glasgow", "G2 2AA");
+//        createUserWithCheckpoints(noOfCheckpoints, "emma", "emma", "emma@example.com", "130 Oak Street", "Apt 75B", "Manchester", "M2 2AA");
+//    }
 
-    private void createUserWithCheckpoints(int noOfCheckpoints, String userName, String password, String email, String address, String address2, String city, String zipCode) {
-        Profile tempProfile = new Profile(userName, password, email, address, address2, city, zipCode, new ArrayList<>());
-        String username = profileService.addProfile(tempProfile);
-        // assign a random number of checkpoints to each user
-        Random random = new Random();
-        int checkpointsToAdd = random.nextInt(noOfCheckpoints) + 1; //random number of checkpoints to add
-        List<Long> uniqueCheckpointIds = new ArrayList<>();
-        for (int j = 0; j < checkpointsToAdd; j++) {
-            Long checkpointId = (long) random.nextInt(noOfCheckpoints) + 1 ; // random checkpoint id
-            if(!uniqueCheckpointIds.contains(checkpointId)){
-                uniqueCheckpointIds.add(checkpointId);
-            }
-        }
-        for (Long id : uniqueCheckpointIds) {
-            checkpointService.addCheckpointToUser(id, username);
-        }
-        medalService.awardMedalToUser(username);
-    }
+//    private void createUserWithCheckpoints(int noOfCheckpoints, String userName, String password, String email, String address, String address2, String city, String zipCode) {
+//        Profile tempProfile = new Profile(userName, password, email, address, address2, city, zipCode, new ArrayList<>());
+//        String username = profileService.addProfile(tempProfile);
+//        // assign a random number of checkpoints to each user
+//        Random random = new Random();
+//        int checkpointsToAdd = random.nextInt(noOfCheckpoints) + 1; //random number of checkpoints to add
+//        List<Long> uniqueCheckpointIds = new ArrayList<>();
+//        for (int j = 0; j < checkpointsToAdd; j++) {
+//            Long checkpointId = (long) random.nextInt(noOfCheckpoints) + 1 ; // random checkpoint id
+//            if(!uniqueCheckpointIds.contains(checkpointId)){
+//                uniqueCheckpointIds.add(checkpointId);
+//            }
+//        }
+//        for (Long id : uniqueCheckpointIds) {
+//            checkpointService.addCheckpointToUser(id, username);
+//        }
+//        medalService.awardMedalToUser(username);
+//    }
 
     private Trail createTempTrail(String name, String location, String description) {
         // Method for helping create default trails
