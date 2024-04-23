@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns.Test;
+package com.Team4.SmartTowns;
 
 import org.junit.Test;
 

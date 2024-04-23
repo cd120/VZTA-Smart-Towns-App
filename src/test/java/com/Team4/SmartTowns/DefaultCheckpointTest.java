@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns.Test;
+package com.Team4.SmartTowns;
 
 import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
 import com.Team4.SmartTowns.trails.model.Trail;

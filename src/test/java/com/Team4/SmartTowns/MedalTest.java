@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns.Test;
+package com.Team4.SmartTowns;
 
 
 import com.Team4.SmartTowns.medals.model.Medal;
