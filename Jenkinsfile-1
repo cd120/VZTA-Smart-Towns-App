@@ -1,12 +1,31 @@
 pipeline {
-  agent {
-    docker { image 'liquibase/liquibase' }
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'liquibase --version'
-      }
+    agent any
+    stages {
+        stage('Start MariaDB') {
+            steps {
+                script {
+                    docker.run('--name mariadb-test -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mariadb:10.11')
+                }
+            }
+        }
+        stage('Build and Test') {
+            steps {
+                sh './gradlew build'
+                sh './gradlew update' // Assuming Liquibase tasks are configured in gradle
+            }
+        }
+        stage('Integration Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
     }
-  }
+    post {
+        always {
+            script {
+                docker.stop('mariadb-test')
+                docker.rm('mariadb-test')
+            }
+        }
+    }
 }
