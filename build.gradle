@@ -38,23 +38,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
-	implementation 'org.springframework.boot:spring-boot-starter-security:'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-//	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.0'
+//	implementation 'org.springframework.boot:spring-boot-starter-security:'
+//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 
+	testImplementation 'com.h2database:h2:1.4.200'
 
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 
-	testImplementation 'org.mockito:mockito-core:5.8.0'
-	testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
-
-	// Liquibase core
-	implementation 'org.liquibase:liquibase-core'
-	// Database driver
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-}
+//	testImplementation 'org.mockito:mockito-core:5.8.0'
+//	testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
+//
+//	// Liquibase core
+//	implementation 'org.liquibase:liquibase-core'
+//	// Database driver
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+//}
 
 
 
