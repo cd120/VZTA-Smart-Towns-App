@@ -38,7 +38,7 @@ public class ProfileController {
 
         List<Trail> startedTrails = trailService.getStartedTrailsByUsername(loggedInUser);
         Profile profile = profileService.getProfile(loggedInUser);
-        profile.setPassword("");
+//        profile.setPassword("");
 
         // create list of checkpoint ids that the profile has collected
         List<Long> profileCheckpointIds = new ArrayList<>();

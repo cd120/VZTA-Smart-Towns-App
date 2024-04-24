@@ -14,10 +14,10 @@ public class ProfileServiceImpl implements  ProfileService {
 
 
     //addUserby Username?
-    @Override
-    public String addProfile(Profile profile)  {
-        return profileRepository.saveProfile(profile);
-    }
+//    @Override
+//    public String addProfile(Profile profile)  {
+//        return profileRepository.saveProfile(profile);
+//    }
 
     @Override
     public Profile getProfile(String username) {

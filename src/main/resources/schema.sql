@@ -14,7 +14,7 @@ drop table if exists medal_users;
 create table if not exists user_table
 (
     username VARCHAR(50)  NOT NULL PRIMARY KEY,
-    password VARCHAR(500) NOT NULL,
+--     password VARCHAR(500) NOT NULL,
     enabled  boolean      NOT NULL,
     email    VARCHAR(50),
     address  VARCHAR(500),
