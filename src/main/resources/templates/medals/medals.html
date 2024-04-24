@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link th:replace="~{/fragments/header :: bootstrap-css}"/>
+  <link th:replace="~{/fragments/header :: mainstyles}"/>
+  <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
+  <script th:src="@{/scripts/dark-mode.js}" defer></script>
+  <title>VZTA Trails.</title>
+</head>
+<body>
+<div class="main-container">
+  <header th:replace="~{/fragments/header :: navbar}"></header>
+  <div class="page-container">
+
+<h1>Medals</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="medal : ${medal}">
+    <td th:text="${medal.medalName}">Medal Name</td>
+    <td th:text="${medal.medalDescription}">Medal Description</td>
+  </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+</body>
+</html>

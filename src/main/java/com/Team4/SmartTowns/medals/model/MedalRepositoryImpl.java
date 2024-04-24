@@ -41,4 +41,10 @@ public class MedalRepositoryImpl implements MedalRepository{
         return jdbc.query(sql, medalMapper, username);
     }
 
+    public List<Medal> findAllMedals() {
+        String sql = ("Select * from medal_types");
+        return jdbc.query(sql, medalMapper);
+
+    }
+
 }

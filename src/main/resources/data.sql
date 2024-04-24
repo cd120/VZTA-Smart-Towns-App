@@ -11,9 +11,11 @@ insert into users_roles (username, role_id)
 values ('admin', 1);
 
 --Inserting Medal Types into medal_types
-INSERT INTO medal_types (medal_name, medal_description) VALUES ('BRONZE - 20 Checkpoints', 'Well done, you''ve earned your first medal! the Bronze Medal is a testament to your commendable efforts and notable achievement! ');
-INSERT INTO medal_types (medal_name, medal_description) VALUES ('SILVER - 40 Checkpoints', 'Congratulations on the Silver Medal! Your dedication and exceptional skill shine through, marking a standout accomplishment.');
-INSERT INTO medal_types (medal_name, medal_description) VALUES ('GOLD - 60 Checkpoints', 'Exceptional! You''ve clinched the Gold Medal, a symbol of your outstanding achievement, unwavering dedication, and mastery in your pursuit.');
+INSERT INTO medal_types (medal_name, medal_description) VALUES ('BRONZE - 20', 'bronze first medal');
+-- INSERT INTO medal_types (medal_name, medal_description) VALUES ('SILVER - 40 Checkpoints', 'Congratulations on the Silver Medal! Your dedication and exceptional skill shine through, marking a standout accomplishment.');
+-- INSERT INTO medal_types (medal_name, medal_description) VALUES ('GOLD - 60 Checkpoints', 'Exceptional! You''ve clinched the Gold Medal, a symbol of your outstanding achievement, unwavering dedication, and mastery in your pursuit.');
+--
+-- INSERT INTO trail_table (name, location, description) VALUES ('new york', 'USA', 'american city')
 
 --Inserting default medals into medal_users table for users based on number of checkpoints collected
 -- INSERT INTO medal_users (username, medal_name) VALUES ('admin', 'BRONZE - 20 Checkpoints');

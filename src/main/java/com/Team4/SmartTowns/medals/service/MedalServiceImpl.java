@@ -1,10 +1,10 @@
 package com.Team4.SmartTowns.medals.service;
 
 import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
-import com.Team4.SmartTowns.checkpoints.model.CheckpointRepository;
 import com.Team4.SmartTowns.checkpoints.service.CheckpointService;
 import com.Team4.SmartTowns.medals.model.MedalRepository;
 import com.Team4.SmartTowns.medals.model.Medal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,6 +44,14 @@ public class MedalServiceImpl implements MedalService {
 
     }
 
+    @Autowired
+    public void MedalService(MedalRepository medalRepository) {
+        this.medalRepository = medalRepository;
+    }
+
+    public List<Medal> getAllMedals() {
+        return medalRepository.findAllMedals();
+    }
 
     @Override
     public List<Medal> getMedalsForUser(String username) {
