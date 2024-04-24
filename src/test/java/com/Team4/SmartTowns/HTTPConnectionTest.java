@@ -17,13 +17,13 @@ public class HTTPConnectionTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-//    @Test
-//    public void testConnection() throws Exception {
-//        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/login", String.class)).contains ("Username");
-//    }
+    @Test
+    public void testConnection() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/leaderboard", String.class)).contains ("olivia");
+    }
 
-//    @Test
-//    public void testMockMVC() throws Exception {
-//        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/trails", String.class)).contains ("mockCardiff");
-//    }
+    @Test
+    public void testMockMVC() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/trails", String.class)).contains ("mockCardiff");
+    }
 }

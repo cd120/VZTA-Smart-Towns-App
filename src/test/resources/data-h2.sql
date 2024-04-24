@@ -1,0 +1,1 @@
+INSERT INTO trail_table (trail_id, name, location, description) VALUES (1, 'mockCardiff Castle', 'notCardiff', 'definitelyNotInCardiff')
