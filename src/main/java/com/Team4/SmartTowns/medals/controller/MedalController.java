@@ -1,8 +1,9 @@
 package com.Team4.SmartTowns.medals.controller;
 
 import com.Team4.SmartTowns.medals.model.Medal;
+import com.Team4.SmartTowns.medals.model.MedalRepository;
 import com.Team4.SmartTowns.medals.service.MedalService;
-import com.Team4.SmartTowns.trails.model.Trail;
+//import com.Team4.SmartTowns.trails.model.Trail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +15,17 @@ import java.util.List;
 @Controller
 public class MedalController {
 
-    private final MedalService medalService;
+    private MedalService medalService;
 
     @Autowired
     public MedalController(MedalService medalService) {
         this.medalService = medalService;
     }
+
+//    @Autowired
+//    public MedalController(MedalRepository pRepo) {
+//        medalRepo = pRepo
+//    }
 
     @GetMapping("/medals")
     public ModelAndView showMedals(Model model) {

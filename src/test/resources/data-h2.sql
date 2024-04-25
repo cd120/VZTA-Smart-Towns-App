@@ -1,0 +1,2 @@
+INSERT INTO medal_types (medal_name, medal_description) VALUES ('mockBronze', 'fake bronze first medal');
+INSERT INTO medal_types (medal_name, medal_description) VALUES ('mockSilver', 'fake silver second medal');

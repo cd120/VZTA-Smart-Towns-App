@@ -14,22 +14,22 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MockMVCTest {
+public class MockMVCTest2 {
 
 
     @Autowired
     private MockMvc mockMvc;
 
-    //   static test checks if /trails contains string Trails.
+    //   testing h2 database connection, "fake bronze" comes back as success.
     @Test
-    public void testTrailsPage() throws Exception {
+    public void testMockDbMedal() throws Exception {
         this.mockMvc.perform(get("/medals"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Medal")));
+                .andExpect(content().string(containsString("fake silver")));
     }
 
 

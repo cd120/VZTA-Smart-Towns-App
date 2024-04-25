@@ -20,20 +20,23 @@ public class HTTPConnectionTest {
     private TestRestTemplate restTemplate;
 
 
-    //can access server, by injecting request to server.
+    //can access server, by injecting request to server to welcome page, finding "Welcome", test passes.
     @Test
     public void greetingTest() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port, String.class)).contains ("Welcome");
     }
 
+
+    //testing connection to /medals, and string "medals" can be found, test passes.
     @Test
-    public void testConnection() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/trails", String.class)).contains ("trails");
+    public void medalsPageTest() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class)).contains ("medals");
     }
 
-    //can access the database, finding profile name "emma"
+
+    //can access the mock database , finding medal "mockBronze", test passes.
     @Test
-    public void dbProfileTest() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/leaderboard", String.class)).contains ("emma");
+    public void dbMedalTest() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class)).contains ("mockBronze");
     }
 }
