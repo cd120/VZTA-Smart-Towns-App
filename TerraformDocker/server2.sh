@@ -145,12 +145,33 @@ sudo usermod -aG docker $USER
 newgrp docker
 #docker run hello-world
 sudo systemctl restart docker
-docker images
+
 #docker run -p 8083:8083 jp0123/smarttownsbuild
+docker pull mariadb:10.11
+docker images
 
+docker network create --driver bridge --subnet 172.28.0.0/16 custom-network
 
-# cd /home/debian/team-4-smart-towns
-# gradle build
-# # # gradle test
-# gradle bootrun
+docker network ls
+
+docker run --name mariadb-server \
+  -e MYSQL_ROOT_PASSWORD=comsc \
+  -e MYSQL_DATABASE=trailsdb \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=comsc \
+  --network custom-network \
+  -v mariadb_data:/var/lib/mysql \
+  -p 3307:3306 \
+  -d mariadb:10.11
+
+mysqldump -uroot -pcomsc trailsdb > trailsdb_backup.sql
+
+sudo systemctl stop mariadb
+sudo systemctl disable mariadb
+
+docker start mariadb-server
+
+docker cp trailsdb_backup.sql mariadb-server:/trailsdb_backup.sql
+
+docker exec -i mariadb-server mysql -uroot -pcomsc trailsdb < trails_backup.sql
 
