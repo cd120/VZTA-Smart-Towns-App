@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link th:replace="~{/fragments/header :: bootstrap-css}"/>
+  <link th:replace="~{/fragments/header :: mainstyles}"/>
+  <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
+  <script th:src="@{/scripts/dark-mode.js}" defer></script>
+  <title>VZTA Trails.</title>
+</head>
+<body>
+<div class="main-container">
+  <header th:replace="~{/fragments/header :: navbar}"></header>
+  <div class="page-container">
+
+    <main>
+      <h1> SIGN IN </h1>
+
+      <div th:if="${param.error}">
+        Wrong username and password.
+      </div>
+      <div th:if="${param.logout}">
+        You've safely logged out
+      </div>
+      <form th:action="@{/login}" method="post">
+        <div><label> User Name : <input type="text" name="username"/> </label></div>
+        <div><label> Password: <input type="password" name="password"/> </label></div>
+        <div><input type="submit" value="Sign In"/></div>
+      </form>
+    </main>
+
+
+  </div>
+</div>
+</body>
+</html>

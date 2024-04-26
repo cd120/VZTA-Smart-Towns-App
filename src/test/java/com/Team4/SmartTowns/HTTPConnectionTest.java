@@ -9,7 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("dev")
+//@ActiveProfiles("dev")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HTTPConnectionTest {
 
@@ -30,11 +30,11 @@ public class HTTPConnectionTest {
     //testing connection to /medals, and string "medals" can be found, test passes.
     @Test
     public void medalsPageTest() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class)).contains ("medals");
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class)).contains ("bronze");
     }
 
 
-    //can access the mock database , finding medal "mockBronze", test passes.
+    //testing access to the mock database , finding medal "mockBronze", test passes.
     @Test
     public void dbMedalTest() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class)).contains ("mockBronze");

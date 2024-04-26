@@ -23,6 +23,13 @@
         <p>It's a blend of virtual excitement and real-world exploration, making VZTA Trails the perfect platform for adventure seekers and trail enthusiasts.</p>
         <br>
 <!--        <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/test}">Generate Test Users and Trails</a>-->
+
+        <li>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </li>
+
     </div>
 </div>
 </body>

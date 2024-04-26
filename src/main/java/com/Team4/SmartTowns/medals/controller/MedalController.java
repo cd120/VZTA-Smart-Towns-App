@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,6 +34,14 @@ public class MedalController {
         List<Medal> medals = medalService.getAllMedals();
         mvc.addObject("medal",medals);
         return mvc;
+    }
+
+
+    @RequestMapping(path="/login")
+    public ModelAndView login(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("login");
+        return mav;
     }
 
 

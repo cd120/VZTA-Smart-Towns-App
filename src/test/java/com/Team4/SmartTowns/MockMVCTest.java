@@ -23,7 +23,7 @@ public class MockMVCTest {
     @Autowired
     private MockMvc mockMvc;
 
-    //   static test checks if /trails contains string Trails.
+    //   test checks if /medals contains string Medal.
     @Test
     public void testTrailsPage() throws Exception {
         this.mockMvc.perform(get("/medals"))
