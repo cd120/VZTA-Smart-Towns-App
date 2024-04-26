@@ -39,19 +39,18 @@ newgrp docker
 
 sudo systemctl restart docker
 
+echo "-----------------Creating Custom-Network Bridge-----------------"
 docker network create --driver bridge --subnet 172.28.0.0/16 custom-network
-
 
 echo "-----------------Pulling MariaDB Docker Image-----------------"
 docker pull mariadb:10.11
 echo "-----------------Running MariaDB Docker Image-----------------"
-docker run --name mariadb-server -e MYSQL_ROOT_PASSWORD=comsc -e MYSQL_PASSWORD=comsc --network custom-network -p 3306:3306 -d --network custom-network mariadb:10.11 
-
+docker run --name mariadb-server -e MYSQL_DATABASE=trailsdb -e MYSQL_ROOT_PASSWORD=comsc -p 3306:3306 -d --network custom-network mariadb:10.11 
 
 echo "-----------------Pulling Docker Image from Dockerhub-----------------"
 sudo docker pull jp0123/smarttownsbuild
 echo "-----------------Running MariaDB Docker Image-----------------"
-sudo docker run --name stownsapp -e SERVER_PORT=8081 -p 8081:8081 -d --network custom-network jp0123/smarttownsbuild
+sudo docker run --name stownsapp -e SERVER_PORT=8081 -p 8081:8081 -d --network host jp0123/smarttownsbuild
 
 docker images
 docker network ls
