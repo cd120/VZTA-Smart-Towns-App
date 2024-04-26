@@ -63,10 +63,10 @@ sudo docker pull jp0123/smarttownsbuild
 sudo docker run \
  --name myapp1 \
  -e SERVER_PORT=8082 \
- -p 8082:8082 
+ -p 8082:8082 \
  -d --network host jp0123/smarttownsbuild
 
-docker images
+# docker images
 
 # sudo systemctl stop mariadb
 # sudo systemctl disable mariadb
