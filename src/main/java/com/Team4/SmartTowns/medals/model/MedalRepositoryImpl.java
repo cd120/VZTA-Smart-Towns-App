@@ -33,13 +33,13 @@ public class MedalRepositoryImpl implements MedalRepository{
         jdbc.update(sql, username, medalName);
     }
 
-//    @Override
-//    public List<Medal> findMedalsForUser(String username) {
-//        String sql = "SELECT m.* from medal_types m " +
-//                "JOIN medal_users mu ON m.medal_name = mu.medal_name " +
-//                "WHERE mu.username = ?";
-//        return jdbc.query(sql, medalMapper, username);
-//    }
+    @Override
+    public List<Medal> findMedalsForUser(String username) {
+        String sql = "SELECT m.* from medal_types m " +
+                "JOIN medal_users mu ON m.medal_name = mu.medal_name " +
+                "WHERE mu.username = ?";
+        return jdbc.query(sql, medalMapper, username);
+    }
 
     public List<Medal> findAllMedals() {
         String sql = ("Select * from medal_types");

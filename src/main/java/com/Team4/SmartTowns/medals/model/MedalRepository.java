@@ -8,7 +8,7 @@ import java.util.List;
 public interface MedalRepository {
 
     void saveMedalToUser(String username, String medalName);
-//    List<Medal> findMedalsForUser(String username);
+    List<Medal> findMedalsForUser(String username);
 
     List<Medal> findAllMedals();
 

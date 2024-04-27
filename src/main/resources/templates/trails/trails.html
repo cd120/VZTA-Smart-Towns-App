@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:replace="~{/fragments/header :: bootstrap-css}"/>
-    <link th:replace="~{/fragments/header :: mainstyles}"/>
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
     <link rel="stylesheet" href="/stylesheets/trails.css">
     <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
     <script th:src="@{/scripts/dark-mode.js}" defer></script>
@@ -13,58 +13,58 @@
 
 <body>
 <div class="main-container">
-    <header th:replace="~{/fragments/header :: navbar}"></header>
+    <header th:replace="~{fragments/header :: navbar}"></header>
     <div class="page-container">
 
-            <h1>Trails</h1>
-            <p> You can view all the available trails here.</p>
-            <br>
-            <div class="filters">
-                <!--                Search bar that searches by trail name-->
-                <div class="item">
-                    <label for="search" id="search">Search:</label>
-                    <input type="text" id="searchInput" oninput="search()" placeholder="Search trails...">
-                </div>
-                <!--                Filter by location-->
-                <div class="item">
-                    <label for="filter">Filter by Location:</label>
-                    <select id="filter" onchange="filterByLocation()">
-                        <option value="all">All Locations</option>
-                        <th:block th:each="trail :${trails}">
-                            <option th:value="${trail.location}" th:text="${trail.location}"></option>
-                        </th:block>
-                    </select>
-                </div>
+        <h1>Trails</h1>
+        <p> You can view all the available trails here.</p>
+        <br>
+        <div class="filters">
+            <!--                Search bar that searches by trail name-->
+            <div class="item">
+                <label for="search" id="search">Search:</label>
+                <input type="text" id="searchInput" oninput="search()" placeholder="Search trails...">
             </div>
-            <br>
-
-            <div class="trail-container">
-
-                <ul class="trail-list">
-                    <li class="trail-details list-item" th:each="trail: ${trails}">
-
-                        <div class="trail-picture">
-<!--                            <a class="trail-image-container" href="resources/Images/trail1Placeholder.jpg">-->
-<!--                                <img class="trail-image" src="/Images/cardiff-castle-1.jpg" alt="Feature Picture">-->
-<!--                            </a>-->
-                            <a class="trail-image-container">
-                                <img class="trail-image" src="" alt="Feature Picture">
-                            </a>
-                        </div>
-                        <div>
-<!--                            <p><strong>Trail Name: </strong><span th:text="${trail.name}"></span></p>-->
-                            <p><strong><span th:text="${trail.name}"></span></strong></p>
-                            <p><strong>Location: </strong><span th:text="${trail.location}"></span></p>
-                            <p><strong>Description: </strong><span th:text="${trail.description}"></span></p>
-                            <p><strong>Starting Checkpoint: </strong><span
-                                    th:text="${trail.checkpoints[0].name}"></span></p>
-                            <p><a th:href="@{/trails/{id} (id=${trail.id})}" th:text="Details" class="details"></a></p>
-                            <br>
-                        </div>
-                    </li>
-                </ul>
-
+            <!--                Filter by location-->
+            <div class="item">
+                <label for="filter">Filter by Location:</label>
+                <select id="filter" onchange="filterByLocation()">
+                    <option value="all">All Locations</option>
+                    <th:block th:each="trail :${trails}">
+                        <option th:value="${trail.location}" th:text="${trail.location}"></option>
+                    </th:block>
+                </select>
             </div>
+        </div>
+        <br>
+
+        <div class="trail-container">
+
+            <ul class="trail-list">
+                <li class="trail-details list-item" th:each="trail: ${trails}">
+
+                    <div class="trail-picture">
+                        <!--                            <a class="trail-image-container" href="resources/Images/trail1Placeholder.jpg">-->
+                        <!--                                <img class="trail-image" src="/Images/cardiff-castle-1.jpg" alt="Feature Picture">-->
+                        <!--                            </a>-->
+                        <a class="trail-image-container">
+                            <img class="trail-image" src="" alt="Feature Picture">
+                        </a>
+                    </div>
+                    <div>
+                        <!--                            <p><strong>Trail Name: </strong><span th:text="${trail.name}"></span></p>-->
+                        <p><strong><span th:text="${trail.name}"></span></strong></p>
+                        <p><strong>Location: </strong><span th:text="${trail.location}"></span></p>
+                        <p><strong>Description: </strong><span th:text="${trail.description}"></span></p>
+                        <p><strong>Starting Checkpoint: </strong><span
+                                th:text="${trail.checkpoints[0].name}"></span></p>
+                        <p><a th:href="@{/trails/{id} (id=${trail.id})}" th:text="Details" class="details"></a></p>
+                        <br>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
     </div>
 </div>
 <script src="/scripts/trailsScripts.js"></script>

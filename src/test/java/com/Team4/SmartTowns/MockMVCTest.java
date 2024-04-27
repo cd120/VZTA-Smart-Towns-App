@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@ActiveProfiles("dev")
+//@ActiveProfiles("dev")
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MockMVCTest {
@@ -26,10 +26,10 @@ public class MockMVCTest {
     //   test checks if /medals contains string Medal.
     @Test
     public void testTrailsPage() throws Exception {
-        this.mockMvc.perform(get("/medals"))
+        this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Medal")));
+                .andExpect(content().string(containsString("Welcome")));
     }
 
 

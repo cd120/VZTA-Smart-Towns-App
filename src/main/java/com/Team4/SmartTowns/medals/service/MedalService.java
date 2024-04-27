@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface MedalService {
 
-//    void awardMedalToUser(String username);
-//    List<Medal> getMedalsForUser(String username);
+    void awardMedalToUser(String username);
+    List<Medal> getMedalsForUser(String username);
     List<Medal> getAllMedals();
 }

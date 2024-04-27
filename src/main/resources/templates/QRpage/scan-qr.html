@@ -1,35 +1,35 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <link th:replace="~{/fragments/header :: bootstrap-css}"/>-->
-<!--    <link th:replace="~{/fragments/header :: mainstyles}"/>-->
-<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
-<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
-<!--    <script src="/scripts/qrScanner.js"></script>-->
-<!--    <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>-->
-<!--    <script th:src="@{/scripts/dark-mode.js}"></script>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <script src="/scripts/qrScanner.js"></script>
+    <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
+    <script th:src="@{/scripts/dark-mode.js}"></script>
 
-<!--    <title>VZTA Trails</title>-->
-<!--    &lt;!&ndash; JSQR Library &ndash;&gt;-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>-->
+    <title>VZTA Trails</title>
+    <!-- JSQR Library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
 
-<!--</head>-->
-<!--<body>-->
-<!--<div class="main-container">-->
-<!--    <header th:replace="~{/fragments/header :: navbar}"></header>-->
-<!--    <div class="page-container">-->
-<!--        &lt;!&ndash; QR Code Scanner Interface &ndash;&gt;-->
-<!--        <h1>Scan a QR code to add a checkpoint</h1>-->
-<!--        <div class="qr-scanner">-->
-<!--            <video id="qr-video" width="300" height="200"></video>-->
-<!--            <canvas id="qr-canvas" style="display: none;"></canvas>-->
-<!--            <button id="start-scan">Start Scan</button>-->
-<!--            <p id="qr-result">QR Code Result: None</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+</head>
+<body>
+<div class="main-container">
+    <header th:replace="~{fragments/header :: navbar}"></header>
+    <div class="page-container">
+        <!-- QR Code Scanner Interface -->
+        <h1>Scan a QR code to add a checkpoint</h1>
+        <div class="qr-scanner">
+            <video id="qr-video" width="300" height="200"></video>
+            <canvas id="qr-canvas" style="display: none;"></canvas>
+            <button id="start-scan">Start Scan</button>
+            <p id="qr-result">QR Code Result: None</p>
+        </div>
+    </div>
+</div>
 
 
-<!--</body>-->
-<!--</html>-->
+</body>
+</html>

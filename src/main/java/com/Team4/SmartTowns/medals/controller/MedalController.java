@@ -36,15 +36,6 @@ public class MedalController {
         return mvc;
     }
 
-
-    @RequestMapping(path="/login")
-    public ModelAndView login(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("login");
-        return mav;
-    }
-
-
 }
 
 

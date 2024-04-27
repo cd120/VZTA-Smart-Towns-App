@@ -1,108 +1,108 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-<!--    <link th:replace="~{/fragments/header :: bootstrap-css}"/>-->
-<!--    <link th:replace="~{/fragments/header :: mainstyles}"/>-->
-<!--    <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>-->
-<!--    <script th:src="@{/scripts/dark-mode.js}" defer></script>-->
-<!--    <title>VZTA Trails</title>-->
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
+    <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
+    <script th:src="@{/scripts/dark-mode.js}" defer></script>
+    <title>VZTA Trails</title>
 
-<!--    <script>-->
-<!--        function showCheckpoint(index) {-->
-<!--            // Hide all checkpoints-->
-<!--            var checkpoints = document.querySelectorAll('.checkpoint-container');-->
-<!--            checkpoints.forEach(function (checkpoint) {-->
-<!--                checkpoint.style.display = 'none';-->
-<!--            });-->
+    <script>
+        function showCheckpoint(index) {
+            // Hide all checkpoints
+            var checkpoints = document.querySelectorAll('.checkpoint-container');
+            checkpoints.forEach(function (checkpoint) {
+                checkpoint.style.display = 'none';
+            });
 
-<!--            // Show the selected checkpoint-->
-<!--            var selectedCheckpoint = document.getElementById('checkpointContainer_' + index);-->
-<!--            if (selectedCheckpoint) {-->
-<!--                selectedCheckpoint.style.display = 'block';-->
-<!--            }-->
-<!--        }-->
-<!--    </script>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="main-container">-->
-<!--    <header th:replace="~{/fragments/header :: navbar}"></header>-->
-<!--    <div class="page-container">-->
+            // Show the selected checkpoint
+            var selectedCheckpoint = document.getElementById('checkpointContainer_' + index);
+            if (selectedCheckpoint) {
+                selectedCheckpoint.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="main-container">
+    <header th:replace="~{fragments/header :: navbar}"></header>
+    <div class="page-container">
 
-<!--        <h1>Create Trail</h1>-->
-<!--        <br>-->
+        <h1>Create Trail</h1>
+        <br>
 
-<!--        <form class="container" th:method="post" th:object="${trail}" th:action="@{/admin/trails/add}">-->
+        <form class="container" th:method="post" th:object="${trail}" th:action="@{/admin/trails/add}">
 
-<!--            <div class="mb-3">-->
-<!--                <label for="trailTown" class="form-label"><h2>Choose Trail Location:</h2></label>-->
-<!--                <select th:field="*{location}" id="trailTown" class="form-select">-->
-<!--                    <option value="town1">Cardiff</option>-->
-<!--                    <option value="town2">Newport</option>-->
-<!--                    <option value="town3">Swansea</option>-->
-<!--                    <option value="town4">Pontypridd</option>-->
-<!--                </select>-->
-<!--            </div>-->
+            <div class="mb-3">
+                <label for="trailTown" class="form-label"><h2>Choose Trail Location:</h2></label>
+                <select th:field="*{location}" id="trailTown" class="form-select">
+                    <option value="town1">Cardiff</option>
+                    <option value="town2">Newport</option>
+                    <option value="town3">Swansea</option>
+                    <option value="town4">Pontypridd</option>
+                </select>
+            </div>
 
-<!--            <div class="mb-3">-->
-<!--                <label for="trailName" class="form-label"><h2>Trail Name:</h2></label>-->
-<!--                <input th:field="*{name}" type="text" id="trailName" class="form-control" required>-->
-<!--            </div>-->
+            <div class="mb-3">
+                <label for="trailName" class="form-label"><h2>Trail Name:</h2></label>
+                <input th:field="*{name}" type="text" id="trailName" class="form-control" required>
+            </div>
 
-<!--            <div class="mb-3">-->
-<!--                <label for="trailDescription" class="form-label"><h2>Trail Description:</h2></label>-->
-<!--                <textarea th:field="*{description}" type="text" id="trailDescription" class="form-control" required></textarea>-->
-<!--            </div>-->
+            <div class="mb-3">
+                <label for="trailDescription" class="form-label"><h2>Trail Description:</h2></label>
+                <textarea th:field="*{description}" type="text" id="trailDescription" class="form-control" required></textarea>
+            </div>
 
-<!--            <h2>Enter 20 Checkpoints:</h2>-->
-<!--            <br>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="selectCheckpoint" class="form-label"><h3>Select Checkpoint to Edit:</h3></label>-->
-<!--                <select onchange="showCheckpoint(this.value)" id="selectCheckpoint" class="form-select">-->
-<!--                    <option value="-1">Select a Checkpoint</option>-->
-<!--                    <th:block th:each="index : ${#numbers.sequence(0, 19)}">-->
-<!--                        <option th:value="${index}" th:text="'Checkpoint ' + ${index + 1}"></option>-->
-<!--                    </th:block>-->
-<!--                </select>-->
-<!--            </div>-->
+            <h2>Enter 20 Checkpoints:</h2>
+            <br>
+            <div class="mb-3">
+                <label for="selectCheckpoint" class="form-label"><h3>Select Checkpoint to Edit:</h3></label>
+                <select onchange="showCheckpoint(this.value)" id="selectCheckpoint" class="form-select">
+                    <option value="-1">Select a Checkpoint</option>
+                    <th:block th:each="index : ${#numbers.sequence(0, 19)}">
+                        <option th:value="${index}" th:text="'Checkpoint ' + ${index + 1}"></option>
+                    </th:block>
+                </select>
+            </div>
 
-<!--            <div th:each="index : ${#numbers.sequence(0, 19)}" class="mb-4 checkpoint-container" style="display: none;"-->
-<!--                 th:id="${'checkpointContainer_' + index}">-->
+            <div th:each="index : ${#numbers.sequence(0, 19)}" class="mb-4 checkpoint-container" style="display: none;"
+                 th:id="${'checkpointContainer_' + index}">
 
-<!--                <h3 th:text="'Checkpoint ' + ${index + 1}"></h3>-->
+                <h3 th:text="'Checkpoint ' + ${index + 1}"></h3>
 
-<!--                <div class="mb-3">-->
-<!--                    <label th:for="${'checkpointName_' + index}" class="form-label">Name:</label>-->
-<!--                    <input th:field="*{checkpoints[__${index}__].name}" type="text" th:id="${'checkpointName_' + index}"-->
-<!--                           class="form-control">-->
-<!--                </div>-->
+                <div class="mb-3">
+                    <label th:for="${'checkpointName_' + index}" class="form-label">Name:</label>
+                    <input th:field="*{checkpoints[__${index}__].name}" type="text" th:id="${'checkpointName_' + index}"
+                           class="form-control">
+                </div>
 
-<!--                <div class="mb-3">-->
-<!--                    <label th:for="${'Longitude_' + index}" class="form-label">Longitude:</label>-->
-<!--                    <input th:field="*{checkpoints[__${index}__].coordinates[0]}" type="text"-->
-<!--                           th:id="${'Longitude_' + index}" class="form-control">-->
-<!--                </div>-->
+                <div class="mb-3">
+                    <label th:for="${'Longitude_' + index}" class="form-label">Longitude:</label>
+                    <input th:field="*{checkpoints[__${index}__].coordinates[0]}" type="text"
+                           th:id="${'Longitude_' + index}" class="form-control">
+                </div>
 
-<!--                <div class="mb-3">-->
-<!--                    <label th:for="${'Latitude_' + index}" class="form-label">Latitude:</label>-->
-<!--                    <input th:field="*{checkpoints[__${index}__].coordinates[1]}" type="text"-->
-<!--                           th:id="${'Latitude_' + index}" class="form-control">-->
-<!--                </div>-->
+                <div class="mb-3">
+                    <label th:for="${'Latitude_' + index}" class="form-label">Latitude:</label>
+                    <input th:field="*{checkpoints[__${index}__].coordinates[1]}" type="text"
+                           th:id="${'Latitude_' + index}" class="form-control">
+                </div>
 
-<!--                <div class="mb-3">-->
-<!--                    <label th:for="${'checkpointDescription_' + index}" class="form-label">Description:</label>-->
-<!--                    <textarea th:field="*{checkpoints[__${index}__].description}"-->
-<!--                              th:id="${'checkpointDescription_' + index}" class="form-control"></textarea>-->
-<!--                </div>-->
+                <div class="mb-3">
+                    <label th:for="${'checkpointDescription_' + index}" class="form-label">Description:</label>
+                    <textarea th:field="*{checkpoints[__${index}__].description}"
+                              th:id="${'checkpointDescription_' + index}" class="form-control"></textarea>
+                </div>
 
-<!--            </div>-->
+            </div>
 
 
-<!--            <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--            <br><br>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br><br>
+        </form>
+    </div>
+</div>
+</body>
+</html>

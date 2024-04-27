@@ -22,40 +22,41 @@
 
         <li><a th:href="@{/}">Home</a></li>
         <li><a th:href="@{/trails}">Trails</a></li>
+        <li><a th:href="@{/leaderboard}">Leaderboard</a></li>
         <li><a th:href="@{/medals}">Medals</a></li>
 
-<!--        <div th:if="${#authorization.expression('isAuthenticated()')}">-->
-<!--            <li th:if="${#authorization.expression('hasRole(''USER'')')}">-->
-<!--                <a th:href="@{/profile}">Profile</a>-->
-<!--            </li>-->
-<!--        </div>-->
-<!--        <div th:if="${#authorization.expression('isAuthenticated()')}">-->
-<!--            <li th:if="${#authorization.expression('hasRole(''USER'')')}">-->
-<!--                <a th:href="@{/scan}">Scan QR</a>-->
-<!--            </li>-->
-<!--        </div>-->
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <li th:if="${#authorization.expression('hasRole(''USER'')')}">
+                <a th:href="@{/profile}">Profile</a>
+            </li>
+        </div>
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <li th:if="${#authorization.expression('hasRole(''USER'')')}">
+                <a th:href="@{/scan}">Scan QR</a>
+            </li>
+        </div>
 
-<!--        <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">-->
-<!--            <a th:href="@{/admin/trails/add}">Add Trail</a>-->
-<!--        </li>-->
+        <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+            <a th:href="@{/admin/trails/add}">Add Trail</a>
+        </li>
 
     </ul>
 
 
     <ul>
-<!--        <li th:if="${#authorization.expression('isAuthenticated()')}">-->
-<!--            Welcome, <span th:text="${#authorization.getAuthentication().getName()}"></span>-->
-<!--        </li>-->
-<!--        <li th:if="${#authorization.expression('isAuthenticated()')}">-->
-<!--            <form th:method="post" th:action="@{/logout}">-->
-<!--                <button class="nav-button" type="submit">Logout</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--        <li th:unless="${#authorization.expression('isAuthenticated()')}">-->
-<!--            <form th:method="get" th:action="@{/login}">-->
-<!--                <button class="nav-button" type="submit">Login</button>-->
-<!--            </form>-->
-<!--        </li>-->
+        <li th:if="${#authorization.expression('isAuthenticated()')}">
+            Welcome, <span th:text="${#authorization.getAuthentication().getName()}"></span>
+        </li>
+        <li th:if="${#authorization.expression('isAuthenticated()')}">
+            <form th:method="post" th:action="@{/logout}">
+                <button class="nav-button" type="submit">Logout</button>
+            </form>
+        </li>
+        <li th:unless="${#authorization.expression('isAuthenticated()')}">
+            <form th:method="get" th:action="@{/login}">
+                <button class="nav-button" type="submit">Login</button>
+            </form>
+        </li>
         <li>
             <button class="nav-button" id="darkModeToggle">theme</button>
         </li>

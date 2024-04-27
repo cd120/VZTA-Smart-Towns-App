@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link th:replace="~{/fragments/header :: bootstrap-css}"/>
-    <link th:replace="~{/fragments/header :: mainstyles}"/>
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
     <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
     <script th:src="@{/scripts/dark-mode.js}" defer></script>
     <title>VZTA Trails</title>
 </head>
 <body>
 <div class="main-container">
-    <header th:replace="~{/fragments/header :: navbar}"></header>
+    <header th:replace="~{fragments/header :: navbar}"></header>
     <div class="page-container">
-        <h1>Welcome to VZTA Trails.!</h1>
+        <h1>Welcome to VZTA Trails!</h1>
         <br>
         <p>Explore the world around you in a whole new way with VZTA Trails - your gateway to a gamified trail experience!</p>
         <br>
@@ -22,14 +22,7 @@
         <p>Users can embark on these thrilling trails, discovering checkpoints and collecting them using QR codes.</p>
         <p>It's a blend of virtual excitement and real-world exploration, making VZTA Trails the perfect platform for adventure seekers and trail enthusiasts.</p>
         <br>
-<!--        <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/test}">Generate Test Users and Trails</a>-->
-
-        <li>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
-        </li>
-
+        <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/test}">Generate Test Users and Trails</a>
     </div>
 </div>
 </body>
