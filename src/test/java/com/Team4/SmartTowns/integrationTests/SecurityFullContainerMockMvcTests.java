@@ -38,7 +38,7 @@ public class SecurityFullContainerMockMvcTests {
     // no admin rights accessing path /admin/trails/add, returns 403 error, test passes.
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
-    public void testAddTrailPageNotAdmin() throws Exception {
+    public void test403Forbidden() throws Exception {
         this.mockMvc.perform(get("/admin/trails/add")
                         .with(SecurityMockMvcRequestPostProcessors.user("user").roles("USER")))
                 .andDo(print())

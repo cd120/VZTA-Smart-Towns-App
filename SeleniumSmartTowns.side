@@ -1,0 +1,911 @@
+{
+  "id": "c95b7642-8656-475c-ad81-7dfc7026d180",
+  "version": "2.0",
+  "name": "SmartTownsProject",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "b033867c-fb5a-4b14-be37-b5d8510d0747",
+    "name": "testEverything",
+    "commands": [{
+      "id": "cea72fdc-7234-46ea-a31f-09fca77b09dc",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aafd0366-9c40-4a44-9f1d-b62b0ee480df",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1647x1032",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6bdf3427-2c11-42ec-b4cd-d42d7b41b142",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "da237e66-755f-4fe7-b96c-aa1463a0f215",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trails",
+      "targets": [
+        ["linkText=Trails", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Trails')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trails')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Trails')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc578c1d-c9f8-43c9-a8a7-ab7730fbe04d",
+      "comment": "",
+      "command": "click",
+      "target": "id=filter",
+      "targets": [
+        ["id=filter", "id"],
+        ["css=#filter", "css:finder"],
+        ["xpath=//select[@id='filter']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "213b4fd6-4851-442d-8ebf-de76efbb8fec",
+      "comment": "",
+      "command": "select",
+      "target": "id=filter",
+      "targets": [],
+      "value": "label=Newport"
+    }, {
+      "id": "1c7c57a6-79c9-40bd-a1b1-a7b8f4972079",
+      "comment": "",
+      "command": "click",
+      "target": "id=filter",
+      "targets": [
+        ["id=filter", "id"],
+        ["css=#filter", "css:finder"],
+        ["xpath=//select[@id='filter']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a6ea3a3-3d6b-4866-a6f2-ef028e25ae57",
+      "comment": "",
+      "command": "select",
+      "target": "id=filter",
+      "targets": [],
+      "value": "label=Swansea"
+    }, {
+      "id": "7056f6a2-4c4d-4987-a98d-c647d4492b29",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de4c6d96-02dd-4519-a7f4-71abd3077465",
+      "comment": "",
+      "command": "click",
+      "target": "id=filter",
+      "targets": [
+        ["id=filter", "id"],
+        ["css=#filter", "css:finder"],
+        ["xpath=//select[@id='filter']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fff53f36-dce2-49bc-abf3-0941d040bcaa",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa79cbfa-1829-4904-adf9-66a6997740f1",
+      "comment": "",
+      "command": "click",
+      "target": "id=filter",
+      "targets": [
+        ["id=filter", "id"],
+        ["css=#filter", "css:finder"],
+        ["xpath=//select[@id='filter']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb3a43ed-725d-4015-86ca-775920ee9748",
+      "comment": "",
+      "command": "select",
+      "target": "id=filter",
+      "targets": [],
+      "value": "label=All Locations"
+    }, {
+      "id": "c631f09c-b6e1-4523-9b1f-d72dda9d4a99",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7290947c-d5cb-475e-a0e8-f8a2bb92d856",
+      "comment": "",
+      "command": "type",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "cardiff"
+    }, {
+      "id": "6689665d-aba0-4df0-9a0f-b2b9babad4b9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trails",
+      "targets": [
+        ["linkText=Trails", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Trails')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trails')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Trails')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "77065a24-d4b4-4599-889d-e6246f7032d6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Leaderboard",
+      "targets": [
+        ["linkText=Leaderboard", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Leaderboard')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/leaderboard')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Leaderboard')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bef59081-4d0f-41eb-bf95-61733bfdd717",
+      "comment": "",
+      "command": "click",
+      "target": "id=sort",
+      "targets": [
+        ["id=sort", "id"],
+        ["css=#sort", "css:finder"],
+        ["xpath=//select[@id='sort']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "96f9ab5c-562d-438a-9af9-97dbc352f49f",
+      "comment": "",
+      "command": "click",
+      "target": "id=sort",
+      "targets": [
+        ["id=sort", "id"],
+        ["css=#sort", "css:finder"],
+        ["xpath=//select[@id='sort']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61cb75ec-ae3a-4e4f-a507-4e7922f80128",
+      "comment": "",
+      "command": "select",
+      "target": "id=sort",
+      "targets": [],
+      "value": "label=Username"
+    }, {
+      "id": "3d844956-ef14-4bc5-be8d-079f45452199",
+      "comment": "",
+      "command": "click",
+      "target": "id=sort",
+      "targets": [
+        ["id=sort", "id"],
+        ["css=#sort", "css:finder"],
+        ["xpath=//select[@id='sort']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e82bbdfa-b702-4737-9311-6f9c08cf7039",
+      "comment": "",
+      "command": "select",
+      "target": "id=sort",
+      "targets": [],
+      "value": "label=Position"
+    }, {
+      "id": "07e1d05b-de5a-4eb2-bb77-1664326a0dc1",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchbar",
+      "targets": [
+        ["id=searchbar", "id"],
+        ["css=#searchbar", "css:finder"],
+        ["xpath=//input[@id='searchbar']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aff3d522-a7d4-41c6-965f-9d62efb74a8e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.item:nth-child(1)",
+      "targets": [
+        ["css=.item:nth-child(1)", "css:finder"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad64dcb5-c42a-49f1-b39d-dd16383061bf",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Medals",
+      "targets": [
+        ["linkText=Medals", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Medals')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/medals')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Medals')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dfc3dd34-6bab-4b25-8a7a-fa35110e3c0d",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > .nav-button",
+      "targets": [
+        ["css=form > .nav-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f3b00c3-5bd6-4914-bf82-4786234d1640",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb5ea804-83ec-4637-b2aa-89e030d621a3",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "f779bc1d-9f64-422a-9798-6da34aec3cdd",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "028de986-7587-498c-a981-db903778f433",
+      "comment": "",
+      "command": "click",
+      "target": "id=SignIn",
+      "targets": [
+        ["id=SignIn", "id"],
+        ["css=#SignIn", "css:finder"],
+        ["xpath=//input[@id='SignIn']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a92506b-e125-42fd-91a0-d60bf20a6145",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Add Trail",
+      "targets": [
+        ["linkText=Add Trail", "linkText"],
+        ["css=li:nth-child(7) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Add Trail')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/admin/trails/add')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Add Trail')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e9f932d-384e-4385-93ff-8345d2387e72",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailName",
+      "targets": [
+        ["id=trailName", "id"],
+        ["name=name", "name"],
+        ["css=#trailName", "css:finder"],
+        ["xpath=//input[@id='trailName']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f438fad7-db9e-43b6-8712-fad4afbedcff",
+      "comment": "",
+      "command": "type",
+      "target": "id=trailName",
+      "targets": [
+        ["id=trailName", "id"],
+        ["name=name", "name"],
+        ["css=#trailName", "css:finder"],
+        ["xpath=//input[@id='trailName']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "salmon sandwich"
+    }, {
+      "id": "88dfe8cf-9b27-4f2f-a6ea-8fcf5054453f",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailDescription",
+      "targets": [
+        ["id=trailDescription", "id"],
+        ["name=description", "name"],
+        ["css=#trailDescription", "css:finder"],
+        ["xpath=//textarea[@id='trailDescription']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aaa2530e-5849-4a32-93ea-ca2db34b32cf",
+      "comment": "",
+      "command": "type",
+      "target": "id=trailDescription",
+      "targets": [
+        ["id=trailDescription", "id"],
+        ["name=description", "name"],
+        ["css=#trailDescription", "css:finder"],
+        ["xpath=//textarea[@id='trailDescription']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "8f11a8cc-4906-44a6-a8ab-8d5566a9eedc",
+      "comment": "",
+      "command": "click",
+      "target": "id=createTrail",
+      "targets": [
+        ["id=createTrail", "id"],
+        ["css=#createTrail", "css:finder"],
+        ["xpath=//button[@id='createTrail']", "xpath:attributes"],
+        ["xpath=//div/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9222a62-21c5-4b4c-bd8a-802eb99de1ec",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trails",
+      "targets": [
+        ["linkText=Trails", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Trails')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trails')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Trails')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "66780f37-8037-43a5-8e40-694759bec5d5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Add Trail",
+      "targets": [
+        ["linkText=Add Trail", "linkText"],
+        ["css=li:nth-child(7) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Add Trail')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/admin/trails/add')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Add Trail')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb08beb6-b975-4a27-ae3b-f7112926409f",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailName",
+      "targets": [
+        ["id=trailName", "id"],
+        ["name=name", "name"],
+        ["css=#trailName", "css:finder"],
+        ["xpath=//input[@id='trailName']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "561a3d02-f5ad-494e-8939-07eb36f07f3a",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailTown",
+      "targets": [
+        ["id=trailTown", "id"],
+        ["name=location", "name"],
+        ["css=#trailTown", "css:finder"],
+        ["xpath=//select[@id='trailTown']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2b85698-8417-4212-8228-289dcb964c92",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailTown",
+      "targets": [
+        ["id=trailTown", "id"],
+        ["name=location", "name"],
+        ["css=#trailTown", "css:finder"],
+        ["xpath=//select[@id='trailTown']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fd6a9d5-efe1-4789-a0c1-c0dc1a3ee853",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailName",
+      "targets": [
+        ["id=trailName", "id"],
+        ["name=name", "name"],
+        ["css=#trailName", "css:finder"],
+        ["xpath=//input[@id='trailName']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cc64b43-5d1f-4784-b244-25963fdfecef",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailName",
+      "targets": [
+        ["id=trailName", "id"],
+        ["name=name", "name"],
+        ["css=#trailName", "css:finder"],
+        ["xpath=//input[@id='trailName']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0d67dca-7e14-4d37-9466-c4141eda07c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container > .mb-3:nth-child(4)",
+      "targets": [
+        ["css=.container > .mb-3:nth-child(4)", "css:finder"],
+        ["xpath=//div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7cfa203-11a1-4639-851f-f4e27aca8c8c",
+      "comment": "",
+      "command": "click",
+      "target": "id=trailName",
+      "targets": [
+        ["id=trailName", "id"],
+        ["name=name", "name"],
+        ["css=#trailName", "css:finder"],
+        ["xpath=//input[@id='trailName']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04b5cc9d-0b79-4370-a5f2-bcff47e6138c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container > .mb-3:nth-child(4)",
+      "targets": [
+        ["css=.container > .mb-3:nth-child(4)", "css:finder"],
+        ["xpath=//div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cabbb032-4854-4e0f-81f0-0ddfd9b6c412",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Leaderboard",
+      "targets": [
+        ["linkText=Leaderboard", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Leaderboard')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/leaderboard')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Leaderboard')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f4631f1-f452-49e7-a851-838ae1aaf1c2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Medals",
+      "targets": [
+        ["linkText=Medals", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Medals')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/medals')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Medals')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2ee029a-1bda-4b77-aec6-cbdcd876aa13",
+      "comment": "",
+      "command": "click",
+      "target": "css=ul:nth-child(1) > li:nth-child(2)",
+      "targets": [
+        ["css=ul:nth-child(1) > li:nth-child(2)", "css:finder"],
+        ["xpath=//li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'Trails')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d291a0ce-12b8-486b-9720-c967fc3f3bda",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trails",
+      "targets": [
+        ["linkText=Trails", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Trails')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trails')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Trails')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a7a811bd-3633-4771-b6e3-5422b22a70b8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Medals",
+      "targets": [
+        ["linkText=Medals", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Medals')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/medals')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Medals')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "949be8fb-1bc4-4cf0-a73b-c57ce9b25c24",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Leaderboard",
+      "targets": [
+        ["linkText=Leaderboard", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Leaderboard')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/leaderboard')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Leaderboard')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aabe8705-74a7-4487-87a4-bd3a40d46004",
+      "comment": "",
+      "command": "click",
+      "target": "id=darkModeToggle",
+      "targets": [
+        ["id=darkModeToggle", "id"],
+        ["css=#darkModeToggle", "css:finder"],
+        ["xpath=//button[@id='darkModeToggle']", "xpath:attributes"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'theme')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b92bab2-aa3d-422f-83bf-97fdb0f30916",
+      "comment": "",
+      "command": "click",
+      "target": "id=darkModeToggle",
+      "targets": [
+        ["id=darkModeToggle", "id"],
+        ["css=#darkModeToggle", "css:finder"],
+        ["xpath=//button[@id='darkModeToggle']", "xpath:attributes"],
+        ["xpath=//li[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'theme')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "404a8c6a-f21d-4ed1-a4ec-7ea1a6f6d034",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-button:nth-child(2)",
+      "targets": [
+        ["css=.nav-button:nth-child(2)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "69948595-28eb-4e8f-8f59-b296f9792116",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > .nav-button",
+      "targets": [
+        ["css=form > .nav-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "30bdb1df-ea7c-46df-935e-c8ee7b2b6de7",
+      "comment": "",
+      "command": "click",
+      "target": "id=darkModeToggle",
+      "targets": [
+        ["id=darkModeToggle", "id"],
+        ["css=#darkModeToggle", "css:finder"],
+        ["xpath=//button[@id='darkModeToggle']", "xpath:attributes"],
+        ["xpath=//li[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'theme')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9d87f50-9b17-4103-bb4c-0e407e5ebbfd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mb-3:nth-child(2)",
+      "targets": [
+        ["css=.mb-3:nth-child(2)", "css:finder"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "37a42dbd-e7bf-48dd-994f-f3a149aaf8bd",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "485ae170-f5ef-4ad7-ba86-c7fd761bb44e",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "bob"
+    }, {
+      "id": "35cb8bb2-8442-44f8-a1e0-6fb8496ff0d4",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "bob"
+    }, {
+      "id": "5ae17ea0-0050-4b04-a81d-a9db51e46b28",
+      "comment": "",
+      "command": "click",
+      "target": "id=SignIn",
+      "targets": [
+        ["id=SignIn", "id"],
+        ["css=#SignIn", "css:finder"],
+        ["xpath=//input[@id='SignIn']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "912a18f8-78f6-4d4a-a054-40b1d1155be7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Profile",
+      "targets": [
+        ["linkText=Profile", "linkText"],
+        ["css=div:nth-child(5) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Profile')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/profile')]", "xpath:href"],
+        ["xpath=//div/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Profile')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d15c3c0-396a-47ea-a12c-5cc66a0ef7e6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Medals",
+      "targets": [
+        ["linkText=Medals", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Medals')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/medals')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Medals')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c83bc190-10c7-4248-9f6f-2f8ff3460e3e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Leaderboard",
+      "targets": [
+        ["linkText=Leaderboard", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Leaderboard')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/leaderboard')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Leaderboard')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "16f7643b-8e64-44d3-b929-152ba5b22ce8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Scan QR",
+      "targets": [
+        ["linkText=Scan QR", "linkText"],
+        ["css=div:nth-child(6) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Scan QR')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/scan')]", "xpath:href"],
+        ["xpath=//div[2]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Scan QR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb2df428-6382-4f05-98f8-800bd7b2589b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Profile",
+      "targets": [
+        ["linkText=Profile", "linkText"],
+        ["css=div:nth-child(5) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Profile')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/profile')]", "xpath:href"],
+        ["xpath=//div/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Profile')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e232768-0ee4-45b0-9c81-487af80dbf5d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Leaderboard",
+      "targets": [
+        ["linkText=Leaderboard", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Leaderboard')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/leaderboard')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Leaderboard')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d80f12b5-b29a-4e2a-af43-a98eee338b0a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Trails",
+      "targets": [
+        ["linkText=Trails", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Trails')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trails')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Trails')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f2ed207-88d5-4d38-b275-1e5de4f730ae",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=ul > li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "81cfe7fa-7bbd-4580-94fc-c4f22265d6fc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-button:nth-child(2)",
+      "targets": [
+        ["css=.nav-button:nth-child(2)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7211278-4cff-4cfa-b84f-2e1d3d3e93e8",
+      "comment": "",
+      "command": "click",
+      "target": "id=darkModeToggle",
+      "targets": [
+        ["id=darkModeToggle", "id"],
+        ["css=#darkModeToggle", "css:finder"],
+        ["xpath=//button[@id='darkModeToggle']", "xpath:attributes"],
+        ["xpath=//li[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'theme')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "799d8db3-2b54-44fb-bbd5-f8d13d5ec074",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "39dc795b-8d89-47b8-9280-67d01a0b841a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

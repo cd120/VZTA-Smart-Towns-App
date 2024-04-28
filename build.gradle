@@ -27,6 +27,8 @@ repositories {
 }
 
 dependencies {
+	testImplementation 'org.projectlombok:lombok:1.18.22'
+	testImplementation 'junit:junit:4.13.1'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -44,6 +46,12 @@ dependencies {
 	testImplementation 'com.h2database:h2'
 
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	testImplementation("io.github.bonigarcia:webdrivermanager:5.1.0")
+	testImplementation ("org.apache.httpcomponents.client5:httpclient5:5.2.1")
+	//selenium
+//	testImplementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.32'
+	testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.0'
 
 	/// Liquibase core
 ////	implementation 'org.liquibase:liquibase-core'

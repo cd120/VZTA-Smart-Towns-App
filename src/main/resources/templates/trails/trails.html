@@ -38,7 +38,7 @@
         </div>
         <br>
 
-        <div class="trail-container">
+        <div class="trail-container" id="trailContainer">
 
             <ul class="trail-list">
                 <li class="trail-details list-item" th:each="trail: ${trails}">
@@ -53,7 +53,7 @@
                     </div>
                     <div>
                         <!--                            <p><strong>Trail Name: </strong><span th:text="${trail.name}"></span></p>-->
-                        <p><strong><span th:text="${trail.name}"></span></strong></p>
+                        <p ><strong><span th:text="${trail.name}"></span></strong></p>
                         <p><strong>Location: </strong><span th:text="${trail.location}"></span></p>
                         <p><strong>Description: </strong><span th:text="${trail.description}"></span></p>
                         <p><strong>Starting Checkpoint: </strong><span
