@@ -1,7 +1,7 @@
 variable "flavor" { default = "m1.large" }
 variable "image" { default = "Debian Buster 10.11.1 20211029" }
 
-variable "name" { default = "DebianLiquibaseServer" }
+variable "name" { default = "DebianLiquibase" }
 
 variable "network" { default = "c23077813_network" }   # you need to change this
 
