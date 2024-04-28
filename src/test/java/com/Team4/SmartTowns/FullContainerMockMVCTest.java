@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,19 +15,30 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MockMVCTest2 {
+public class FullContainerMockMVCTest {
 
 
     @Autowired
     private MockMvc mockMvc;
 
-    //   testing h2 database connection, "fake bronze" comes back as success.
+    //   test checks if / contains Welcome. Test Passes.
+    @Test
+    public void testGreetingPage() throws Exception {
+        this.mockMvc.perform(get("/"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Welcome")));
+    }
+
+
+
+    //   testing /medals to contain string mockBronze of h2 database. Test Passes.
     @Test
     public void testMockDbMedal() throws Exception {
         this.mockMvc.perform(get("/medals"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("fake silver")));
+                .andExpect(content().string(containsString("mockBronze")));
     }
 
 

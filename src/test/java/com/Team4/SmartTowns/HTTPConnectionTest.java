@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,7 +39,8 @@ public class HTTPConnectionTest {
 
     //testing access to the mock database , finding medal "mockBronze", test passes.
     @Test
+    @WithMockUser(username = "user", roles = {"USER"})
     public void dbMedalTest() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class)).contains ("mockBronze");
+        assert this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class).contains ("mockBronze");
     }
 }

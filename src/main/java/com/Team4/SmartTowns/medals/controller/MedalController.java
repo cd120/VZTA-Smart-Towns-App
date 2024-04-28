@@ -23,11 +23,6 @@ public class MedalController {
         this.medalService = medalService;
     }
 
-//    @Autowired
-//    public MedalController(MedalRepository pRepo) {
-//        medalRepo = pRepo
-//    }
-
     @GetMapping("/medals")
     public ModelAndView showMedals(Model model) {
         ModelAndView mvc = new ModelAndView("/medals/medals");

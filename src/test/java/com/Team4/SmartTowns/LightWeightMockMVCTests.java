@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -33,28 +34,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(MedalController.class)
-
-
 public class LightWeightMockMVCTests {
-
 
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private MedalService medalService;
 
-    //Testing container, finds "Welcome", test passes.
+    //Testing lightweight container, on path / contains string "Welcome", test passes.
+
     @Test
-//    @WithMockUser(username = "user", roles = {"USER"})
-    public void testMockDbMedal() throws Exception {
+    @WithMockUser(username = "user", roles = {"USER"})
+    public void testGreeting() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Welcome")));
     }
 
-    //Testing new medal, does not use any db, test passes.
+    //Testing new medal injection, on path /medals, for mockSilver object, test passes.
     @Test
+    @WithMockUser(username = "user", roles = {"USER"})
     public void getMedalTest() throws Exception {
 
         Medal medal = new Medal("mockSilver", "fake silver");
