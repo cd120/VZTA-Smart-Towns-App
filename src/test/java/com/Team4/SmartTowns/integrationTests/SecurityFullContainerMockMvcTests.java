@@ -25,7 +25,7 @@ public class SecurityFullContainerMockMvcTests {
     @Autowired
     private MockMvc mockMvc;
 
-    // full mock mvc with security tests user with no admin rights accessing path /admin/** returns 403 error.
+    // full mock mvc with security tests user with no admin rights accessing path /admin/** returns 403 error, test passes.
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
     public void testAddTrailPageNotAdmin() throws Exception {

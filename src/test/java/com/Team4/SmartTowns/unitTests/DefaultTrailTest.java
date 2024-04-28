@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class DefaultTrailTest {
 
-    //Testing testCreateTempTrail function
+    //Testing CreateTempTrail method works, test passes.
     @Test
     void testCreateTempTrail() {
         // Arrange

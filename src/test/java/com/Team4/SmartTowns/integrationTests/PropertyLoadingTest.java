@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-//Testing mock db is set up properly to with data injections.
+//Testing mock db is set up properly with data injection
 @SpringBootTest
 @ActiveProfiles("test")
 public class PropertyLoadingTest {

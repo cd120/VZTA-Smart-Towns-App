@@ -21,7 +21,7 @@ public class HTTPConnectionTests {
     private TestRestTemplate restTemplate;
 
 
-    //can access server, by injecting request to server to welcome page, finding "Welcome", test passes.
+    //can access server, by requesting server index page /, finding "Welcome", test passes.
 
     @Test
 

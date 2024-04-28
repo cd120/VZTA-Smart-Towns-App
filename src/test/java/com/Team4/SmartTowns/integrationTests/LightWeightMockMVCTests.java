@@ -52,7 +52,7 @@ public class LightWeightMockMVCTests {
                 .andExpect(content().string(containsString("Welcome")));
     }
 
-    //Testing new medal injection, on path /medals, for mockSilver object, test passes.
+    //Testing new medal injection, at path /medals, for mockSilver object, test passes.
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
     public void getMedalTest() throws Exception {
@@ -66,10 +66,6 @@ public class LightWeightMockMVCTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("mockSilver")));
     }
-
-//    private BDDMockito given(List<Medal> medalList) {
-//        return null;
-//    }
 
 
 }

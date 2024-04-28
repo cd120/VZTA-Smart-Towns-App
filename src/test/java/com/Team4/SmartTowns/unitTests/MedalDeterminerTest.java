@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MedalDeterminerTest {
 
+    // testing helper method determineMedal works as intended, test passes.
     public static class MedalDeterminer {
 
         private int sumCheckpoints;

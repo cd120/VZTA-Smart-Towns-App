@@ -8,6 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+//testng function createTempCheckpoint() works as intended, test passes.
 public class DefaultCheckpointTest {
 
     @Test

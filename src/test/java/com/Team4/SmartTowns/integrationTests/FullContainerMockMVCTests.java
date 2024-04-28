@@ -26,7 +26,7 @@ public class FullContainerMockMVCTests {
     @Autowired
     private MockMvc mockMvc;
 
-    //   test checks if path / contains Welcome. Test Passes.
+    //   testing if path / contains Welcome., test passes.
     @Test
     public void testGreetingPage() throws Exception {
         this.mockMvc.perform(get("/"))
@@ -36,7 +36,7 @@ public class FullContainerMockMVCTests {
     }
 
 
-    //   testing path /medals contains string mockBronze of h2 database. Test Passes.
+    //   testing path /medals contains string mockBronze in h2 database, test passes.
     @Test
     public void testMockDbMedal() throws Exception {
         this.mockMvc.perform(get("/medals"))
