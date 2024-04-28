@@ -49,11 +49,11 @@ dependencies {
 //	testImplementation 'org.mockito:mockito-core:5.8.0'
 //	testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
 //
-//	// Liquibase core
-//	implementation 'org.liquibase:liquibase-core'
-//	// Database driver
+	// Liquibase core
+	implementation 'org.liquibase:liquibase-core'
+	// Database driver
 //	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-//}
+
 
 
 
