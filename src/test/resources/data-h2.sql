@@ -5,7 +5,7 @@ values
 
 -- add default admin account
 insert into user_table (username, password, enabled)
-values ('admin', '$2a$12$zKMHlbOC7UXOLCdq5ZibC.ANCzcxgpoGbode97Dc2Fi1zakG2fP6O', true);
+values ('admin', 'admin', false);
 
 insert into users_roles (username, role_id)
 values ('admin', 1);

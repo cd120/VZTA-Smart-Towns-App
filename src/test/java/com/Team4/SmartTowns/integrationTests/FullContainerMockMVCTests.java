@@ -26,7 +26,7 @@ public class FullContainerMockMVCTests {
     @Autowired
     private MockMvc mockMvc;
 
-    //   testing if path / contains Welcome., test passes.
+    //   testing if path / contains Welcome, test passes.
     @Test
     public void testGreetingPage() throws Exception {
         this.mockMvc.perform(get("/"))

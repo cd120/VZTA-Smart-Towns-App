@@ -127,9 +127,13 @@ package com.Team4.SmartTowns.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -138,6 +142,8 @@ import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 
@@ -195,26 +201,28 @@ public class SecurityConfiguration {
     };
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        http
 //                .headers((headers) -> headers.disable());
-        http
-                .csrf(AbstractHttpConfigurer::disable)
+//        http
+//                .csrf(AbstractHttpConfigurer::disable);
 
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers(ENDPOINTS_WHITELIST).permitAll()
-                        .requestMatchers(USER_WHITELIST).hasRole("USER")
-                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
+        http.authorizeHttpRequests((authz) -> authz
+                                .requestMatchers(ENDPOINTS_WHITELIST).permitAll()
+                                .requestMatchers(USER_WHITELIST).hasRole("USER")
                         .requestMatchers("/").permitAll()
-//                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/console/**").permitAll()
+                        .anyRequest().hasRole("ADMIN")
                 )
 //                .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
                         .defaultSuccessUrl("/login/success")
+
+                        .failureUrl("/login/error")
                 )
-//                        .failureUrl("/login/error"))
+
                 .logout((l) -> l
                         .permitAll()
                         .logoutSuccessUrl("/"));

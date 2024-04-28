@@ -74,8 +74,8 @@ create table if not exists medal_types (
 
 create table if not exists medal_users (
 
-                                           id              BIGINT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                                           username        VARCHAR(50)     NOT NULL,
+    id              BIGINT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username        VARCHAR(50)     NOT NULL,
     medal_name      VARCHAR(30)     NOT NULL
 
     ) ;
