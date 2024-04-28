@@ -26,51 +26,6 @@ repositories {
 	mavenCentral()
 }
 
-//dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-//	implementation 'org.springframework.boot:spring-boot-starter-web'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	//implementation 'org.junit.jupiter:junit-jupiter:5.9.2'
-//	//implementation 'junit:junit:4.13.2'
-//	compileOnly 'org.projectlombok:lombok'
-//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-//	annotationProcessor 'org.projectlombok:lombok'
-//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-//	testImplementation 'io.projectreactor:reactor-test'
-//	implementation 'org.springframework.boot:spring-boot-starter-validation'
-//	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-//	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
-//
-//	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-//
-//
-//	//dependencies for JUnit 5's vintage engine
-//	implementation 'org.junit.vintage:junit-vintage-engine'
-//	implementation 'org.hamcrest:hamcrest-core'
-//
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//
-//	testImplementation 'org.springframework.security:spring-security-test'
-//
-//	testImplementation 'com.h2database:h2'
-//
-////	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
-////	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-//
-//	runtimeOnly 'mysql:mysql-connector-java'
-//
-////	testImplementation 'org.mockito:mockito-core:5.8.0'
-////	testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
-////
-////	// Liquibase core
-////	implementation 'org.liquibase:liquibase-core'
-////	// Database driver
-//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-////}
 dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -81,32 +36,42 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
-//	runtimeOnly 'mysql:mysql-connector-java'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 
-	  implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	//	testImplementation 'io.projectreactor:reactor-test'
-	//dependencies for JUnit 5's vintage engine
-//	implementation 'org.junit.vintage:junit-vintage-engine'
-//	implementation 'org.hamcrest:hamcrest-core'
-
-//	implementation 'junit:junit:4.13.2'
-//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.h2database:h2'
 
 	testImplementation 'org.springframework.security:spring-security-test'
 
+	/// Liquibase core
+////	implementation 'org.liquibase:liquibase-core'
+////	// Database driver
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+
 ////	testImplementation 'org.mockito:mockito-core:5.8.0'
 ////	testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
+////	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+////	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 
 //	testImplementation 'io.projectreactor:reactor-test:3.6.2'
 
+	//dependencies for JUnit 5's vintage engine
+//	implementation 'org.junit.vintage:junit-vintage-engine'
+//	implementation 'org.hamcrest:hamcrest-core'
+
+//	implementation 'junit:junit:4.13.2'
+//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' //for spring boot version 2.x
+
+// dependencies for JUnit 5's vintage engine
+//	implementation 'org.junit.vintage:junit-vintage-engine'
+//	implementation 'org.hamcrest:hamcrest-core'
+
+//	runtimeOnly 'mysql:mysql-connector-java'
+
 }
-
-
-
 
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
@@ -116,16 +81,8 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-//jib.to.image = 'jp0123/smarttownsbuild'
-//jib {
-//	to {
-//		image = 'jp0123/smarttownsbuild'
-//		auth {
-//			username = 'jp0123'
-//			password = 'testing123'
-//		}
-//	}
-//}
+
+//google jib for docker images
 
 jib {
 	from {
