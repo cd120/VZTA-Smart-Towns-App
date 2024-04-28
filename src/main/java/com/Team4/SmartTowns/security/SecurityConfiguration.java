@@ -204,9 +204,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers(ENDPOINTS_WHITELIST).permitAll()
                         .requestMatchers(USER_WHITELIST).hasRole("USER")
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
+//                        .requestMatchers("/h2-console/**").permitAll()
                 )
 //                .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form

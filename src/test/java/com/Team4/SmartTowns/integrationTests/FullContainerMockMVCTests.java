@@ -1,10 +1,13 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.integrationTests;
 
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
@@ -12,16 +15,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-//@ActiveProfiles("test")
+
 @SpringBootTest
+@ActiveProfiles("test")
 @AutoConfigureMockMvc
-public class FullContainerMockMVCTest {
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+public class FullContainerMockMVCTests {
 
 
     @Autowired
     private MockMvc mockMvc;
 
-    //   test checks if / contains Welcome. Test Passes.
+    //   test checks if path / contains Welcome. Test Passes.
     @Test
     public void testGreetingPage() throws Exception {
         this.mockMvc.perform(get("/"))
@@ -31,8 +36,7 @@ public class FullContainerMockMVCTest {
     }
 
 
-
-    //   testing /medals to contain string mockBronze of h2 database. Test Passes.
+    //   testing path /medals contains string mockBronze of h2 database. Test Passes.
     @Test
     public void testMockDbMedal() throws Exception {
         this.mockMvc.perform(get("/medals"))

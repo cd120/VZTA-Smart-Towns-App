@@ -1,5 +1,3 @@
--- create database if not exists trailsdb;
--- use trailsdb;
 drop table if exists user_table;
 drop table if exists user_checkpoints;
 drop table if exists checkpoint_table;
@@ -82,8 +80,8 @@ create table if not exists medal_users (
 
     ) ;
 
-create view if not exists user_authorities as
-select u.username as username, CONCAT("ROLE_", r.name) as authority
-from user_table u
-         inner join users_roles ur on u.username = ur.username
-         inner join roles_table r on ur.role_id = r.role_id;
+-- create view if not exists user_authorities as
+-- select u.username as username, CONCAT("ROLE_", r.name) as authority
+-- from user_table u
+--          inner join users_roles ur on u.username = ur.username
+--          inner join roles_table r on ur.role_id = r.role_id;

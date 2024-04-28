@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Configuration;
 public class SmartTownsApplication {
 
 	public static void main(String[] args) {
+
+		System.setProperty("spring.config.name", "application");
+
 		SpringApplication.run(SmartTownsApplication.class, args);
 	}
 

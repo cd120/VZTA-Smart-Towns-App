@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.unitTests;
 
 import org.junit.jupiter.api.Test;
 

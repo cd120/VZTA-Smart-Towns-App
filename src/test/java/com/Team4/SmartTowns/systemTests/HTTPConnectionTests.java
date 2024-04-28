@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.systemTests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.web.client.RestTemplate;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 //@ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HTTPConnectionTest {
+public class HTTPConnectionTests {
 
     @Value(value="${local.server.port}")
     private int port;
@@ -37,10 +37,10 @@ public class HTTPConnectionTest {
     }
 
 
-    //testing access to the mock database , finding medal "mockBronze", test passes.
+    //testing no access to mock db, mockBronze does not exist in main db, test passes.
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
     public void dbMedalTest() throws Exception {
-        assert this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class).contains ("mockBronze");
+        assertFalse(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class).contains ("mockBronze"));
     }
 }

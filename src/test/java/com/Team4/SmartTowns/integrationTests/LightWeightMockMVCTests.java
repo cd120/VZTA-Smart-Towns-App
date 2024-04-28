@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.integrationTests;
 
 import com.Team4.SmartTowns.medals.controller.MedalController;
 import com.Team4.SmartTowns.medals.model.Medal;
@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@ActiveProfiles("test")
+
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(MedalController.class)
 public class LightWeightMockMVCTests {
@@ -59,7 +59,7 @@ public class LightWeightMockMVCTests {
 
         Medal medal = new Medal("mockSilver", "fake silver");
 
-        BDDMockito.given(this.medalService.getAllMedals()).willReturn(Arrays.asList(medal));
+        given(this.medalService.getAllMedals()).willReturn(Arrays.asList(medal));
 
         this.mockMvc.perform(get("/medals"))
                 .andDo(print())
@@ -67,9 +67,9 @@ public class LightWeightMockMVCTests {
                 .andExpect(content().string(containsString("mockSilver")));
     }
 
-    private BDDMockito given(List<Medal> medalList) {
-        return null;
-    }
+//    private BDDMockito given(List<Medal> medalList) {
+//        return null;
+//    }
 
 
 }
