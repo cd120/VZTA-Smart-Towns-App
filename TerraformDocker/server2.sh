@@ -131,6 +131,7 @@ upstream smarttownsbuild {
         location = /custom_50x.html {
         root /usr/share/nginx/html;
         internal;
+        }
     }
 }
 EOF'
