@@ -69,7 +69,7 @@ create table if not exists users_roles
 
 create table if not exists medal_types (
 
-    medal_name              VARCHAR(30)     NOT NULL PRIMARY KEY,
+    medal_name              VARCHAR(30)     NOT NULL,
     medal_description       VARCHAR(255)    NOT NULL
 
     )   engine = InnoDB;

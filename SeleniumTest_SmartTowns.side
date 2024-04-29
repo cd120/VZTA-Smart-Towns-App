@@ -442,7 +442,31 @@
       ],
       "value": ""
     }, {
-      "id": "ec4cb5d2-4438-475d-83de-625dea904b89",
+      "id": "04a20bd4-9f66-45ce-bf0b-1846ba48dc04",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aca9f513-2fb3-49b7-8bee-104700b6a383",
+      "comment": "",
+      "command": "type",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "new york"
+    }, {
+      "id": "a91ad99a-9a24-4f30-9bde-272f0601525c",
       "comment": "",
       "command": "click",
       "target": "id=filter",
@@ -451,25 +475,6 @@
         ["css=#filter", "css:finder"],
         ["xpath=//select[@id='filter']", "xpath:attributes"],
         ["xpath=//select", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "028f4dcc-a8bb-46f5-b549-06a3f7434ce8",
-      "comment": "",
-      "command": "select",
-      "target": "id=filter",
-      "targets": [],
-      "value": "label=town1"
-    }, {
-      "id": "a91ad99a-9a24-4f30-9bde-272f0601525c",
-      "comment": "",
-      "command": "click",
-      "target": "css=.nav-button:nth-child(2)",
-      "targets": [
-        ["css=.nav-button:nth-child(2)", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
@@ -498,7 +503,19 @@
       ],
       "value": ""
     }, {
-      "id": "88f65383-3408-49db-82b7-40d887432755",
+      "id": "42d4ca0d-18a5-438e-873e-44b9650fc08c",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > .nav-button",
+      "targets": [
+        ["css=form > .nav-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5bbfe5f6-688f-4e08-b74c-48a8db1c8096",
       "comment": "",
       "command": "click",
       "target": "id=username",
@@ -507,11 +524,24 @@
         ["name=username", "name"],
         ["css=#username", "css:finder"],
         ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
+        ["xpath=//input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "72577ea4-a3cf-4def-97fa-654fa0f1ecb9",
+      "id": "2c556b84-c069-4063-8f9f-b00fc1a58f30",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb5365a2-c823-4b60-a8fc-b0e81f7a1a19",
       "comment": "",
       "command": "type",
       "target": "id=username",
@@ -520,11 +550,11 @@
         ["name=username", "name"],
         ["css=#username", "css:finder"],
         ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
+        ["xpath=//input", "xpath:position"]
       ],
       "value": "bob"
     }, {
-      "id": "66d603fd-b859-407f-ba9d-3a31d3e0cab7",
+      "id": "86fe741e-cd2b-4a44-9d21-d8fabc70a00d",
       "comment": "",
       "command": "type",
       "target": "id=password",
@@ -537,7 +567,7 @@
       ],
       "value": "bob"
     }, {
-      "id": "54ad114e-8673-4427-85bf-b154e167ad82",
+      "id": "edbb37c4-9ac6-4d03-a0fd-4556cc5fa19c",
       "comment": "",
       "command": "click",
       "target": "id=SignIn",
@@ -549,7 +579,7 @@
       ],
       "value": ""
     }, {
-      "id": "8571e963-a382-4fc9-b7cd-5e8fe2038652",
+      "id": "95c07c73-29e3-4821-a78b-b6720042c51e",
       "comment": "",
       "command": "click",
       "target": "linkText=Profile",

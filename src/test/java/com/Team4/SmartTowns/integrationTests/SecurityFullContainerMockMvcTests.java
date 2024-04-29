@@ -17,9 +17,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
-@ActiveProfiles("test")
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@ActiveProfiles("test")
 public class SecurityFullContainerMockMvcTests {
 
     @Autowired
@@ -29,7 +29,7 @@ public class SecurityFullContainerMockMvcTests {
     // to redirect to /login, 302 expected, test passes.
     @Test
     public void testRedirect() throws Exception {
-        this.mockMvc.perform(get("/admin)"))
+        this.mockMvc.perform(get("/admin"))
                 .andDo(print()).andExpect(status().isFound())
                 .andExpect(header().string("Location", "http://localhost/login"));
     }

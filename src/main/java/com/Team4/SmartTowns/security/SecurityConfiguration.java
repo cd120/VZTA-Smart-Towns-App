@@ -202,8 +202,8 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .headers((headers) -> headers.disable());
+        http
+                .headers((headers) -> headers.disable());
 //        http
 //                .csrf(AbstractHttpConfigurer::disable);
 
