@@ -147,6 +147,6 @@ liquibase --version
 
 cd /home/debian/team-4-smart-towns
 
-gradle build
+#gradle build
 # # gradle test
 gradle bootrun

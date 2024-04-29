@@ -82,7 +82,7 @@ http {
 
 upstream smarttownsbuild {
         ip_hash;
-        server localhost:8080;
+        server localhost:8081;
         server localhost:8082;
  }
     # Basic Settings
@@ -128,4 +128,6 @@ upstream smarttownsbuild {
     }
 }
 EOF'
+
 sudo systemctl restart nginx
+sudo nginx -t
