@@ -50,8 +50,82 @@ docker run --name mariadb-server -e MYSQL_DATABASE=trailsdb -e MYSQL_ROOT_PASSWO
 echo "-----------------Pulling Docker Image from Dockerhub-----------------"
 sudo docker pull jp0123/smarttownsbuild
 echo "-----------------Running MariaDB Docker Image-----------------"
-sudo docker run --name stownsapp -e SERVER_PORT=8081 -p 8081:8081 -d --network host jp0123/smarttownsbuild
+sudo docker run --name stownsapp1 -e SERVER_PORT=8081 -p 8081:8081 -d --network host jp0123/smarttownsbuild
+sudo docker run --name stownsapp2 -e SERVER_PORT=8082 -p 8082:8082 -d --network host jp0123/smarttownsbuild
 
 docker images
 docker network ls
 docker ps -a
+
+echo "----------------Installing Nginx-----------------"
+sudo apt install nginx -y
+
+echo "----------------Nginx Configuration-----------------"
+sudo cat /etc/nginx/nginx.conf > /home/debian/backup_nginx.txt
+sudo rm /etc/nginx/nginx.conf
+
+sudo sh -c 'cat <<`EOF` > /etc/nginx/nginx.conf
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+# Load dynamic modules.
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+    worker_connections 768;
+    multi_accept on;
+    use epoll;
+}
+
+http {
+
+upstream smarttownsbuild {
+        ip_hash;
+        server localhost:8080;
+        server localhost:8082;
+ }
+    # Basic Settings
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    client_max_body_size 16m;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    # SSL Settings
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 10m;
+
+    # Logging Settings
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    # Gzip Compression Settings
+    gzip on;
+    gzip_http_version 1.1;
+    gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+    # allow the server to close connection on non responding client, this frees up memory
+    reset_timedout_connection on;
+
+    # Virtual Host Configs
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+
+    #  Server
+    server {
+        listen 8081;
+        server_name localhost;
+
+        location / {
+            proxy_pass http://smarttownsbuild;
+        }
+    }
+}
+`EOF`
+sudo systemctl restart nginx
