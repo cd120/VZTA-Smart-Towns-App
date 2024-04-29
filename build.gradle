@@ -5,6 +5,7 @@ plugins {
 	id 'jacoco'
 	id 'com.google.cloud.tools.jib' version '3.4.2'
 	id 'org.liquibase.gradle' version '2.0.4'
+	id 'checkstyle'
 }
 
 group = 'com.Team4'
@@ -53,9 +54,7 @@ dependencies {
 	implementation 'org.liquibase:liquibase-core'
 	// Database driver
 //	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
-
-
+}
 
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
@@ -65,26 +64,15 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-//jib.to.image = 'jp0123/smarttownsbuild'
-//jib {
-//	to {
-//		image = 'jp0123/smarttownsbuild'
-//		auth {
-//			username = 'jp0123'
-//			password = 'testing123'
-//		}
-//	}
-//}
+checkstyle {
+	ignoreFailures = true
+}
+
 
 jib {
 	from {
 		image = 'azul/zulu-openjdk:17-jre'
 	}
-
-//	to {
-//		image = 'spring-boot-project-smarttowns-jib'
-//	}
-
 
 	to {
 		image = 'jp0123/smarttownsbuild'
@@ -96,6 +84,10 @@ jib {
 		tags = ['latest', project.version]
 	}
 }
+
+
+
+
 //	container {
 //		appRoot = '/simpleApp'
 //		jvmFlags = ['-Xms360m', '-Xmx360m']
@@ -103,4 +95,4 @@ jib {
 //		workingDirectory = '/simpleApp'
 //	}
 //	allowInsecureRegistries = true
-}
+
