@@ -7,8 +7,8 @@
         <changeSet id="2" author="james">
         <comment>Inserting new medal type</comment>
             <insert tableName="medal_types">
-                <column name="medal_name" value="----PLATINUM----"/>
-                <column name="medal_description" value="NEW MEDAL PLATINUM"/>
+                <column name="medal_name" value="platinum"/>
+                <column name="medal_description" value="new plat"/>
             </insert>
         </changeSet>
 
