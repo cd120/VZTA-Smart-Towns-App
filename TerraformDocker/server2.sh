@@ -99,7 +99,7 @@ upstream smarttownsbuild {
     default_type application/octet-stream;
 
     # SSL Settings
-    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
     ssl_prefer_server_ciphers on;
     ssl_session_timeout 10m;
 
@@ -126,6 +126,11 @@ upstream smarttownsbuild {
         location / {
             proxy_pass http://smarttownsbuild;
         }
+
+        error_page 502 503 504 /custom_50x.html;
+        location = /custom_50x.html {
+        root /usr/share/nginx/html;
+        internal;
     }
 }
 EOF'
