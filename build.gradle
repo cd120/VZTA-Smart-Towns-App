@@ -6,7 +6,8 @@ plugins {
 //	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'jacoco'
 	id 'com.google.cloud.tools.jib' version '3.4.2'
-//	id 'org.liquibase.gradle' version '2.0.4'
+	id 'org.liquibase.gradle' version '2.0.4'
+	id 'checkstyle'
 }
 
 group = 'com.Team4'
@@ -59,6 +60,7 @@ dependencies {
 //	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
 
+
 ////	testImplementation 'org.mockito:mockito-core:5.8.0'
 ////	testImplementation 'org.mockito:mockito-junit-jupiter:5.8.0'
 ////	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
@@ -89,9 +91,12 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+checkstyle {
+	ignoreFailures = true
+}
+
 
 //google jib for docker images
-
 jib {
 	from {
 		image = 'azul/zulu-openjdk:17-jre'
@@ -115,4 +120,3 @@ jib {
 //		workingDirectory = '/simpleApp'
 //	}
 //	allowInsecureRegistries = true
-//}
