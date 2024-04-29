@@ -1,6 +1,6 @@
 package com.Team4.SmartTowns.medals.model;
 
-import com.Team4.SmartTowns.profile.model.Profile;
+//import com.Team4.SmartTowns.profile.model.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -39,6 +39,12 @@ public class MedalRepositoryImpl implements MedalRepository{
                 "JOIN medal_users mu ON m.medal_name = mu.medal_name " +
                 "WHERE mu.username = ?";
         return jdbc.query(sql, medalMapper, username);
+    }
+
+    public List<Medal> findAllMedals() {
+        String sql = ("Select * from medal_types");
+        return jdbc.query(sql, medalMapper);
+
     }
 
 }

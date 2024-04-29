@@ -4,7 +4,7 @@ import com.Team4.SmartTowns.checkpoints.model.Checkpoint;
 import com.Team4.SmartTowns.checkpoints.service.CheckpointService;
 import com.Team4.SmartTowns.trails.model.Trail;
 import com.Team4.SmartTowns.trails.service.TrailService;
-import jakarta.servlet.http.HttpSession;
+// import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class TrailController {
 
     @GetMapping("/trails")
     public ModelAndView showTrails() {
-        ModelAndView mvc = new ModelAndView("/trails/trails");
+        ModelAndView mvc = new ModelAndView("trails/trails");
         List<Trail> trails = trailService.getAllTrails();
         mvc.addObject("trails", trails);
 

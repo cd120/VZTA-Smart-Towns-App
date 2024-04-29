@@ -20,3 +20,4 @@ public class Checkpoint {
         this.description = "";
     }
 }
+

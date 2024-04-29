@@ -42,9 +42,9 @@ public class TrailRepositoryImpl implements TrailRepository {
     @Override
     public List<Trail> findStartedTrailsByUsername(String username) {
         String sql = "SELECT DISTINCT t.* FROM user_checkpoints uc " +
-        "JOIN trail_checkpoint tc ON uc.checkpoint_id = tc.checkpoint_id " +
-        "JOIN trail_table t ON tc.trail_id = t.trail_id " +
-        "WHERE uc.username = ?";
+                "JOIN trail_checkpoint tc ON uc.checkpoint_id = tc.checkpoint_id " +
+                "JOIN trail_table t ON tc.trail_id = t.trail_id " +
+                "WHERE uc.username = ?";
         return jdbc.query(sql, trailMapper, username);
     }
 

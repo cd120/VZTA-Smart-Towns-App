@@ -17,9 +17,9 @@ public class RegistrationFormController {
     }
     @GetMapping(value = {"/registration"})
     public ModelAndView registration(){
-        ModelAndView modelAndView = new ModelAndView("/registration/registrationForm");
+        ModelAndView modelAndView = new ModelAndView("registration/registrationForm");
         modelAndView.addObject("registrationForm", new Profile());
-         return modelAndView;
+        return modelAndView;
     }
 
     @GetMapping("/registration/newregister")

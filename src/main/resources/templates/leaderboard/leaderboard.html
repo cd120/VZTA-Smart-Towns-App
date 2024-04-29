@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:replace="~{/fragments/header :: bootstrap-css}"/>
-    <link th:replace="~{/fragments/header :: mainstyles}"/>
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
     <link rel="stylesheet" href="/stylesheets/leaderboardstyles.css">
     <link rel="stylesheet" th:href="@{/stylesheets/dark-mode.css}"/>
     <script th:src="@{/scripts/dark-mode.js}" defer></script>
@@ -13,7 +13,7 @@
 
 <body>
 <div class="main-container">
-    <header th:replace="~{/fragments/header :: navbar}"></header>
+    <header th:replace="~{fragments/header :: navbar}"></header>
     <div class="page-container">
 
         <h1>Leaderboard</h1>

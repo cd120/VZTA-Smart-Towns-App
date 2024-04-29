@@ -1,6 +1,5 @@
-CREATE DATABASE IF NOT EXISTS trailsdb;
-USE trailsdb;
-
+-- create database if not exists trailsdb;
+use trailsdb;
 drop table if exists user_table;
 drop table if exists user_checkpoints;
 drop table if exists checkpoint_table;
@@ -21,14 +20,14 @@ create table if not exists user_table
     address2 VARCHAR(500),
     city     VARCHAR(50),
     zipCode  VARCHAR(500)
-) engine = InnoDB;
+    ) engine = InnoDB;
 
 create table if not exists user_checkpoints
 (
     id            BIGINT      NOT NULL AUTO_INCREMENT primary key,
     username      VARCHAR(50) not null,
     checkpoint_id BIGINT      not null
-) engine = InnoDB;
+    ) engine = InnoDB;
 
 create table if not exists checkpoint_table
 (
@@ -38,7 +37,7 @@ create table if not exists checkpoint_table
     longitude     DOUBLE      NOT NULL,
     description   varchar(500)
 
-) engine = InnoDB;
+    ) engine = InnoDB;
 
 create table if not exists trail_checkpoint
 (
@@ -53,20 +52,20 @@ create table if not exists trail_table
     name        varchar(45)  NOT NULL,
     location    varchar(45)  NOT NULL,
     description varchar(500) NOT NULL
-) engine = InnoDB;
+    ) engine = InnoDB;
 
 create table if not exists roles_table
 (
     role_id BIGINT      NOT NULL,
     name    VARCHAR(45) NOT NULL
-) engine = InnoDB;
+    ) engine = InnoDB;
 
 create table if not exists users_roles
 (
     id       BIGINT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     role_id  BIGINT      NOT NULL
-) engine = InnoDB;
+    ) engine = InnoDB;
 
 create table if not exists medal_types (
 

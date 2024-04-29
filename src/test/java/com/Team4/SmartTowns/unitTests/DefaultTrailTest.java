@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.unitTests;
 
 
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class DefaultTrailTest {
 
+    //Testing CreateTempTrail method works, test passes.
     @Test
     void testCreateTempTrail() {
         // Arrange

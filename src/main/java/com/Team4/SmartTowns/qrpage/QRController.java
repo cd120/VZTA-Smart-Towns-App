@@ -34,7 +34,7 @@ public class QRController {
         Long id = Long.parseLong(checkpointId.trim());
 
         checkpointService.addCheckpointToUser(id, username);
-        medalService.awardMedalToUser(username);
+//        medalService.awardMedalToUser(username);
 
         return ResponseEntity.ok("Checkpoint added successfully");
     }

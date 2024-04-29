@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:replace="~{/fragments/header :: bootstrap-css}"/>
-    <link th:replace="~{/fragments/header :: mainstyles}"/>
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <script src="/scripts/qrScanner.js"></script>
@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="main-container">
-    <header th:replace="~{/fragments/header :: navbar}"></header>
+    <header th:replace="~{fragments/header :: navbar}"></header>
     <div class="page-container">
         <!-- QR Code Scanner Interface -->
         <h1>Scan a QR code to add a checkpoint</h1>

@@ -20,7 +20,7 @@ public class Profile {
 
     private List<Checkpoint> checkpoints;
 
-//    public RegistrationForm(String userName, String email, String address, String address2, String city, String zipCode) {
+    //    public RegistrationForm(String userName, String email, String address, String address2, String city, String zipCode) {
 //        this.userName = userName;
 //        this.email = email;
 //        this.address = address;

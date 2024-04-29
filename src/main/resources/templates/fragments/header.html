@@ -23,6 +23,7 @@
         <li><a th:href="@{/}">Home</a></li>
         <li><a th:href="@{/trails}">Trails</a></li>
         <li><a th:href="@{/leaderboard}">Leaderboard</a></li>
+        <li><a th:href="@{/medals}">Medals</a></li>
 
         <div th:if="${#authorization.expression('isAuthenticated()')}">
             <li th:if="${#authorization.expression('hasRole(''USER'')')}">

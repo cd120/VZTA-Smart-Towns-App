@@ -1,4 +1,4 @@
-package com.Team4.SmartTowns;
+package com.Team4.SmartTowns.unitTests;
 
 
 import com.Team4.SmartTowns.medals.model.Medal;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class MedalTest {
 
-//Testing whether the Lombok library actually automatically generates the class constructors with @AllArgsConstructor.
+//Testing whether the Lombok library automatically generates the class constructors with @AllArgsConstructor, test passes.
 
     @Test
     void testParameterisedConstructor() {

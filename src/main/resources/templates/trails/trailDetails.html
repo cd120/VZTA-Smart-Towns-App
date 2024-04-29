@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:replace="~{/fragments/header :: bootstrap-css}"/>
-    <link th:replace="~{/fragments/header :: mainstyles}"/>
+    <link th:replace="~{fragments/header :: bootstrap-css}"/>
+    <link th:replace="~{fragments/header :: mainstyles}"/>
 
     <link rel="stylesheet" href="/stylesheets/traildetails.css">
 
@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="main-container">
-    <header th:replace="~{/fragments/header :: navbar}"></header>
+    <header th:replace="~{fragments/header :: navbar}"></header>
     <div class="page-container">
 
         <h1> Trail Details </h1>
@@ -31,10 +31,10 @@
 
         <div class="trail-container">
             <div class="trail-picture">
-<!--                <a class="trail-image-container" href="../../static/images/trail1Placeholder.jpg">-->
-<!--                    <img class="trail-image" src=""-->
-<!--                         alt="Feature picture/map">-->
-<!--                </a>-->
+                <!--                <a class="trail-image-container" href="../../static/images/trail1Placeholder.jpg">-->
+                <!--                    <img class="trail-image" src=""-->
+                <!--                         alt="Feature picture/map">-->
+                <!--                </a>-->
                 <a class="trail-image-container">
                     <img class="trail-image" src="" alt="Feature Picture">
                 </a>
@@ -56,7 +56,7 @@
             <ul class="trail-checkpoints">
                 <div th:each="checkpoint: ${trail.checkpoints}">
                     <li>
-<!--                        <div th:text="'id: ' + ${checkpoint.id}"></div>-->
+                        <!--                        <div th:text="'id: ' + ${checkpoint.id}"></div>-->
                         <strong><p th:text="${checkpoint.name}"></p></strong>
                         <p th:text="${checkpoint.getDescription()}"></p>
                     </li>
