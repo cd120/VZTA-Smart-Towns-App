@@ -28,7 +28,7 @@ public class SecurityFullContainerMockMvcTests {
     // full mock mvc with security tests user with NO login credentials
     // to redirect to /login, 302 expected, test passes.
     @Test
-    public void redirectTest() throws Exception {
+    public void testRedirect() throws Exception {
         this.mockMvc.perform(get("/admin)"))
                 .andDo(print()).andExpect(status().isFound())
                 .andExpect(header().string("Location", "http://localhost/login"));

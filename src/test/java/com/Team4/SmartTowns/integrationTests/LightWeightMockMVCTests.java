@@ -55,7 +55,7 @@ public class LightWeightMockMVCTests {
     //Testing new medal injection, at path /medals, for mockSilver object, test passes.
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
-    public void getMedalTest() throws Exception {
+    public void testGetMedal() throws Exception {
 
         Medal medal = new Medal("mockSilver", "fake silver");
 

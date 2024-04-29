@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 //Testing mock db is set up properly with data injection
 @SpringBootTest
 @ActiveProfiles("test")
-public class PropertyLoadingTest {
+public class testDatabaseConnectionConfig {
 
     @Value("${spring.datasource.url}")
     private String dataSourceUrl;

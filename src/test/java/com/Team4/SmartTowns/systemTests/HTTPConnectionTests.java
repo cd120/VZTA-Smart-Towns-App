@@ -25,22 +25,22 @@ public class HTTPConnectionTests {
 
     @Test
 
-    public void greetingTest() throws Exception {
+    public void testGreeting() throws Exception {
         assert this.restTemplate.getForObject("http://localhost:" + port + "/", String.class).contains("Welcome");
     }
 
 
     //testing connection to /medals, and string "medals" can be found, test passes.
     @Test
-    public void medalsPageTest() throws Exception {
+    public void testMedalsPage() throws Exception {
         assert this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class).contains("BRONZE");
     }
 
 
-    //testing no access to mock db, mockBronze does not exist in main db, test passes.
+    //testing there's no access to mock db, mockBronze does not exist in main db, test passes.
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
-    public void dbMedalTest() throws Exception {
+    public void testMockConnection() throws Exception {
         assertFalse(this.restTemplate.getForObject("http://localhost:" + port + "/medals", String.class).contains ("mockBronze"));
     }
 }
