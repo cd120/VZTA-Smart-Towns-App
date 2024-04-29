@@ -38,7 +38,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-//	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
@@ -57,7 +57,7 @@ dependencies {
 	// Liquibase core
 //	implementation 'org.liquibase:liquibase-core'
 //	// Database driver
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
 
 ///////// DEBUGGING ONLY
