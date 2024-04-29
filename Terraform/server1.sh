@@ -48,7 +48,7 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* TO root@localhost IDENTIFIED 
 
 
 
-cat <<EOF > gitlab_project_keypair2.key
+cat <<`EOF` > gitlab_project_keypair2.key
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
 NhAAAAAwEAAQAAAYEA02aAQWa4aVxW4tXTmajS1JdRPIRYeqYxlAXu4HkTuTwetBHy7kwS
@@ -87,7 +87,7 @@ AVrjX68QN3tRuta7K1gv7wbPdyLpk2zDosjWJPxoNtbApnp2P9HkPazdnwwRe0qxKG7ERT
 ZOyKY/0CDnDQjvZ8eu3kgRoE0Gn/IAcj3QJRUgRnKmJBlFiTZSC+yW0UmtZLg3HPN+30YA
 mxA5hAjicrpzEAAAAcSUQrYzIzMDc3ODEzQERTQTEwRjYwQThGNTQ2MgECAwQFBgc=
 -----END OPENSSH PRIVATE KEY-----
-EOF
+`EOF`
 
 chmod 400 gitlab_project_keypair2.key
 ssh-agent bash -c 'ssh-add gitlab_project_keypair.key'

@@ -64,7 +64,7 @@ echo "----------------Nginx Configuration-----------------"
 sudo cat /etc/nginx/nginx.conf > /home/debian/backup_nginx.txt
 sudo rm /etc/nginx/nginx.conf
 
-sudo sh -c 'cat <<`EOF` > /etc/nginx/nginx.conf
+sudo sh -c 'cat <<EOF > /etc/nginx/nginx.conf
 user www-data;
 worker_processes auto;
 pid /run/nginx.pid;
@@ -127,5 +127,5 @@ upstream smarttownsbuild {
         }
     }
 }
-`EOF`
+EOF'
 sudo systemctl restart nginx
